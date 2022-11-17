@@ -5,10 +5,10 @@ import axios from 'axios';
 
 // endpoint addresses
 const AUTH_ENDPOINTS = {
-  logIn: '/auth/login',
-  logOut: '/auth/logout',
-  register: '/auth/register',
-  getUser: '/auth/current',
+  logIn: '/login',
+  logOut: '/logout',
+  register: '/signup',
+  getUser: '/current',
 };
 
 const token = {
