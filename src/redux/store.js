@@ -13,7 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: 'expense_app_auth',
+  key: 'xtodo_wallet_app_auth',
   storage,
   whitelist: ['token'],
 };
