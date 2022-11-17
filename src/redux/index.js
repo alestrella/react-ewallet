@@ -1,4 +1,4 @@
-export { persistor } from './store';
+export { store, persistor } from './store';
 export { default as authSelectors } from './auth/authSelectors';
 export { resetError } from './auth/authSlice';
 export {
