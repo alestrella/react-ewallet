@@ -7,7 +7,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001/';
+// back-end address
+axios.defaults.baseURL = 'http://localhost:3001/api/';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
