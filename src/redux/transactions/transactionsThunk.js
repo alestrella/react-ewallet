@@ -40,7 +40,7 @@ export const addTransaction = createAsyncThunk(
 );
 
 export const deleteTransaction = createAsyncThunk(
-  'transactions/load',
+  'transactions/delete',
   async (transactionId, thunkAPI) => {
     try {
       const { data } = await axios.delete(
