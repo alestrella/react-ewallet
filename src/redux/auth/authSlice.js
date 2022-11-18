@@ -11,7 +11,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isFetching: false,
-  errorMessage: '',
+  errorMessage: null,
 };
 
 export const authSlice = createSlice({
@@ -19,7 +19,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     resetError: state => {
-      state.errorMessage = '';
+      state.errorMessage = null;
     },
   },
   extraReducers: {
