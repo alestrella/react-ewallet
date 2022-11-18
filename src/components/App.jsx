@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { SharedLayout } from './layout/SharedLayout';
+import { Layout } from './layout/Layout';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<SharedLayout />}>
+      <Route path="/" element={<Layout />}>
         {/* <Route path="/login" element={<LoginPage />}></Route> */}
         {/* <Route path="/signup" element={<SignupPage />}></Route> */}
       </Route>
