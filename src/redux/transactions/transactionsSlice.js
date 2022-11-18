@@ -83,3 +83,5 @@ export const transactionsSlice = createSlice({
     },
   },
 });
+
+export const { resetError } = transactionsSlice.actions;

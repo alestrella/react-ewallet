@@ -1,15 +1,20 @@
 export { store, persistor } from './store';
-export { resetError as resetAuthError } from './auth/authSlice';
+
+// auth
 export {
   logInUser,
   logOutUser,
   registerUser,
   reconnectUser,
 } from './auth/authThunk';
+export { resetError as resetAuthError } from './auth/authSlice';
 export { default as authSelectors } from './auth/authSelectors';
+
+// transactions
 export {
   addTransaction,
   deleteTransaction,
   getTransactions,
 } from './transactions/transactionsThunk';
+export { resetError as resetTransactionsError } from './transactions/transactionsSlice';
 export { default as transactionsSelectors } from './transactions/transactionsSelectors';
