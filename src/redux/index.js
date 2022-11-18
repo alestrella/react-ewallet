@@ -18,3 +18,7 @@ export {
 } from './transactions/transactionsThunk';
 export { resetError as resetTransactionsError } from './transactions/transactionsSlice';
 export { default as transactionsSelectors } from './transactions/transactionsSelectors';
+
+// categories
+export { getCategories } from './categories/categoriesThunk';
+export { default as categoriesSelectors } from './categories/categoriesSelectors';
