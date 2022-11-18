@@ -13,7 +13,7 @@ export const getCategories = createAsyncThunk(
   async thunkAPI => {
     try {
       const { data } = await axios.get(ENDPOINTS.load);
-      return { data }; // check this
+      return { categories: data.categories }; // check this
     } catch (err) {
       return thunkAPI.rejectWithValue(
         'Error ' + err.response.status + ': ' + err.response.message
