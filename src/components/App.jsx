@@ -2,10 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
 
-const Home = lazy(() => import('./Home'));
-const Layout = lazy(() => import('./Layout'));
+import Layout from './Layout';
 // import Home from './Home';
-// import Layout from './Layout';
+// const Layout = lazy(() => import('./Layout'));
+const Home = lazy(() => import('./Home'));
 
 function App() {
   return (
