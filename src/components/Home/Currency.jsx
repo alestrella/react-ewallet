@@ -1,49 +1,39 @@
 // import Media from 'react-media';
 
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
 import {
   CurrencyDataItem,
   CurrencyData,
   CurrencyBox,
   CurrencyTitle,
   CurrencyTitleItem,
+  CurrencyDataItemText,
 } from './Currency.styled';
 
 const Currency = () => {
   return (
     <CurrencyBox>
       <CurrencyTitle>
-        <CurrencyTitleItem>
-          <p>Currency</p>
-        </CurrencyTitleItem>
-        <CurrencyTitleItem>
-          <p>Purchase</p>
-        </CurrencyTitleItem>
-        <CurrencyTitleItem>
-          <p>Sale</p>
-        </CurrencyTitleItem>
+        <CurrencyTitleItem>Currency</CurrencyTitleItem>
+        <CurrencyTitleItem>Purchase</CurrencyTitleItem>
+        <CurrencyTitleItem>Sale</CurrencyTitleItem>
       </CurrencyTitle>
       <CurrencyData>
         <CurrencyDataItem>
-          <p>USD</p>
-          <p>27,55</p>
-          <p>27,65</p>
+          <CurrencyDataItemText>USD</CurrencyDataItemText>
+          <CurrencyDataItemText>27,55</CurrencyDataItemText>
+          <CurrencyDataItemText>27,65</CurrencyDataItemText>
         </CurrencyDataItem>
         <CurrencyDataItem>
-          <p>EUR</p>
-          <p>30,00</p>
-          <p>30,10</p>
+          <CurrencyDataItemText>EUR</CurrencyDataItemText>
+          <CurrencyDataItemText>30,00</CurrencyDataItemText>
+          <CurrencyDataItemText>30,10</CurrencyDataItemText>
         </CurrencyDataItem>
         <CurrencyDataItem>
-          <p>BTC</p>
-          <p>00,00</p>
-          <p>00,00</p>
+          <CurrencyDataItemText>BTC</CurrencyDataItemText>
+          <CurrencyDataItemText>00,00</CurrencyDataItemText>
+          <CurrencyDataItemText>00,00</CurrencyDataItemText>
         </CurrencyDataItem>
       </CurrencyData>
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
     </CurrencyBox>
   );
 };

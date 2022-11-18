@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 const Layout = () => {
   return (
     <>
-      <div> Layout </div>{' '}
+      <div> Layout </div>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
