@@ -11,13 +11,9 @@ import { theme } from './styleConfig/theme';
 import 'antd/dist/antd.min.css';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-<<<<<<< HEAD
-	<React.StrictMode>
-=======
 	<>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
->>>>>>> 6c6b77871a3e411d3907596149d5a345abcdbe00
 		<BrowserRouter basename="/xtodo-wallet">
 			{/* <Provider store={store}> */}
 				{/* <PersistGate loading={null} persistor={persistor}> */}
