@@ -50,4 +50,9 @@ img.ant-image-preview-img {
 thead {
   border-radius: 30px;
 }
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
 `;
