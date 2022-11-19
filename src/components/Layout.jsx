@@ -1,5 +1,17 @@
+import { Outlet } from "react-router-dom";
+
+import { Suspense } from "react";
+
+
 export const Layout = () => {
-  return <div> Layout page </div>;
+ return (
+    <>
+            <Suspense >
+              <Outlet />
+            </Suspense>
+             
+    </>
+  );
 };
 
 export default Layout;
