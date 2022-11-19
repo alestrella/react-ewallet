@@ -1,11 +1,12 @@
-import AppTable from './TransactionTable/TransactionTable';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
-export const Layout = () => {
+const Layout = () => {
   return (
-    <div>
-      Layout page
-      <AppTable />
-    </div>
+    <Suspense fallback={null}>
+      <div> Layout </div>
+      <Outlet />
+    </Suspense>
   );
 };
 
