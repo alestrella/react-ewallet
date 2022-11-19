@@ -4,6 +4,7 @@ import {
   logInUser,
   getTransactions,
   transactionsSelectors,
+  addTransaction,
 } from '../../redux';
 
 export const TestReduxComponent = () => {
@@ -11,11 +12,20 @@ export const TestReduxComponent = () => {
 
   const transactions = useSelector(transactionsSelectors.getTransactions);
 
-  const operations = [getTransactions, logInUser, logOutUser];
+  const theTestDispatch = () => {
+    dispatch(
+      addTransaction({
+        income: false,
+        sum: 1200,
+        category: '6378dbbf7f1022fdac49bdf1',
+        comment: 'spending money',
+      })
+    );
+  };
 
   return (
     <div>
-      <button type="button" onClick={() => dispatch(operations[0]())}>
+      <button type="button" onClick={theTestDispatch}>
         Test it
       </button>
       {transactions &&
