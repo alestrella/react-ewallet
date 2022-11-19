@@ -1,5 +1,6 @@
 // import Media from 'react-media';
 
+// import { fetchCurrency } from 'services/API-PB-currency';
 import {
   CurrencyDataItem,
   CurrencyData,
@@ -9,7 +10,7 @@ import {
   CurrencyDataItemText,
 } from './Currency.styled';
 
-const Currency = () => {
+const Currency = ({ data }) => {
   return (
     <CurrencyBox>
       <CurrencyTitle>
@@ -18,21 +19,19 @@ const Currency = () => {
         <CurrencyTitleItem>Sale</CurrencyTitleItem>
       </CurrencyTitle>
       <CurrencyData>
-        <CurrencyDataItem>
-          <CurrencyDataItemText>USD</CurrencyDataItemText>
-          <CurrencyDataItemText>27,55</CurrencyDataItemText>
-          <CurrencyDataItemText>27,65</CurrencyDataItemText>
-        </CurrencyDataItem>
-        <CurrencyDataItem>
-          <CurrencyDataItemText>EUR</CurrencyDataItemText>
-          <CurrencyDataItemText>30,00</CurrencyDataItemText>
-          <CurrencyDataItemText>30,10</CurrencyDataItemText>
-        </CurrencyDataItem>
-        <CurrencyDataItem>
-          <CurrencyDataItemText>BTC</CurrencyDataItemText>
-          <CurrencyDataItemText>00,00</CurrencyDataItemText>
-          <CurrencyDataItemText>00,00</CurrencyDataItemText>
-        </CurrencyDataItem>
+        {data.map(({ ccy, buy, sale }) => {
+          return (
+            <CurrencyDataItem key={ccy}>
+              <CurrencyDataItemText>{ccy}</CurrencyDataItemText>
+              <CurrencyDataItemText>
+                {parseFloat(buy).toFixed(2)}
+              </CurrencyDataItemText>
+              <CurrencyDataItemText>
+                {parseFloat(sale).toFixed(2)}
+              </CurrencyDataItemText>
+            </CurrencyDataItem>
+          );
+        })}
       </CurrencyData>
     </CurrencyBox>
   );
