@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-
 export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
@@ -50,5 +49,10 @@ img.ant-image-preview-img {
 }
 thead {
   border-radius: 30px;
+}
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 `;

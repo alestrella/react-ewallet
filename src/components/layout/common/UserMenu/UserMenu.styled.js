@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ExportOutlined  } from '@ant-design/icons';
+import { ExportOutlined } from '@ant-design/icons';
 import { breakpoints } from 'styleConfig/breakpoints';
 
 export const Menu = styled.div`
@@ -28,9 +28,7 @@ export const LogOutButton = styled.button`
   align-items: center;
   background-color: transparent;
   height: 18px;
-  outline: none;
-  border: none;
-  cursor: pointer;
+
   @media screen and (${breakpoints.tablet}) {
     margin-left: 12px;
   }
