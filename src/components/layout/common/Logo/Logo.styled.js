@@ -10,9 +10,11 @@ export const Logo = styled(NavLink)`
 export const LogoIcon = styled.img`
   height: 30px;
   width: 30px;
+  margin-right: 16px;
   @media screen and (${breakpoints.tablet}) {
     height: 40px;
     width: 40px;
+    margin-right: 20px;
   }
 `;
 
@@ -21,7 +23,7 @@ export const LogoText = styled.div`
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: ${({ theme }) => theme.fontSizes.xxl};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
-  margin-left: 16px;
+  
   @media screen and (${breakpoints.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.xxxl};
   }
