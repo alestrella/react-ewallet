@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LogoutOutlined } from '@ant-design/icons';
+import { ExportOutlined  } from '@ant-design/icons';
 import { breakpoints } from 'styleConfig/breakpoints';
 
 export const Menu = styled.div`
@@ -36,7 +36,7 @@ export const LogOutButton = styled.button`
   }
 `;
 
-export const LogOutIcon = styled(LogoutOutlined)`
+export const LogOutIcon = styled(ExportOutlined)`
   font-size: 18px;
   color: ${({ theme }) => theme.colors.shadow};
 `;
