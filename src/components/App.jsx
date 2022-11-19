@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './layout/Layout';
+import { Layout } from './Layout';
+
+
 
 function App() {
   return (
@@ -7,7 +9,9 @@ function App() {
       <Route path="/" element={<Layout />}>
         {/* <Route path="/login" element={<LoginPage />}></Route> */}
         {/* <Route path="/signup" element={<SignupPage />}></Route> */}
+        <Route path="home" element={<Home />}></Route>
       </Route>
+      <Route path="/redux-test" element={<TestReduxComponent />}></Route>
     </Routes>
   );
 }
