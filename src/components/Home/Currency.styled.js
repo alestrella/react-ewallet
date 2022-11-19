@@ -82,13 +82,13 @@ export const CurrencyDataItem = styled.li`
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.m};
   line-height: ${p => p.theme.lineHeights.body};
-  margin-top: 12px;
+  margin-bottom: 12px;
   color: ${p => p.theme.colors.primary};
   @media screen and (${breakpoints.laptop}) {
-    margin-top: 24px;
+    margin-bottom: 24px;
   }
-  :first-child {
-    margin-top: 0;
+  :last-child {
+    margin-bottom: 0;
   }
 `;
 
