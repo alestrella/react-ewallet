@@ -18,7 +18,6 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; 
     color: #000;
-    background-color: green;
 };
 ul {
   list-style: none;
