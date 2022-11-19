@@ -3,8 +3,8 @@ import { Menu, UserName, LogOutButton, LogOutIcon, LogOutText } from './UserMenu
 export const UserMenu = () => {
   return (
     <Menu>
-      <UserName>Name</UserName>
-      <LogOutButton>
+      <UserName>Name {''}</UserName>
+      <LogOutButton type="button" onClick={''}>
         <LogOutIcon />
         <LogOutText>Exit</LogOutText>
       </LogOutButton>
