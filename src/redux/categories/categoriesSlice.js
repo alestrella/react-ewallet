@@ -4,35 +4,39 @@ import { getCategories } from './categoriesThunk';
 const initialState = {
   categories: [
     {
-      id: '001',
+      id: '000000000000000000000000',
+      name: 'Other expenses',
+    },
+    {
+      id: '000000000000000000000001',
       name: 'Basic expenses',
     },
     {
-      id: '002',
+      id: '000000000000000000000002',
       name: 'Products',
     },
     {
-      id: '003',
+      id: '000000000000000000000003',
       name: 'Car',
     },
     {
-      id: '004',
+      id: '000000000000000000000004',
       name: 'Self care',
     },
     {
-      id: '005',
+      id: '000000000000000000000005',
       name: 'Child care',
     },
     {
-      id: '006',
+      id: '000000000000000000000006',
       name: 'Household products',
     },
     {
-      id: '007',
+      id: '000000000000000000000007',
       name: 'Education',
     },
     {
-      id: '008',
+      id: '000000000000000000000008',
       name: 'Leisure',
     },
   ],
