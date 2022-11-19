@@ -13,6 +13,7 @@ export const UserName = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.l};
   line-height: ${({ theme }) => theme.lineHeights.body};
   margin-right: 8px;
+  padding-top: 3px;
   color: ${({ theme }) => theme.colors.shadow};
 
   @media screen and (${breakpoints.tablet}) {
@@ -30,7 +31,7 @@ export const LogOutButton = styled.button`
 `;
 
 export const LogOutIcon = styled(ExportOutlined)`
-  font-size: 18px;
+  font-size: ${({ theme }) => theme.fontSizes.xxl};;
   color: ${({ theme }) => theme.colors.shadow};
 
   @media screen and (${breakpoints.tablet}) {
@@ -47,5 +48,6 @@ export const LogOutText = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.l};
     line-height: ${({ theme }) => theme.lineHeights.body};
     color: ${({ theme }) => theme.colors.shadow};
+    padding-top: 3px;
   }
 `;
