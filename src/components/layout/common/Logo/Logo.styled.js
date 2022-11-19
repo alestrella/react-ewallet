@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { breakpoints } from 'styleConfig/breakpoints';
 
 export const Logo = styled(NavLink)`
   display: flex;
@@ -9,6 +10,10 @@ export const Logo = styled(NavLink)`
 export const LogoIcon = styled.img`
   height: 30px;
   width: 30px;
+  @media screen and (${breakpoints.tablet}) {
+    height: 40px;
+    width: 40px;
+  }
 `;
 
 export const LogoText = styled.div`
@@ -17,4 +22,7 @@ export const LogoText = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.xxl};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   margin-left: 16px;
+  @media screen and (${breakpoints.tablet}) {
+    font-size: ${({ theme }) => theme.fontSizes.xxxl};
+  }
 `;

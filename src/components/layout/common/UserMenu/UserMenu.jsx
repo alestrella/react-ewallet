@@ -1,10 +1,13 @@
-import { Menu, UserName, LogOutIcon } from './UserMenu.styled';
+import { Menu, UserName, LogOutButton, LogOutIcon, LogOutText } from './UserMenu.styled';
 
 export const UserMenu = () => {
   return (
     <Menu>
       <UserName>Name</UserName>
-      <LogOutIcon />
+      <LogOutButton>
+        <LogOutIcon />
+        <LogOutText>Exit</LogOutText>
+      </LogOutButton>
     </Menu>
   );
 };

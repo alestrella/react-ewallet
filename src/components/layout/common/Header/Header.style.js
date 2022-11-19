@@ -1,8 +1,18 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { breakpoints } from 'styleConfig/breakpoints';
 
 export const HeaderStyle = styled.div`
-display: flex;
-justify-content: space-between;
-padding: 15px 20px;
-background-color: ${({theme}) => theme.colors.primary};
-`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: ${({ theme }) => theme.colors.primary};
+
+  @media screen and (${breakpoints.tablet}) {
+    padding: 20px 32px;
+  }
+
+  @media screen and (${breakpoints.laptop}) {
+    padding: 16px 20px;
+  }
+`;
