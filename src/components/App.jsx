@@ -10,8 +10,6 @@ const SignupPage = lazy(() => import('pages/SignupPage'));
 const DashboardPage = lazy(() => import('pages/DashboardPage'));
 
 
-
-import Layout from './Layout';
 // import Home from './Home';
 // const Layout = lazy(() => import('./Layout'));
 const Home = lazy(() => import('./Home'));
