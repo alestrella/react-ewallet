@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { logInUser, registerUser } from '../../redux';
 import { Formik, Field } from 'formik';
@@ -11,6 +12,7 @@ import {
 } from '@ant-design/icons';
 import {
   FormWrapper,
+  LogoWrapper,
   PrimaryButton,
   StyledForm,
   StyledLink,
@@ -20,6 +22,7 @@ import {
 } from './AuthForm.styled';
 import { FormError } from './FormError';
 import { PasswordStrengthChecker } from './PasswordstrengthChecker';
+import { AppLogo } from 'components/layout';
 
 
 export const AuthForm = ({ type }) => {
@@ -42,7 +45,9 @@ export const AuthForm = ({ type }) => {
 
   return (
     <FormWrapper>
-      <h1>Wallet</h1>
+      <LogoWrapper>
+      <AppLogo/>
+      </LogoWrapper>
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema(type)}
@@ -148,4 +153,8 @@ export const AuthForm = ({ type }) => {
     </Formik>
     </FormWrapper>
   );
+};
+
+AuthForm.propTypes = {
+  type: PropTypes.string.isRequired,
 };

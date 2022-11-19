@@ -35,5 +35,9 @@ img {
 a {
   text-decoration: none;
 };
-
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
 `;

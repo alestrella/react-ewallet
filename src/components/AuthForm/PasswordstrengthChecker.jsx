@@ -1,4 +1,5 @@
 import zxcvbn from 'zxcvbn';
+import PropTypes from 'prop-types';
 
 export const PasswordStrengthChecker = ({ password }) => {
   const testResult = zxcvbn(password);
@@ -43,4 +44,8 @@ export const PasswordStrengthChecker = ({ password }) => {
       </div>
     </>
   );
+};
+
+PasswordStrengthChecker.propTypes = {
+  password: PropTypes.string.isRequired,
 };

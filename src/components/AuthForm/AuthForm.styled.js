@@ -16,13 +16,17 @@ background-color: ${p => p.theme.colors.primary};
     padding: ${p => p.theme.space[8]}px ${p => p.theme.space[10]}px ${p => p.theme.space[12]}px ${p => p.theme.space[12]}px;
     border-radius: ${p => p.theme.radii.medium};
   };
-`
+`;
+export const LogoWrapper = styled.div`
+display: flex;
+justify-content: center;
+margin-bottom: ${p => p.theme.space[11]}px;
+`;
 export const StyledForm = styled(Form)`
 display: flex;
 flex-flow: column;
 justify-content: center;
 align-items: center;
-margin-top: ${p => p.theme.space[11]}px;
 width: 280px;
   @media (${breakpoints.tablet}) {
     width: 410px;
