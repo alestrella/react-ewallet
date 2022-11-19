@@ -18,7 +18,7 @@ axios.defaults.baseURL = 'http://localhost:3001/api/';
 store.dispatch(getCategories());
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <>
+  <React.StrictMode>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <BrowserRouter basename="/xtodo-wallet">
@@ -29,5 +29,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Provider>
       </BrowserRouter>
     </ThemeProvider>
-  </>
+    </React.StrictMode>
 );
