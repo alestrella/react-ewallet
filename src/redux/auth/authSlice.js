@@ -26,13 +26,18 @@ export const authSlice = createSlice({
     [logInUser.fulfilled](state, { payload }) {
       return {
         ...initialState,
-        username: payload.username,
+        ...payload.user,
         token: payload.token,
         isLoggedIn: true,
       };
     },
     [registerUser.fulfilled](state, { payload }) {
-      state.isFetching = false;
+      return {
+        ...initialState,
+        ...payload.user,
+        token: payload.token,
+        isLoggedIn: true,
+      };
     },
     [logOutUser.fulfilled](state, _) {
       return { ...initialState };
