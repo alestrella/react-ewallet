@@ -47,8 +47,8 @@ export const transactionsSlice = createSlice({
     },
     [addTransaction.fulfilled](state, { payload }) {
       return {
-        ...initialState,
-        ...payload,
+        ...state,
+        transactions: [payload, ...state.transactions],
       };
     },
     [addTransaction.pending](state, _) {
@@ -65,8 +65,8 @@ export const transactionsSlice = createSlice({
     },
     [deleteTransaction.fulfilled](state, { payload }) {
       return {
-        ...initialState,
-        ...payload,
+        ...state,
+        transactions: state.transactions.filter(e => e.id !== payload.id),
       };
     },
     [deleteTransaction.pending](state, _) {
