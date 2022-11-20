@@ -5,14 +5,14 @@ export const HeaderStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 15px 20px;
   background-color: ${({ theme }) => theme.colors.primary};
 
   @media screen and (${breakpoints.tablet}) {
-    padding: 20px 0;
+    padding: 20px 32px;
   }
 
   @media screen and (${breakpoints.laptop}) {
-    padding: 20px 0;
+    padding: 20px 16px;
   }
 `;

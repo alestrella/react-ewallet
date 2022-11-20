@@ -9,6 +9,7 @@ export const theme = {
     shade: '#A6A6A6',
     border: '#E0E0E0',
     errorColor: '#93252F',
+    loginPageBgColor: '#E7EAF2',
   },
   space: [5, 8, 10, 15, 20, 25, 30, 35, 40, 50, 55, 60, 65, 90, 100, 120, 150],
   fonts: {
