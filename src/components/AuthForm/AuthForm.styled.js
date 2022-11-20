@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 export const FormWrapper = styled.div`
 transition: all .3s ease;
+position: relative;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -16,6 +17,7 @@ width: 100vw;
 height: 100vh;
 padding-top: ${p => p.theme.space[6]}px;
 background-color: ${p => p.theme.colors.primary};
+z-index: 999;
   @media (${breakpoints.tablet}) {
     width: 533px;
     height: auto;
