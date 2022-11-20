@@ -12,7 +12,7 @@ import { store, persistor, getCategories } from './redux';
 import axios from 'axios';
 
 // back-end address
-axios.defaults.baseURL = 'http://localhost:3001/api/';
+axios.defaults.baseURL = 'https://ewallet-api.onrender.com/api/';
 
 // get categories on app start
 store.dispatch(getCategories());
@@ -29,6 +29,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Provider>
       </BrowserRouter>
     </ThemeProvider>
-    </React.StrictMode>
+  </React.StrictMode>
 );
-
