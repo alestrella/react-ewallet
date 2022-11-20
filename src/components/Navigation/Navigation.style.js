@@ -7,35 +7,58 @@ import { breakpoints } from 'styleConfig/breakpoints';
 
 export const NavList = styled.ul`
   display: flex;
-  align-items: center;
-  padding-left: 19px;  
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  @media screen and (${breakpoints.tablet}) {
+    padding-left: 35px;
+    padding-top: 40px;
+  }
+  @media screen and (${breakpoints.laptop}) {
+    padding-left: 19px;
+    padding-top: 40px;
+  }
 `;
 
 export const NavigLink = styled(NavLink)`
   color: gray;
   display: flex;
-  align-items: center;  
-  
+  align-items: center;
+  @media screen and (${breakpoints.tablet}) {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  } 
 `;
 
 export const NavItem = styled.li`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
   @media screen and (${breakpoints.tablet}) {
     display: block;
+    margin-left: 0;
+    margin-right: 0;
   }
   @media screen and (${breakpoints.laptop}) {
     display: block;
+    margin-left: 0;
+    margin-right: 0;
   }
 `;
 
 export const NavText = styled.span`
   display: none;
-  font-size: 18px;
+  font-size: ${p => p.theme.fontSizes.l};
   font-family: 'Poppins';
-  font-weight: 700;
-  line-height: 27px;
+  color: ${p => p.theme.colors.black};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  line-height: ${p => p.theme.lineHeights.body};
+  &:hover,
+  &:focus,
+  &:active {
+    font-weight: ${p => p.theme.fontWeights.bold};
+  }
   @media screen and (${breakpoints.tablet}) {
     display: block;
   }

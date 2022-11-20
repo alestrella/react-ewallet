@@ -1,9 +1,4 @@
 import React from 'react';
-// import {
-//   HomeFilled,
-// } from '@ant-design/icons';
-// import { Space } from 'antd';
-// import sprite from './sprite.svg';
 import {
   NavigLink,
 	NavList,
@@ -19,26 +14,26 @@ const Navigation = () => {
 	return (
     <NavList>
       <NavItem>
-        <NavigLink>
+        <NavigLink to="/">
           <IconWrapper>
             <IconHome size="18px" />
           </IconWrapper>
           <NavText>Home</NavText>
         </NavigLink>
 
-        <NavigLink>
+        <NavigLink to="/">
           <IconWrapper>
             <IconGraph size="18px" />
           </IconWrapper>
           <NavText>Statistics</NavText>
         </NavigLink>
-        <NavigLink>
+        <NavigLink to="/">
           <IconWrapper>
             <IconCurrency size="18px" />
           </IconWrapper>
         </NavigLink>
       </NavItem>
-    </NavList>  
+    </NavList>
   );
 };
 
