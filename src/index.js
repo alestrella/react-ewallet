@@ -15,7 +15,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://ewallet-api.onrender.com/api/';
 
 // get categories on app start
-// store.dispatch(getCategories());
+store.dispatch(getCategories());
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
