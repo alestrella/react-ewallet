@@ -3,57 +3,42 @@ import React from 'react';
 //   HomeFilled,
 // } from '@ant-design/icons';
 // import { Space } from 'antd';
-import sprite from './sprite.svg';
-import { HomeLink, NavStyle } from './Navigation.style';
-
-
+// import sprite from './sprite.svg';
+import {
+  NavigLink,
+	NavList,
+  NavItem,
+	IconHome,
+	IconWrapper,
+  NavText,
+  IconGraph,
+  IconCurrency,
+} from './Navigation.style';
 
 const Navigation = () => {
-	// const { isLoggedIn } = useAuth();
-
 	return (
-    <NavStyle>
-      <ul>
-        <li>
-          <HomeLink>
-            <div>
-              {/* <Space>
-              <HomeFilled
-                style={{ fontSize: '38px', color: '#4A56E2'}}
-              />
-            </Space> */}
+    <NavList>
+      <NavItem>
+        <NavigLink>
+          <IconWrapper>
+            <IconHome size="18px" />
+          </IconWrapper>
+          <NavText>Home</NavText>
+        </NavigLink>
 
-              <svg>
-                <use href={`${sprite}#icon-home`}></use>
-              </svg>
-
-              <span>HOME</span>
-            </div>
-          </HomeLink>
-        </li>
-        <li>
-          <HomeLink>
-            <div>
-              <svg>
-                <use href={`${sprite}#icon-statistic`}></use>
-              </svg>
-              <span>Statistics</span>
-            </div>
-          </HomeLink>
-        </li>
-
-        <li>
-          <HomeLink>
-            <div>
-              <svg>
-                <use href={`${sprite}#icon-currency`}></use>
-              </svg>
-              <span>Currency</span>
-            </div>
-          </HomeLink>
-        </li>
-      </ul>
-    </NavStyle>
+        <NavigLink>
+          <IconWrapper>
+            <IconGraph size="18px" />
+          </IconWrapper>
+          <NavText>Statistics</NavText>
+        </NavigLink>
+        <NavigLink>
+          <IconWrapper>
+            <IconCurrency size="18px" />
+          </IconWrapper>
+        </NavigLink>
+      </NavItem>
+    </NavList>  
   );
 };
 
