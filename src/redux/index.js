@@ -18,6 +18,7 @@ export {
   addTransaction,
   deleteTransaction,
   getTransactions,
+  getBalance,
 } from './transactions/transactionsThunk';
 export { resetError as resetTransactionsError } from './transactions/transactionsSlice';
 export { default as transactionsSelectors } from './transactions/transactionsSelectors';

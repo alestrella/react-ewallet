@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { store } from '../store';
+import { convertTransaction } from './convertTransaction';
 
 // axios baseUrl initializes in the index.js
 
@@ -19,7 +20,11 @@ export const getTransactions = createAsyncThunk(
         ? `${ENDPOINTS.load}?page=${pageNum}`
         : ENDPOINTS.load;
       const { data } = await axios.get(getLink);
-      return data; // check this
+      const transactions = data.transactions.map(
+        convertTransaction.backToFront
+      );
+      data.transactions = transactions;
+      return data;
     } catch (err) {
       return thunkAPI.rejectWithValue(
         'Error ' + err.response.status + ': ' + err.response.message
@@ -32,7 +37,8 @@ export const addTransaction = createAsyncThunk(
   'transactions/add',
   async (newRecord, thunkAPI) => {
     try {
-      const { data } = await axios.post(ENDPOINTS.add, newRecord);
+      const postedRecord = convertTransaction.frontToBack(newRecord);
+      const { data } = await axios.post(ENDPOINTS.add, postedRecord);
       store.dispatch(getTransactions(1)); // on success gets newest data
       return data;
     } catch (err) {
@@ -56,6 +62,21 @@ export const deleteTransaction = createAsyncThunk(
       store.dispatch(getTransactions(page));
       // ---------------------------------------------
       return data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(
+        'Error ' + err.response.status + ': ' + err.response.message
+      );
+    }
+  }
+);
+
+export const getBalance = createAsyncThunk(
+  'transactions/getbalance',
+  async thunkAPI => {
+    try {
+      const getLink = `${ENDPOINTS.load}?page=1`;
+      const { data } = await axios.get(getLink);
+      return data.balance;
     } catch (err) {
       return thunkAPI.rejectWithValue(
         'Error ' + err.response.status + ': ' + err.response.message
