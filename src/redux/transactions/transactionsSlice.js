@@ -17,7 +17,7 @@ const initialState = {
 
 export const transactionsSlice = createSlice({
   name: 'transactions',
-  initialState: { ...initialState }, // while developing back
+  initialState: { ...initialState },
   reducers: {
     resetError: state => {
       state.errorMessage = null;
