@@ -45,6 +45,7 @@ export const transactionsSlice = createSlice({
       };
     },
     [addTransaction.fulfilled](state, { payload }) {
+      state.transactions.pop();
       return {
         ...state,
         transactions: [payload, ...state.transactions],
