@@ -26,7 +26,7 @@ export const authSlice = createSlice({
     [logInUser.fulfilled](state, { payload }) {
       return {
         ...initialState,
-        username: payload.username,
+        ...payload.user,
         token: payload.token,
         isLoggedIn: true,
       };
@@ -34,7 +34,7 @@ export const authSlice = createSlice({
     [registerUser.fulfilled](state, { payload }) {
       return {
         ...initialState,
-        username: payload.username,
+        ...payload.user,
         token: payload.token,
         isLoggedIn: true,
       };

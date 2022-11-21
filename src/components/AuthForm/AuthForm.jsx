@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { logInUser, registerUser } from '../../redux';
 import { Formik, Field } from 'formik';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import { validationSchema } from 'validationSchema';
-import authSelectors from 'redux/auth/authSelectors';
+// import authSelectors from 'redux/auth/authSelectors';
 import {
   MailFilled,
   LockFilled,
   UserOutlined,
-  // EyeInvisibleOutlined,
-  // EyeTwoTone,
 } from '@ant-design/icons';
 import {
   FormWrapper,
@@ -26,9 +24,10 @@ import { FormError } from './FormError';
 import { PasswordStrengthChecker } from './PasswordstrengthChecker';
 import { AppLogo } from 'components/layout';
 
+
 export const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
-  const userName = useSelector(authSelectors.getUsername);
+  // const userName = useSelector(authSelectors.getUsername);
   // const errorMessage = useSelector(authSelectors.getErrorMessage);
 
   const initialValues = {
@@ -39,17 +38,12 @@ export const AuthForm = ({ type }) => {
   };
 
   const handleSubmit = ({ email, password, username }, { resetForm }) => {
-  //  try {
     type === 'register'
     ? dispatch(registerUser({ email, password, username }))
     : dispatch(logInUser({ email, password }));
-  if (userName) {
-    return toast.success(`Welcome ${userName}!`);
-  }
-  //  } catch (error) {
-  //   toast.error(`Something went wrong: ${error}`);
-  //  }
-
+  // if (userName) {
+  //   return toast.success(`Welcome ${userName}!`);
+  // }
   //   if (errorMessage){
   //   return toast.error(`Something went wrong: ${errorMessage}`);
   // }
@@ -66,7 +60,7 @@ export const AuthForm = ({ type }) => {
         validationSchema={validationSchema(type)}
         onSubmit={handleSubmit}
       >
-        {({ values }) => (
+        {({ values, setFieldValue, handleBlur }) => (
           <StyledForm noValidate>
             <InputWrapper>
               <Field
@@ -75,6 +69,10 @@ export const AuthForm = ({ type }) => {
                 >{({ field, form: { isSubmitting } }) => (
                   <StyledInput
                     {...field}
+                    onChange={(e)=>{
+                      const value = e.target.value || "";
+                      setFieldValue('email', value.toLowerCase());
+                    }}
                     disabled={isSubmitting}
                     placeholder="E-mail"
                     bordered={false}

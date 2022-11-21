@@ -4,11 +4,7 @@ const authValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email('invalid email address format')
     .required('please, enter your email'),
-  password: Yup.string().min(8).max(12)
-    .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,12}$/,
-      'must contain 8 or more up to 12 characters inclusive: uppercase, lowercase letters, a number and a special case character'
-    )
+  password: Yup.string().min(8).max(16)
     .required('please, enter your password'),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password')], 'passwords must match')
@@ -20,11 +16,7 @@ const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email('invalid email address format')
     .required('please, enter your email'),
-  password: Yup.string().min(8).max(12)
-    .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,12}$/,
-      'must contain 8 or more up to 12 characters inclusive: uppercase, lowercase letters, a number and a special case character'
-    )
+  password: Yup.string().min(8).max(16)
     .required('please, enter your password'),
 });
 

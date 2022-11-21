@@ -17,16 +17,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-      <Route index element={<Navigate to="login"/>} />
-        {/* <Route path="login" element={<LoginPage />}/>
-        <Route path="signup" element={<SignupPage />}/>
-        <Route path="dashboard" element={<DashboardPage/>}/> */}
-             <Route index path="/login" element={<PublicRoute restricted ><LoginPage/></PublicRoute>} />
+        <Route path="/login" element={<PublicRoute restricted ><LoginPage/></PublicRoute>} />
         <Route path="/signup"  element={<PublicRoute restricted><SignupPage/></PublicRoute>}/>
         <Route path="/dashboard/*" element={<PrivateRoute><DashboardPage/></PrivateRoute>} />
-
         {/* <Route path="home" element={<Home />}></Route> */}
-
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
       {/* <Route path="/redux-test" element={<TestReduxComponent />}></Route> */}
     </Routes>
