@@ -4,7 +4,7 @@ export const UserMenu = () => {
   return (
     <Menu>
       <UserName>Name {''}</UserName>
-      <LogOutButton type="button" onClick={''}>
+      <LogOutButton type="button" onClick={console.log("click")}>
         <LogOutIcon />
         <LogOutText>Exit</LogOutText>
       </LogOutButton>
