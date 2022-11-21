@@ -9,9 +9,9 @@ import {
 } from '../../redux';
 
 import { token } from '../../redux';
-token.set(
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2EwOTFjMGZhNTQwYTJiYmM1NTQ0YyIsImlhdCI6MTY2OTA0MjYxMCwiZXhwIjoxNjY5MTI5MDEwfQ.vb402CdjrFObdAwuW22lJvsympdth3-506Q0_UuQ3ys'
-);
+// token.set(
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2EwOTFjMGZhNTQwYTJiYmM1NTQ0YyIsImlhdCI6MTY2OTA0MjYxMCwiZXhwIjoxNjY5MTI5MDEwfQ.vb402CdjrFObdAwuW22lJvsympdth3-506Q0_UuQ3ys'
+// );
 
 export const TestReduxComponent = () => {
   const dispatch = useDispatch();
