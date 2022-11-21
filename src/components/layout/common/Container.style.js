@@ -30,7 +30,7 @@ export const Container = styled.div`
       animation: ${Animation} 3s infinite alternate linear;
     }
     @media screen and (${breakpoints.laptop}) {
-      top: -45px;
+      top: -120px;
       right: -70px;
     }
   }
@@ -50,7 +50,7 @@ export const Container = styled.div`
       animation: ${Animation} 5s infinite alternate linear;
     }
     @media screen and (${breakpoints.laptop}) {
-      bottom: -97px;
+      bottom: -204px;
       left: -127px;
     }
   }
