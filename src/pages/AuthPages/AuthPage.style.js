@@ -19,6 +19,10 @@ export const AuthFormContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 731px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(25px);
+    z-index: 1;
   }
 `;
 

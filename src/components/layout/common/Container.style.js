@@ -29,6 +29,10 @@ export const Container = styled.div`
       z-index: 0;
       animation: ${Animation} 3s infinite alternate linear;
     }
+    @media screen and (${breakpoints.laptop}) {
+      top: -45px;
+      right: -70px;
+    }
   }
   :before {
     display: none;
@@ -44,6 +48,10 @@ export const Container = styled.div`
       left: -147px;
       z-index: 0;
       animation: ${Animation} 5s infinite alternate linear;
+    }
+    @media screen and (${breakpoints.laptop}) {
+      bottom: -97px;
+      left: -127px;
     }
   }
 `;
