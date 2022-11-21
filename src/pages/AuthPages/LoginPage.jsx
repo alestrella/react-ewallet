@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import { AuthForm } from 'components/AuthForm';
 import {
   Container,
+  AuthFormContainer,
   AuthPageTitleGroup,
   AuthPageImg,
   AuthPageTitle,
@@ -19,7 +20,9 @@ const LoginPage = () => {
           <AuthPageImg src={loginPageImg} alt="Logo page image" />
           <AuthPageTitle>Finance App</AuthPageTitle>
         </AuthPageTitleGroup>
-        <AuthForm type={'login'} />
+        <AuthFormContainer>
+          <AuthForm type={'login'} />
+        </AuthFormContainer>
       </Container>
     </>
   );

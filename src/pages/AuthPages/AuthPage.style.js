@@ -2,9 +2,24 @@ import styled from 'styled-components';
 import { breakpoints } from 'styleConfig/breakpoints';
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   width: 100%;
   height: 100vh;
+  @media screen and (${breakpoints.laptop}) {
+    flex-direction: row;
+    justify-content: center;
+  }
+`;
+
+export const AuthFormContainer = styled.div`
+  @media screen and (${breakpoints.laptop}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 731px;
+  }
 `;
 
 export const AuthPageTitleGroup = styled.div`
@@ -12,6 +27,11 @@ export const AuthPageTitleGroup = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 999;
+  @media screen and (${breakpoints.laptop}) {
+    flex-direction: column;
+    width: 549px;
+    padding-left: 76px;
+  }
 `;
 
 export const AuthPageImg = styled.img`
@@ -22,6 +42,11 @@ export const AuthPageImg = styled.img`
     width: 250px;
     margin-right: 40px;
     margin-top: 60px;
+    @media screen and (${breakpoints.laptop}) {
+      height: 435px;
+      width: 420px;
+      margin-right: 0;
+    }
   }
 `;
 
@@ -35,5 +60,8 @@ export const AuthPageTitle = styled.div`
     line-height: ${({ theme }) => theme.lineHeights.body};
     color: ${({ theme }) => theme.colors.black};
     z-index: 999;
+    @media screen and (${breakpoints.laptop}) {
+      margin-top: 28px;
+    }
   }
 `;

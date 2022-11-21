@@ -43,7 +43,7 @@ export const Container = styled.div`
       bottom: -249px;
       left: -147px;
       z-index: 0;
-      animation: ${Animation} 3s infinite alternate linear;
+      animation: ${Animation} 5s infinite alternate linear;
     }
   }
 `;
