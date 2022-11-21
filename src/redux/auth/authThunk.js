@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { token } from './token';
 
 // axios baseUrl initializes in the index.js
 
@@ -9,15 +10,6 @@ const AUTH_ENDPOINTS = {
   logOut: '/logout',
   register: '/signup',
   getUser: '/current',
-};
-
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
 };
 
 export const logInUser = createAsyncThunk(
