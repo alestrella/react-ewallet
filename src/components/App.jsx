@@ -21,7 +21,7 @@ function App() {
         <Route path="/signup"  element={<PublicRoute restricted><SignupPage/></PublicRoute>}/>
         <Route path="/dashboard/*" element={<PrivateRoute><DashboardPage/></PrivateRoute>} />
         {/* <Route path="home" element={<Home />}></Route> */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+   
       </Route>
       {/* <Route path="/redux-test" element={<TestReduxComponent />}></Route> */}
     </Routes>
