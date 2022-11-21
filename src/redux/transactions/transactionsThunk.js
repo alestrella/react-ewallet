@@ -14,9 +14,7 @@ export const getTransactions = createAsyncThunk(
   'transactions/load',
   async (pageNum, thunkAPI) => {
     try {
-      const getLink = pageNum
-        ? `${ENDPOINTS.load}?page=${pageNum}`
-        : ENDPOINTS.load;
+      const getLink = pageNum ? `${ENDPOINTS.load}/${pageNum}` : ENDPOINTS.load;
       const { data } = await axios.get(getLink);
       return data; // check this
     } catch (err) {

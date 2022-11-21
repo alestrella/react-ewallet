@@ -23,6 +23,15 @@ ul {
   list-style: none;
   padding: 0;
 };
+li.selected {
+background-color: #eead71;
+}
+div.swiper-button-next::after{
+  color: #eead71 !important;
+}
+div.swiper-button-prev::after{
+  color: #eead71 !important;
+}
 p, h1, h2, h3, h4, button {
   margin: 0;
   padding: 0;
@@ -35,9 +44,10 @@ img {
 a {
   text-decoration: none;
 };
-button {
-  outline: none;
-  border: none;
-  cursor: pointer;
+img.ant-image-preview-img {
+  margin: 0 auto;
+}
+thead {
+  border-radius: 30px;
 }
 `;

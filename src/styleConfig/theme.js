@@ -7,13 +7,12 @@ export const theme = {
     accentSecondary: '#FF6596',
     shadow: '#BDBDBD',
     shade: '#A6A6A6',
-    border: '#E0E0E0',
-    errorColor: '#93252F',
+    border: '#E0E0E0'
   },
-  space: [5, 8, 10, 15, 20, 25, 30, 35, 40, 50, 55, 60, 65, 90, 100, 120, 150],
+  space: [5, 8, 10, 15, 20, 25, 30, 35, 50, 65, 90, 100, 120, 150],
   fonts: {
-    primary: 'Circe, sans serif',
-    secondary: 'Poppins, sans serif',
+    primary: 'Circe',
+    secondary: 'Poppins',
   },
   fontSizes: {
     xs: '12px',
