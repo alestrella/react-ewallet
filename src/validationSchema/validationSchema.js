@@ -13,7 +13,7 @@ const authValidationSchema = Yup.object().shape({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password')], 'passwords must match')
     .required('please, confirm your password'),
-  username: Yup.string().min(1).max(12).required('please, enter your name'),
+  username: Yup.string().min(3).max(12).required('please, enter your name'),
 });
 
 const loginValidationSchema = Yup.object().shape({
