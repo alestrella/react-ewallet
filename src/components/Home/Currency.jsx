@@ -30,19 +30,21 @@ const Currency = () => {
         <CurrencyTitleItem>Sale</CurrencyTitleItem>
       </CurrencyTitle>
       <CurrencyData>
-        {foundedCurrency.map(({ code, buy = '00.00', sale = '00.00' }) => {
-          return (
-            <CurrencyDataItem key={code}>
-              <CurrencyDataItemText>{code}</CurrencyDataItemText>
-              <CurrencyDataItemText>
-                {parseFloat(buy).toFixed(2)}
-              </CurrencyDataItemText>
-              <CurrencyDataItemText>
-                {parseFloat(sale).toFixed(2)}
-              </CurrencyDataItemText>
-            </CurrencyDataItem>
-          );
-        })}
+        {foundedCurrency.map(
+          ({ code = 'No Data', buy = '00.00', sale = '00.00' }) => {
+            return (
+              <CurrencyDataItem key={code}>
+                <CurrencyDataItemText>{code}</CurrencyDataItemText>
+                <CurrencyDataItemText>
+                  {parseFloat(buy).toFixed(2)}
+                </CurrencyDataItemText>
+                <CurrencyDataItemText>
+                  {parseFloat(sale).toFixed(2)}
+                </CurrencyDataItemText>
+              </CurrencyDataItem>
+            );
+          }
+        )}
       </CurrencyData>
       <ButtonBox>
         <ButtonCurrency
