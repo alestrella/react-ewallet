@@ -1,12 +1,27 @@
+import Currency from 'components/Home/Currency';
+import { Suspense } from 'react';
 import { Helmet } from 'react-helmet';
+import { Outlet } from 'react-router-dom';
 
 const DashboardPage = () => {
+  // sample data for currency
+
+  const fetchedData = [
+    { ccy: 'EUR', base_ccy: 'UAH', buy: '39.70000', sale: '40.70000' },
+    { ccy: 'USD', base_ccy: 'UAH', buy: '39.50000', sale: '40.00000' },
+  ];
+  // sample data for currency
+
   return (
     <>
       <Helmet>
         <title>Dashboard</title>
       </Helmet>
       <div>Dashboard Page</div>
+      <Currency data={fetchedData} />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
