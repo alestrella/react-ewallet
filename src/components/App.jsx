@@ -42,6 +42,7 @@ function App() {
             // </PrivateRoute>
           }
         />
+
       </Route>
       {/* <Route path="/redux-test" element={<TestReduxComponent />}></Route> */}
     </Routes>
