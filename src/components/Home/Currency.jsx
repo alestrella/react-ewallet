@@ -1,6 +1,5 @@
-// import Media from 'react-media';
-
-// import { fetchCurrency } from 'services/API-PB-currency';
+import { useEffect, useState } from 'react';
+import { fetchCurrency } from 'services/API-PB-currency';
 import {
   CurrencyDataItem,
   CurrencyData,
@@ -8,9 +7,21 @@ import {
   CurrencyTitle,
   CurrencyTitleItem,
   CurrencyDataItemText,
+  ButtonBox,
+  ButtonCurrency,
 } from './Currency.styled';
 
-const Currency = ({ data }) => {
+const Currency = () => {
+  const [foundedCurrency, setFoundedCurrency] = useState([]);
+  const [searchParams, setSearchParams] = useState('cashless');
+
+  const changeSearchValue = value => {
+    setSearchParams(value);
+  };
+  useEffect(() => {
+    fetchCurrency(searchParams).then(setFoundedCurrency);
+  }, [searchParams]);
+
   return (
     <CurrencyBox>
       <CurrencyTitle>
@@ -19,10 +30,10 @@ const Currency = ({ data }) => {
         <CurrencyTitleItem>Sale</CurrencyTitleItem>
       </CurrencyTitle>
       <CurrencyData>
-        {data.map(({ ccy, buy, sale }) => {
+        {foundedCurrency.map(({ code, buy = '00.00', sale = '00.00' }) => {
           return (
-            <CurrencyDataItem key={ccy}>
-              <CurrencyDataItemText>{ccy}</CurrencyDataItemText>
+            <CurrencyDataItem key={code}>
+              <CurrencyDataItemText>{code}</CurrencyDataItemText>
               <CurrencyDataItemText>
                 {parseFloat(buy).toFixed(2)}
               </CurrencyDataItemText>
@@ -33,6 +44,24 @@ const Currency = ({ data }) => {
           );
         })}
       </CurrencyData>
+      <ButtonBox>
+        <ButtonCurrency
+          disabled={searchParams === 'cash' ? true : false}
+          onClick={() => {
+            changeSearchValue('cash');
+          }}
+        >
+          Cash
+        </ButtonCurrency>
+        <ButtonCurrency
+          disabled={searchParams === 'cashless' ? true : false}
+          onClick={() => {
+            changeSearchValue('cashless');
+          }}
+        >
+          Cashless
+        </ButtonCurrency>
+      </ButtonBox>
     </CurrencyBox>
   );
 };

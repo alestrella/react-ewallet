@@ -1,7 +1,7 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Layout } from './layout/Layout';
 
-import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
+// import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
 import { lazy } from 'react';
 import { PrivateRoute, PublicRoute } from 'hocs';
 
@@ -37,9 +37,9 @@ function App() {
         <Route
           path="/dashboard/*"
           element={
-            <PrivateRoute>
-              <DashboardPage />
-            </PrivateRoute>
+            // <PrivateRoute>
+            <DashboardPage />
+            // </PrivateRoute>
           }
         />
       </Route>
