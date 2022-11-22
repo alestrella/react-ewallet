@@ -9,7 +9,6 @@ const LoginPage = lazy(() => import('pages/LoginPage'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
 const DashboardPage = lazy(() => import('pages/DashboardPage'));
 // const Layout = lazy(() => import('components/layout/Layout'));
-const Home = lazy(() => import('./Home'));
 
 function App() {
   return (
@@ -44,7 +43,6 @@ function App() {
           }
         />
 
-        <Route path="home" element={<Home />}></Route>
       </Route>
       {/* <Route path="/redux-test" element={<TestReduxComponent />}></Route> */}
     </Routes>
