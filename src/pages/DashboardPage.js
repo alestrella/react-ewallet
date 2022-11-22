@@ -1,3 +1,4 @@
+
 import Currency from 'components/Currency/Currency';
 import styled from 'styled-components';
 import { Suspense } from 'react';
@@ -7,8 +8,8 @@ import ModalAddTransaction from 'components/ModalAddTransaction';
 import IconButton from 'components/IconButton';
 import { PlusOutlined } from '@ant-design/icons';
 import { Outlet } from 'react-router-dom';
-import Balance from '../components/Balance'
-import Navigation from '../components/Navigation'
+import Balance from 'components/Balance'
+import Navigation from 'components/Navigation'
 
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
