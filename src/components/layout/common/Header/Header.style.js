@@ -7,6 +7,8 @@ export const HeaderStyle = styled.div`
   align-items: center;
   padding: 15px 20px;
   background-color: ${({ theme }) => theme.colors.primary};
+  position: relative;
+  z-index: 1;
 
   @media screen and (${breakpoints.tablet}) {
     padding: 20px 32px;
