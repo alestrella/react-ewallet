@@ -27,7 +27,6 @@ export const authSlice = createSlice({
       return {
         ...initialState,
         ...payload,
-        token: payload.token,
         isLoggedIn: true,
       };
     },
@@ -35,7 +34,6 @@ export const authSlice = createSlice({
       return {
         ...initialState,
         ...payload,
-        token: payload.token,
         isLoggedIn: true,
       };
     },
