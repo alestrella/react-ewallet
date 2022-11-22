@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  logOutUser,
-  logInUser,
+  //   logOutUser,
+  //   logInUser,
   getTransactions,
   transactionsSelectors,
   addTransaction,
 } from '../../redux';
+
+import { token } from '../../redux';
+// token.set(
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2EwOTFjMGZhNTQwYTJiYmM1NTQ0YyIsImlhdCI6MTY2OTA0MjYxMCwiZXhwIjoxNjY5MTI5MDEwfQ.vb402CdjrFObdAwuW22lJvsympdth3-506Q0_UuQ3ys'
+// );
 
 export const TestReduxComponent = () => {
   const dispatch = useDispatch();
@@ -20,7 +25,7 @@ export const TestReduxComponent = () => {
   const EarnDispatch = () => {
     dispatch(
       addTransaction({
-        income: true,
+        type: 'income',
         sum: 1200 + Math.floor(Math.random() * 10) * 100,
         category: '6378dbbf7f1022fdac49bdf1',
         comment: 'got paid for my job',
@@ -31,7 +36,7 @@ export const TestReduxComponent = () => {
   const SpendDispatch = () => {
     dispatch(
       addTransaction({
-        income: false,
+        type: 'expense',
         sum: 800 + Math.floor(Math.random() * 10) * 10,
         category: '6378dbbf7f1022fdac49bdf1',
         comment: 'spending my money on stuff',
@@ -51,7 +56,7 @@ export const TestReduxComponent = () => {
         transactions.map(e => (
           <p
             key={e.id}
-          >{`${e.id} ${e.income} ${e.category} ${e.comment} ${e.sum} ${e.balance}`}</p>
+          >{`${e.id} ${e.type} ${e.category} ${e.comment} ${e.sum} ${e.balance}`}</p>
         ))}
     </div>
   );
