@@ -17,8 +17,8 @@ export const logInUser = createAsyncThunk(
   async (userCredentials, thunkAPI) => {
     try {
       const { data } = await axios.post(AUTH_ENDPOINTS.logIn, userCredentials);
-      token.set(data.accessToken);
-      return { username: data.username, token: data.accessToken };
+      token.set(data.token);
+      return { username: data.username, token: data.token };
     } catch (err) {
       switch (err.response.status) {
         case 401:
