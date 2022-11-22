@@ -18,7 +18,7 @@ export const logInUser = createAsyncThunk(
     try {
       const { data } = await axios.post(AUTH_ENDPOINTS.logIn, userCredentials);
       token.set(data.token);
-      return { username: data.username, token: data.token };
+      return { email: data.email, username: data.username, token: data.token };
     } catch (err) {
       switch (err.response.status) {
         case 401:
@@ -64,7 +64,7 @@ export const registerUser = createAsyncThunk(
         AUTH_ENDPOINTS.register,
         userCredentials
       );
-      return { username: data.username, password: userCredentials.password };
+      return { email: data.email, username: data.username, token: data.token };
     } catch (err) {
       switch (err.response.status) {
         case 409:
