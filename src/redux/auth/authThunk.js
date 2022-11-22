@@ -17,8 +17,12 @@ export const logInUser = createAsyncThunk(
   async (userCredentials, thunkAPI) => {
     try {
       const { data } = await axios.post(AUTH_ENDPOINTS.logIn, userCredentials);
-      token.set(data.accessToken);
-      return { username: data.username, token: data.accessToken };
+      token.set(data.token);
+      return {
+        email: data.user.email,
+        username: data.user.username,
+        token: data.token,
+      };
     } catch (err) {
       switch (err.response.status) {
         case 401:
@@ -64,7 +68,11 @@ export const registerUser = createAsyncThunk(
         AUTH_ENDPOINTS.register,
         userCredentials
       );
-      return { username: data.username, password: userCredentials.password };
+      return {
+        email: data.user.email,
+        username: data.user.username,
+        token: data.token,
+      };
     } catch (err) {
       switch (err.response.status) {
         case 409:
