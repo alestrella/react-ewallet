@@ -7,7 +7,7 @@ import {
   AuthPageImg,
   AuthPageTitle,
 } from './AuthPage.style';
-import loginPageImg from '../../components/img/loginPageImg.svg';
+import loginPageImg from '../components/img/loginPageImg.svg';
 
 const LoginPage = () => {
   return (

@@ -4,8 +4,8 @@ import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
 import { lazy } from 'react';
 // import { PrivateRoute, PublicRoute } from 'hocs';
 
-const LoginPage = lazy(() => import('pages/AuthPages/LoginPage'));
-const SignupPage = lazy(() => import('pages/AuthPages/SignupPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const SignupPage = lazy(() => import('pages/SignupPage'));
 const DashboardPage = lazy(() => import('pages/DashboardPage'));
 // const Layout = lazy(() => import('components/layout/Layout'));
 const Home = lazy(() => import('./Home'));
