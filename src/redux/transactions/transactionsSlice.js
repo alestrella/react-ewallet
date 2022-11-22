@@ -3,6 +3,7 @@ import {
   addTransaction,
   deleteTransaction,
   getTransactions,
+  getBalance,
 } from './transactionsThunk';
 
 const initialState = {
@@ -14,11 +15,9 @@ const initialState = {
   errorMessage: null,
 };
 
-const { temporaryData } = require('./temporaryData');
-
 export const transactionsSlice = createSlice({
   name: 'transactions',
-  initialState: { ...initialState, ...temporaryData }, // while developing back
+  initialState: { ...initialState },
   reducers: {
     resetError: state => {
       state.errorMessage = null;
@@ -46,6 +45,7 @@ export const transactionsSlice = createSlice({
       };
     },
     [addTransaction.fulfilled](state, { payload }) {
+      state.transactions.pop();
       return {
         ...state,
         transactions: [payload, ...state.transactions],
@@ -76,6 +76,24 @@ export const transactionsSlice = createSlice({
       };
     },
     [deleteTransaction.rejected](state, { payload }) {
+      return {
+        ...state,
+        errorMessage: payload,
+      };
+    },
+    [getBalance.fulfilled](state, { payload }) {
+      return {
+        ...state,
+        balance: payload,
+      };
+    },
+    [getBalance.pending](state, _) {
+      return {
+        ...state,
+        balance: 'loading...',
+      };
+    },
+    [getBalance.rejected](state, { payload }) {
       return {
         ...state,
         errorMessage: payload,

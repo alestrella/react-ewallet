@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logInUser, registerUser } from '../../redux';
 import { Formik, Field } from 'formik';
+import toast from 'react-hot-toast';
 import { validationSchema } from 'validationSchema';
+import authSelectors from 'redux/auth/authSelectors';
 import {
   MailFilled,
   LockFilled,
   UserOutlined,
-  EyeInvisibleOutlined,
-  EyeTwoTone,
+  // EyeInvisibleOutlined,
+  // EyeTwoTone,
 } from '@ant-design/icons';
 import {
   FormWrapper,
@@ -24,9 +26,10 @@ import { FormError } from './FormError';
 import { PasswordStrengthChecker } from './PasswordstrengthChecker';
 import { AppLogo } from 'components/layout';
 
-
 export const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
+  const userName = useSelector(authSelectors.getUsername);
+  // const errorMessage = useSelector(authSelectors.getErrorMessage);
 
   const initialValues = {
     username: '',
@@ -36,121 +39,128 @@ export const AuthForm = ({ type }) => {
   };
 
   const handleSubmit = ({ email, password, username }, { resetForm }) => {
-    alert(JSON.stringify({ email, password, username }, null, 2));
+  //  try {
     type === 'register'
-      ? dispatch(registerUser({ email, password, username }))
-      : dispatch(logInUser({ email, password }));
+    ? dispatch(registerUser({ email, password, username }))
+    : dispatch(logInUser({ email, password }));
+  if (userName) {
+    return toast.success(`Welcome ${userName}!`);
+  }
+  //  } catch (error) {
+  //   toast.error(`Something went wrong: ${error}`);
+  //  }
+
+  //   if (errorMessage){
+  //   return toast.error(`Something went wrong: ${errorMessage}`);
+  // }
     resetForm();
   };
 
   return (
     <FormWrapper>
       <LogoWrapper>
-      <AppLogo/>
+        <AppLogo />
       </LogoWrapper>
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema(type)}
-      onSubmit={handleSubmit}
-    >
-      {({ values }) => (
-        <StyledForm noValidate>
-          <InputWrapper>
-            <Field
-              type="email"
-              name="email"
-              render={({ field, form: { isSubmitting } }) => (
-                <StyledInput
-                  {...field}
-                  disabled={isSubmitting}
-                  placeholder="E-mail"
-                  bordered={false}
-                  prefix={<MailFilled />}
-                  iconRender={visible =>
-                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                  }
-                />
-              )}
-            />
-            <FormError name="email" />
-          </InputWrapper>
-          <InputWrapper>
-            <Field
-              name="password"
-              render={({ field, form: { isSubmitting } }) => (
-                <StyledInputPassword
-                  {...field}
-                  disabled={isSubmitting}
-                  placeholder="Password"
-                  bordered={false}
-                  prefix={<LockFilled />}
-                />
-              )}
-            />
-            <FormError name="password" />
-          </InputWrapper>
-          {type === 'register' && (
-            <>
-              <InputWrapper>
-                <Field
-                  name="confirmPassword"
-                  render={({ field, form: { isSubmitting } }) => (
-                    <StyledInputPassword
-                      {...field}
-                      disabled={isSubmitting}
-                      placeholder="Confirm password"
-                      bordered={false}
-                      prefix={<LockFilled />}
-                    />
-                  )}
-                />
-                <PasswordStrengthChecker password={values.password} />
-                <FormError name="confirmPassword" />
-              </InputWrapper>
-              <InputWrapper>
-                <Field
-                  type="username"
-                  name="username"
-                  render={({ field, form: { isSubmitting } }) => (
-                    <StyledInput
-                      {...field}
-                      disabled={isSubmitting}
-                      placeholder="First name"
-                      bordered={false}
-                      prefix={<UserOutlined />}
-                    />
-                  )}
-                />
-                <FormError name="username" />
-              </InputWrapper>
-            </>
-          )}
-          {type === 'register' ? (
-            <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema(type)}
+        onSubmit={handleSubmit}
+      >
+        {({ values }) => (
+          <StyledForm noValidate>
+            <InputWrapper>
               <Field
-                render={({ form: { isSubmitting } }) => (
-                  <PrimaryButton type="submit" disabled={isSubmitting}>
-                    register
-                  </PrimaryButton>
+                type="email"
+                name="email"
+                >{({ field, form: { isSubmitting } }) => (
+                  <StyledInput
+                    {...field}
+                    disabled={isSubmitting}
+                    placeholder="E-mail"
+                    bordered={false}
+                    prefix={<MailFilled />}
+                  />
                 )}
-              />
-              <StyledLink to="/login">log in</StyledLink>
-            </>
-          ) : (
-            <>
+              </Field>
+              <FormError name="email" />
+            </InputWrapper>
+            <InputWrapper>
               <Field
-                render={({ form: { isSubmitting } }) => (
-                  <PrimaryButton disabled={isSubmitting} type="submit">
-                    log in
-                  </PrimaryButton>
+                name="password">
+                {({ field, form: { isSubmitting } }) => (
+                  <StyledInputPassword
+                    {...field}
+                    disabled={isSubmitting}
+                    placeholder="Password"
+                    bordered={false}
+                    prefix={<LockFilled />}
+                  />
                 )}
-              />
-              <StyledLink to="/signup">register</StyledLink>
-            </>
-          )}
-        </StyledForm>
-      )}
-    </Formik>
+              </Field>
+              <FormError name="password" />
+            </InputWrapper>
+            {type === 'register' && (
+              <>
+                <InputWrapper>
+                  <Field
+                    name="confirmPassword">
+                   {({ field, form: { isSubmitting } }) => (
+                      <StyledInputPassword
+                        {...field}
+                        disabled={isSubmitting}
+                        placeholder="Confirm password"
+                        bordered={false}
+                        prefix={<LockFilled />}
+                      />
+                    )}
+                 </Field>
+                  <PasswordStrengthChecker password={values.password} />
+                  <FormError name="confirmPassword" />
+                </InputWrapper>
+                <InputWrapper>
+                  <Field
+                    type="username"
+                    name="username">
+                    {({ field, form: { isSubmitting } }) => (
+                      <StyledInput
+                        {...field}
+                        disabled={isSubmitting}
+                        placeholder="First name"
+                        bordered={false}
+                        prefix={<UserOutlined />}
+                      />
+                    )}
+                  </Field>
+                  <FormError name="username" />
+                </InputWrapper>
+              </>
+            )}
+            {type === 'register' ? (
+              <>
+                <Field>
+                  {({ form: { isSubmitting } }) => (
+                    <PrimaryButton type="submit" disabled={isSubmitting}>
+                      register
+                    </PrimaryButton>
+                  )}
+                </Field>
+                <StyledLink to="/login">log in</StyledLink>
+              </>
+            ) : (
+              <>
+                <Field>
+                  {({ form: { isSubmitting } }) => (
+                    <PrimaryButton disabled={isSubmitting} type="submit">
+                      log in
+                    </PrimaryButton>
+                  )}
+                </Field>
+                <StyledLink to="/signup">register</StyledLink>
+              </>
+            )}
+          </StyledForm>
+        )}
+      </Formik>
     </FormWrapper>
   );
 };
