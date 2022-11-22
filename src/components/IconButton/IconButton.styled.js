@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakpoints } from 'styleConfig/breakpoints';
 
 export const StyledButton = styled.button`
   margin: auto;
@@ -20,17 +21,18 @@ export const StyledButton = styled.button`
   text-decoration: none;
   cursor: pointer;
   font-family: inherit;
-  /* font-size: 18px;
-  line-height: 24px; */
-  /* font-style: normal;
-  font-weight: 500; */
   width: 44px;
   height: 44px;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
 
   :hover,
   :focus {
     background-color: #303f9f;
+  }
+
+  @media (${breakpoints.tablet}) {
+    right: 40px;
+    bottom: 40px;
   }
 `;

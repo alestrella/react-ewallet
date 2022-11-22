@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { categoriesSelectors } from '../../redux/';
+import { Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
@@ -16,9 +17,7 @@ import {
   PrimaryButton,
   SecondaryButton,
 } from './ModalAddTransaction.styled';
-// import { Button } from 'antd';
-
-import { addTransaction } from '../../redux';
+import Switch from './Switch';
 
 const modalRoot = document.getElementById('modal-root');
 
@@ -39,33 +38,38 @@ const expenseCategory = [
   'Reset',
 ];
 
-const transactionSchema = yup.object().shape({
-  amount: yup.number().required(),
-  category: yup.string().oneOf(expenseCategory),
-  comment: yup.string(),
-  date: yup
-    .date()
-    .default(() => new Date())
-    .required(),
-  // income: yup.boolean().required(),
-});
+const initialValues = {
+  amount: '',
+  category: '',
+  comment: '',
+  date: new Date(),
+  type: 'expense',
+};
 
-const ModalAddTransaction = ({ onClose }) => {
+const ModalAddTransaction = ({ type, onClose }) => {
   // const [amount, setAmount] = useState('');
   // const [category, setCategory] = useState('');
   // const [comment, setComment] = useState('');
   // const [date, setDate] = useState('');
   // const [income, setIncome] = useState(false);
 
-  const initialValues = {
-    amount: '',
-    category: '',
-    comment: '',
-    date: new Date(),
-    income: false,
-  };
-
   const dispatch = useDispatch();
+
+  const allCategories = useSelector(categoriesSelectors.getCategories);
+
+  const expenseCategory = allCategories.map(category => category.name);
+  console.log(expenseCategory);
+
+  const transactionSchema = yup.object().shape({
+    amount: yup.number().required(),
+    category: yup.string().oneOf(expenseCategory),
+    comment: yup.string(),
+    date: yup
+      .date()
+      .default(() => new Date())
+      .required(),
+    // income: yup.boolean().required(),
+  });
 
   // const handleChange = e => {
   //   const { name, value } = e.target;
@@ -100,7 +104,7 @@ const ModalAddTransaction = ({ onClose }) => {
     //   income,
     // };
 
-    dispatch(addTransaction({ amount, category, comment, date, income }));
+    // dispatch(addTransaction({ amount, category, comment, date, income }));
 
     console.log({ amount, category, comment, date, income });
     onClose();
@@ -138,29 +142,31 @@ const ModalAddTransaction = ({ onClose }) => {
         >
           {({ setFieldValue }) => (
             <StyledForm autoComplete="off">
-              <div>
+              {/* <div>
                 <div>
                   <label htmlFor="income">
                     <Field name="income" type="checkbox" />
                     Income
                   </label>
                 </div>
-              </div>
+              </div> */}
 
-              <div>
+              <Switch />
+
+              {/* <div>
                 <label htmlFor="category" />
                 <div>
                   <Field name="category" as="select">
                     <option value="">Select a category</option>
-                    {expenseCategory.map((category, idx) => (
-                      <option value={category} key={idx}>
-                        {category}
+                    {expenseCategory.map((name, id) => (
+                      <option value={name} key={id}>
+                        {name}
                       </option>
                     ))}
                   </Field>
                   <FormError name="category" />
                 </div>
-              </div>
+              </div> */}
 
               <div>
                 <label htmlFor="amount"></label>
