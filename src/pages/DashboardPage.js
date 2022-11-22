@@ -6,9 +6,8 @@ import ModalAddTransaction from 'components/ModalAddTransaction';
 import IconButton from 'components/IconButton';
 import { PlusOutlined } from '@ant-design/icons';
 import { Outlet } from 'react-router-dom';
-import Home from '../components/Home'
-import Balance from '../components/Balance'
-import Navigation from '../components/Navigation'
+import Balance from 'components/Balance'
+import Navigation from 'components/Navigation'
 
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,7 +20,6 @@ const DashboardPage = () => {
       <div>
         <Navigation/>
         <Balance/>
-        <Home/>
       </div>
       <IconButton onClick={() => setIsModalOpen(true)}>
         <PlusOutlined style={{ fontSize: '20px' }} />
