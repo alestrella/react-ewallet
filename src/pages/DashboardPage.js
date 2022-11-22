@@ -5,7 +5,7 @@ import { useState } from 'react';
 import ModalAddTransaction from 'components/ModalAddTransaction';
 import IconButton from 'components/IconButton';
 import { PlusOutlined } from '@ant-design/icons';
-import { Outlet } from 'react-router-dom/dist';
+import { Outlet } from 'react-router-dom';
 
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
