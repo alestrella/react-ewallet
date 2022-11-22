@@ -38,7 +38,7 @@ const DashboardPage = () => {
 export default DashboardPage;
 
 const Container = styled.div`
-position: relative;
+position:relative;
 width: 100%;
 height: 100vh;
 `
