@@ -37,12 +37,11 @@ function App() {
         <Route
           path="/dashboard/*"
           element={
-            // <PrivateRoute>
-            <DashboardPage />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <DashboardPage />
+            </PrivateRoute>
           }
         />
-
       </Route>
       {/* <Route path="/redux-test" element={<TestReduxComponent />}></Route> */}
     </Routes>
