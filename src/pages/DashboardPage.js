@@ -1,4 +1,4 @@
-import Currency from 'components/Home/Currency';
+import Currency from 'components/Currency/Currency';
 import { Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import { useState } from 'react';
