@@ -9,7 +9,6 @@ const Home = () => {
   ];
   return (
     <>
-      <div> Home </div>
       <Currency data={fetchedData} />
       <Suspense fallback={null}>
         <Outlet />
