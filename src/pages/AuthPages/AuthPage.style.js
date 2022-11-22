@@ -50,6 +50,7 @@ export const AuthPageImg = styled.img`
       height: 435px;
       width: 420px;
       margin-right: 0;
+      margin-bottom: 28px;
     }
   }
 `;
@@ -64,8 +65,5 @@ export const AuthPageTitle = styled.div`
     line-height: ${({ theme }) => theme.lineHeights.body};
     color: ${({ theme }) => theme.colors.black};
     z-index: 999;
-    @media screen and (${breakpoints.laptop}) {
-      margin-top: 28px;
-    }
   }
 `;
