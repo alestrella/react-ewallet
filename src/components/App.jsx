@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './layout/Layout';
-// import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
-import { lazy} from 'react';
+
+import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
+import { lazy } from 'react';
 import { PrivateRoute, PublicRoute } from 'hocs';
 
 
@@ -11,12 +12,11 @@ const DashboardPage = lazy(() => import('pages/DashboardPage'));
 // const Layout = lazy(() => import('components/layout/Layout'));
 // const Home = lazy(() => import('./Home'));
 
-
-
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+
         <Route path="/login" element={<PublicRoute restricted ><LoginPage/></PublicRoute>} />
         <Route path="/signup"  element={<PublicRoute restricted><SignupPage/></PublicRoute>}/>
         <Route path="/dashboard/*" element={<PrivateRoute><DashboardPage/></PrivateRoute>} />
