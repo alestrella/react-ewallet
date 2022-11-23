@@ -5,7 +5,7 @@ import {
   LogOutIcon,
   LogOutText,
 } from './UserMenu.styled';
-import Avatar, { ConfigProvider } from 'react-avatar';
+import Avatar from 'react-avatar';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from '../../../../redux/auth/authThunk';
 import authSelectors from '../../../../redux/auth/authSelectors';
@@ -17,9 +17,14 @@ export const UserMenu = () => {
   return (
     <Menu>
       <UserName>
-        <ConfigProvider colors={['red', 'green', 'blue']}>
-          <Avatar name={userName} size="40" round={true} />
-        </ConfigProvider>
+        <Avatar
+          color={'#4A56E2'}
+          name={userName}
+          size="30"
+          textMarginRatio={0.1}
+          round={true}
+          maxInitials="2"
+        />
       </UserName>
       <LogOutButton type="button" onClick={() => dispatch(logOutUser())}>
         <LogOutIcon />
