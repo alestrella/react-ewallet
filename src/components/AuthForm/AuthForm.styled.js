@@ -122,8 +122,7 @@ color: ${p => p.theme.colors.black};
     color: ${p => p.theme.colors.shadow};
     background: ${p => p.theme.colors.primary};
 }
-`
-
+`;
 export const InputWrapper = styled.div`
 position: relative;
 margin-bottom: ${p => p.theme.space[8]}px;
@@ -143,7 +142,16 @@ text-align: left;
     font-size: ${p => p.theme.fontSizes.s};
   };
 `;
-
+export const WarningText = styled.p`
+text-align: right;
+margin-left: auto;
+  color: ${p => p.theme.colors.accent};
+  font-size: ${p => p.theme.fontSizes.m};
+  width: 280px;
+  @media (${breakpoints.tablet}) {
+    width: 410px;
+  };
+`;
 export const PrimaryButton = styled.button`
 transition: all .3s ease;
 width: 280px;
@@ -158,6 +166,9 @@ font-size: ${p => p.theme.fontSizes.l};
 text-transform: uppercase;
 color: ${p => p.theme.colors.primary};
 background-color: ${p => p.theme.colors.accent};
+&:disabled {
+  background-color: ${p => p.theme.colors.shadow};;
+}
 border-radius: ${p => p.theme.radii.medium};
 outline: none;
 border: none;

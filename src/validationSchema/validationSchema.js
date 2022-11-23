@@ -2,29 +2,29 @@ import * as Yup from 'yup';
 
 const authValidationSchema = Yup.object().shape({
   email: Yup.string()
-    .email('invalid email address format')
-    .required('please, enter your email'),
-  password: Yup.string().min(8).max(12)
+    .email('invalid email address format').min(10).max(63)
     .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,12}$/,
-      'must contain 8 or more up to 12 characters inclusive: uppercase, lowercase letters, a number and a special case character'
+      /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{1,63})$/i,
+      "must necessarily contain the sign '@' and '.' - there must be at least 2 characters before the '@'; the field can contain hyphens, and the it cannot be at the beginning or end of the Email"
     )
+    .required('please, enter your email'),
+  password: Yup.string().min(8).max(16)
     .required('please, enter your password'),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password')], 'passwords must match')
     .required('please, confirm your password'),
-  username: Yup.string().min(3).max(12).required('please, enter your name'),
+  username: Yup.string().min(3).max(12).matches(/^\S+$/, "must not contain spaces").required('please, enter your name'),
 });
 
 const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
-    .email('invalid email address format')
-    .required('please, enter your email'),
-  password: Yup.string().min(8).max(12)
+    .email('invalid email address format').min(10).max(63)
     .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,12}$/,
-      'must contain 8 or more up to 12 characters inclusive: uppercase, lowercase letters, a number and a special case character'
+      /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{1,63})$/i,
+      "must necessarily contain the sign '@' and '.' - there must be at least 2 characters before the '@'; the field can contain hyphens, and it cannot be at the beginning or end of the Email"
     )
+    .required('please, enter your email'),
+  password: Yup.string().min(8).max(16)
     .required('please, enter your password'),
 });
 
