@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/xtodo-wallet">
+      <BrowserRouter></BrowserRouter>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <App />
