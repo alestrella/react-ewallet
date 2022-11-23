@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Layout } from './layout/Layout';
 
 // import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
@@ -14,34 +14,12 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Navigate to="login" />} />
-        {/* <Route path="login" element={<LoginPage />}/>
-        <Route path="signup" element={<SignupPage />}/>
-        <Route path="dashboard" element={<DashboardPage/>}/> */}
-        <Route
-          path="/login"
-          element={
-            <PublicRoute restricted>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <PublicRoute restricted>
-              <SignupPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/dashboard/*"
-          element={
-            <PrivateRoute>
-              <DashboardPage />
-            </PrivateRoute>
-          }
-        />
+
+        <Route path="/login" element={<PublicRoute restricted ><LoginPage/></PublicRoute>} />
+        <Route path="/signup"  element={<PublicRoute restricted><SignupPage/></PublicRoute>}/>
+        <Route path="/dashboard/*" element={<PrivateRoute><DashboardPage/></PrivateRoute>} />
+        {/* <Route path="home" element={<Home />}></Route> */}
+   
       </Route>
       {/* <Route path="/redux-test" element={<TestReduxComponent />}></Route> */}
     </Routes>
