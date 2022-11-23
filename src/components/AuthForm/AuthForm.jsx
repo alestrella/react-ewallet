@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useDispatch} from 'react-redux';
 import { logInUser, registerUser } from '../../redux';
 import { Formik, Field } from 'formik';
+import { useKeyLock } from 'hooks';
 // import toast from 'react-hot-toast';
 import { validationSchema } from 'validationSchema';
 // import authSelectors from 'redux/auth/authSelectors';
@@ -19,14 +20,17 @@ import {
   InputWrapper,
   StyledInput,
   StyledInputPassword,
+  WarningText
 } from './AuthForm.styled';
 import { FormError } from './FormError';
 import { PasswordStrengthChecker } from './PasswordstrengthChecker';
 import { AppLogo } from 'components/layout';
 
 
+
 export const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
+  const capsLock = useKeyLock('CapsLock');
   // const userName = useSelector(authSelectors.getUsername);
   // const errorMessage = useSelector(authSelectors.getErrorMessage);
 
@@ -49,18 +53,19 @@ export const AuthForm = ({ type }) => {
   // }
     resetForm();
   };
-
+ 
   return (
     <FormWrapper>
       <LogoWrapper>
         <AppLogo />
       </LogoWrapper>
+      {capsLock && <WarningText>Caps Lock enabled!</WarningText>}
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema(type)}
         onSubmit={handleSubmit}
       >
-        {({ values, setFieldValue, handleBlur }) => (
+        {({ values, isValid, dirty }) => (
           <StyledForm noValidate>
             <InputWrapper>
               <Field
@@ -69,10 +74,6 @@ export const AuthForm = ({ type }) => {
                 >{({ field, form: { isSubmitting } }) => (
                   <StyledInput
                     {...field}
-                    onChange={(e)=>{
-                      const value = e.target.value || "";
-                      setFieldValue('email', value.toLowerCase());
-                    }}
                     disabled={isSubmitting}
                     placeholder="E-mail"
                     bordered={false}
@@ -135,24 +136,16 @@ export const AuthForm = ({ type }) => {
             )}
             {type === 'register' ? (
               <>
-                <Field>
-                  {({ form: { isSubmitting } }) => (
-                    <PrimaryButton type="submit" disabled={isSubmitting}>
+                    <PrimaryButton type="submit" disabled={!isValid || !dirty}>
                       register
                     </PrimaryButton>
-                  )}
-                </Field>
                 <StyledLink to="/login">log in</StyledLink>
               </>
             ) : (
               <>
-                <Field>
-                  {({ form: { isSubmitting } }) => (
-                    <PrimaryButton disabled={isSubmitting} type="submit">
+                    <PrimaryButton disabled={!isValid || !dirty} type="submit">
                       log in
                     </PrimaryButton>
-                  )}
-                </Field>
                 <StyledLink to="/signup">register</StyledLink>
               </>
             )}

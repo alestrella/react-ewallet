@@ -113,8 +113,7 @@ color: ${p => p.theme.colors.black};
     color: ${p => p.theme.colors.shadow};
     background: ${p => p.theme.colors.primary};
 }
-`
-
+`;
 export const InputWrapper = styled.div`
 position: relative;
 margin-bottom: ${p => p.theme.space[8]}px;
@@ -134,7 +133,11 @@ text-align: left;
     font-size: ${p => p.theme.fontSizes.s};
   };
 `;
-
+export const WarningText = styled.p`
+text-align: right;
+  color: ${p => p.theme.colors.accent};
+  font-size: ${p => p.theme.fontSizes.m};
+`;
 export const PrimaryButton = styled.button`
 transition: all .3s ease;
 width: 280px;
@@ -149,6 +152,9 @@ font-size: ${p => p.theme.fontSizes.l};
 text-transform: uppercase;
 color: ${p => p.theme.colors.primary};
 background-color: ${p => p.theme.colors.accent};
+&:disabled {
+  background-color: ${p => p.theme.colors.shadow};;
+}
 border-radius: ${p => p.theme.radii.medium};
 outline: none;
 border: none;
