@@ -1,136 +1,134 @@
-import { Table } from 'antd';
+import { Table, Popconfirm } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransactions, transactionsSelectors } from '../../redux';
-
-const columns = [
-  {
-    title: 'Date',
-    dataIndex: 'date',
-    key: 'date',
-    sorter: true,
-    width: '15%',
-  },
-  {
-    title: 'Type',
-    dataIndex: 'income',
-    key: 'income',
-    render: (_, { income }) => (income === 'increase' ? '+' : '-'),
-
-    filters: [
-      {
-        text: '+',
-        value: 'increase',
-      },
-      {
-        text: '-',
-        value: 'decrease',
-      },
-    ],
-    width: '15%',
-    onFilter: (value, item) => item.income.includes(value),
-  },
-  {
-    title: 'Category',
-    dataIndex: 'category',
-    key: 'category',
-    width: '15%',
-  },
-  {
-    title: 'Comment',
-    dataIndex: 'comment',
-    key: 'comment',
-    width: '20%',
-  },
-  {
-    title: 'Sum',
-    dataIndex: 'sum',
-    key: 'sum',
-    width: '15%',
-  },
-  {
-    title: 'Balance',
-    dataIndex: 'balance',
-    key: 'balance',
-  },
-];
-
-// const getRandomuserParams = params => ({
-//   results: params.pagination?.pageSize,
-//   page: params.pagination?.current,
-//   ...params,
-// });
+import styled from 'styled-components';
 
 const TransactionsTable = () => {
-  const dispatch = useDispatch();
-  const transactions = useSelector(transactionsSelectors.getTransactions);
-  console.log(transactions);
+  const [dataSource, setDataSource] = useState([
+    {
+      id: '6379436603242dc9c4ee5ba7',
+      date: '2022-11-19T20:58:14.882Z',
+      income: false,
+      comment: 'spending money',
+      category: '6378dbbf7f1022fdac49bdf1',
+      sum: 1200,
+      balance: 1.005,
+    },
+    {
+      id: '63794341dcad1aa066a8abf6',
+      date: '2022-11-19T20:57:37.123Z',
+      income: true,
+      comment: 'got money',
+      category: '6378dbbf7f1022fdac49bdf3',
+      sum: 12000,
+      balance: 1.005,
+    },
+    {
+      id: '63794018e00f3397247682ce',
+      date: '2022-11-19T20:44:08.250Z',
+      income: true,
+      comment: 'got money',
+      category: '6378dbbf7f1022fdac49bdf3',
+      sum: 12000,
+      balance: 1.005,
+    },
+  ]);
 
-  // // const [data, setData] = useState();
+  const handleDelete = id => {
+    const newData = dataSource.filter(item => item.id !== id);
+    setDataSource(newData);
+  };
 
-  // const [tableParams, setTableParams] = useState({
-  //   pagination: {
-  //     current: 1,
-  //     pageSize: 10,
-  //   },
-  // });
+  const columns = [
+    {
+      title: 'Date',
+      dataIndex: 'date',
+      key: 'date',
+      sorter: true,
+      width: '15%',
+    },
+    {
+      title: 'Type',
+      dataIndex: 'income',
+      key: 'income',
+      render: (_, { income }) => (income ? '+' : '-'),
 
-  // const fetchData = () => {
-  //   setLoading(true);
-  //   fetch(
-  //     `https://randomuser.me/api?${qs.stringify(
-  //       getRandomuserParams(tableParams)
-  //     )}`
-  //   )
-  //     .then(res => res.json())
-  //     .then(({ results }) => {
-  //       setData(results);
-  //       setLoading(false);
-  //       setTableParams({
-  //         ...tableParams,
-  //         pagination: {
-  //           ...tableParams.pagination,
-  //           total: 200,
-  //           // 200 is mock data, you should read it from server
-  //           // total: data.totalCount,
-  //         },
-  //       });
-  //     });
-  // };
+      filters: [
+        {
+          text: '+',
+          value: '+',
+        },
+        {
+          text: '-',
+          value: '-',
+        },
+      ],
+      width: '10%',
+      onFilter: (value, item) => item.income.includes(value),
+    },
+    {
+      title: 'Category',
+      dataIndex: 'category',
+      key: 'category',
+      width: '15%',
+    },
+    {
+      title: 'Comment',
+      dataIndex: 'comment',
+      key: 'comment',
+      width: '15%',
+    },
+    {
+      title: 'Sum',
+      dataIndex: 'sum',
+      key: 'sum',
+      width: '15%',
+    },
+    {
+      title: 'Balance',
+      dataIndex: 'balance',
+      key: 'balance',
+      width: '15%',
+    },
+    {
+      title: 'operation',
+      dataIndex: 'operation',
+      render: (_, record) =>
+        dataSource.length >= 1 ? (
+          <Popconfirm
+            title="Sure to delete?"
+            onConfirm={() => handleDelete(record.id)}
+          >
+            <a>Delete</a>
+          </Popconfirm>
+        ) : null,
+    },
+  ];
+
+  // const dispatch = useDispatch();
+  // const transactions = useSelector(transactionsSelectors.getTransactions);
+  // console.log(transactions);
 
   // useEffect(() => {
   //   dispatch(getTransactions());
   // }, [dispatch]);
 
-  // useEffect(() => {
-  //   fetchData();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [JSON.stringify(tableParams)]);
-
-  // const handleTableChange = (pagination, filters, sorter) => {
-  //   setTableParams({
-  //     pagination,
-  //     filters,
-  //     ...sorter,
-  //   });
-  // };
-
   return (
-    <Table
+    <StyledTable
       columns={columns}
-      dataSource={transactions?.map(item => ({
-        ...item,
-        key: item.id,
-      }))}
+      dataSource={dataSource}
+      // dataSource={transactions?.map(item => ({
+      //   ...item,
+      //   key: item.id,
+      // }))}
+
       pagination={{
         defaultPageSize: '10',
         showSizeChanger: true,
         pageSizeOptions: [5, 10, 15],
         position: ['bottomRight'],
       }}
-      // pagination={tableParams.pagination}
-      // loading={loading}
-      // onChange={handleTableChange}
       scroll={{
         y: 255,
       }}
@@ -139,3 +137,27 @@ const TransactionsTable = () => {
 };
 
 export default TransactionsTable;
+
+const StyledTable = styled(Table)`
+  .ant-table {
+    border-radius: ${p => p.theme.radii.large};
+    background: transparent;
+  }
+  .ant-table .ant-table-container {
+    border-radius: 0;
+  }
+  .ant-table table {
+    border-radius: 30px;
+  }
+  thead.ant-table-thead tr th {
+    background: ${p => p.theme.colors.primary};
+  }
+  .ant-table-container,
+  .ant-table-container table > thead > tr:first-child th:first-child {
+    border-radius: 30px 0 0 30px;
+  }
+  .ant-table-container,
+  .ant-table-container table > thead > tr:first-child th:last-child {
+    border-radius: 0 30px 30px 0;
+  }
+`;

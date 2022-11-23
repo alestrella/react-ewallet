@@ -6,6 +6,7 @@ import ModalAddTransaction from 'components/ModalAddTransaction';
 import IconButton from 'components/IconButton';
 import { PlusOutlined } from '@ant-design/icons';
 import { Outlet } from 'react-router-dom';
+import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,6 +26,7 @@ const DashboardPage = () => {
         <ModalAddTransaction onClose={() => setIsModalOpen(false)} />
       )}
       <Currency />
+      <TransactionsTable />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
