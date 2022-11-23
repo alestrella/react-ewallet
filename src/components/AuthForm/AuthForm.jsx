@@ -59,7 +59,6 @@ export const AuthForm = ({ type }) => {
       <LogoWrapper>
         <AppLogo />
       </LogoWrapper>
-      {capsLock && <WarningText>Caps Lock enabled!</WarningText>}
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema(type)}
@@ -67,6 +66,7 @@ export const AuthForm = ({ type }) => {
       >
         {({ values, isValid, dirty }) => (
           <StyledForm noValidate>
+            {capsLock && <WarningText>Caps Lock enabled!</WarningText>}
             <InputWrapper>
               <Field
                 type="email"

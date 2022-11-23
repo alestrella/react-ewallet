@@ -5,12 +5,10 @@ import { Layout } from './layout/Layout';
 import { lazy } from 'react';
 import { PrivateRoute, PublicRoute } from 'hocs';
 
-
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
 const DashboardPage = lazy(() => import('pages/DashboardPage'));
 // const Layout = lazy(() => import('components/layout/Layout'));
-// const Home = lazy(() => import('./Home'));
 
 function App() {
   return (

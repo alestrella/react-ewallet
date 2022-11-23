@@ -1,21 +1,10 @@
 import axios from 'axios';
 
-const URI = 'http://localhost:3001/api/currency';
+const URI = 'https://ewallet-api.onrender.com/api/currency?type=';
 
-export async function fetchCurrency() {
-  const response = await axios
-    .get(URI, {
-      headers: {
-        'Access-Control-Allow-Origin': true,
-        'Access-Control-Allow-Credentials': true,
-      },
-    })
-    .then(res => {
-      console.log(res);
-      return res;
-    });
-  console.log('res', response);
-
+export async function fetchCurrency(currencyType) {
+  const response = await axios.get(`${URI}${currencyType}`).then(res => {
+    return res.data;
+  });
   return response;
 }
-console.log(fetchCurrency(URI));

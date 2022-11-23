@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { token } from './token';
 
 // axios baseUrl initializes in the index.js
 
@@ -11,22 +12,17 @@ const AUTH_ENDPOINTS = {
   getUser: '/auth/current',
 };
 
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
-
 export const logInUser = createAsyncThunk(
   'auth/logIn',
   async (userCredentials, thunkAPI) => {
     try {
       const { data } = await axios.post(AUTH_ENDPOINTS.logIn, userCredentials);
-      token.set(data.accessToken);
-      return { username: data.username, token: data.accessToken };
+      token.set(data.token);
+      return {
+        email: data.user.email,
+        username: data.user.username,
+        token: data.token,
+      };
     } catch (err) {
       switch (err.response.status) {
         case 401:
@@ -72,7 +68,11 @@ export const registerUser = createAsyncThunk(
         AUTH_ENDPOINTS.register,
         userCredentials
       );
-      return { username: data.username, password: userCredentials.password };
+      return {
+        email: data.user.email,
+        username: data.user.username,
+        token: data.token,
+      };
     } catch (err) {
       switch (err.response.status) {
         case 409:
