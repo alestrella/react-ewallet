@@ -1,4 +1,5 @@
 import React from 'react';
+import Media from 'react-media';
 import {
   NavigLink,
 	NavList,
@@ -13,8 +14,9 @@ import {
 const Navigation = () => {
 	return (
     <NavList>
-      <NavItem>
-        <NavigLink to="/">
+        <Media query='(max-width: 767px)'render={() =>
+          (
+          <NavItem><NavigLink to="/">
           <IconWrapper>
             <IconHome size="18px" />
           </IconWrapper>
@@ -32,7 +34,24 @@ const Navigation = () => {
             <IconCurrency size="18px" />
           </IconWrapper>
         </NavigLink>
-      </NavItem>
+          </NavItem>
+      )} />
+      <Media query='(min-width: 768px)'render={() =>
+          (<NavItem><NavigLink to="/">
+          <IconWrapper>
+            <IconHome size="18px" />
+          </IconWrapper>
+          <NavText>Home</NavText>
+        </NavigLink>
+
+        <NavigLink to="/">
+          <IconWrapper>
+            <IconGraph size="18px" />
+          </IconWrapper>
+          <NavText>Statistics</NavText>
+        </NavigLink>
+          </NavItem>)} />
+      
     </NavList>
   );
 };
