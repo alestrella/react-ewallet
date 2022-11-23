@@ -1,5 +1,6 @@
 import { Menu, UserName, LogOutButton, LogOutIcon, LogOutText } from './UserMenu.styled';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logOutUser } from '../../../../redux/auth/authThunk';
 
 export const UserMenu = () => {

@@ -1,7 +1,8 @@
 import { Table, Popconfirm } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTransactions, transactionsSelectors } from '../../redux';
+// import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getTransactions, transactionsSelectors } from '../../redux';
 import styled from 'styled-components';
 
 const TransactionsTable = () => {
@@ -100,7 +101,7 @@ const TransactionsTable = () => {
             title="Sure to delete?"
             onConfirm={() => handleDelete(record.id)}
           >
-            <a>Delete</a>
+            <button>Delete</button>
           </Popconfirm>
         ) : null,
     },
