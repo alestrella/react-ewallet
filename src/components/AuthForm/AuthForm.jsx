@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logInUser, registerUser } from '../../redux';
 import { Formik, Field } from 'formik';
 import { useKeyLock } from 'hooks';
-// import toast from 'react-hot-toast';
 import { validationSchema } from 'validationSchema';
-// import authSelectors from 'redux/auth/authSelectors';
+
 import {
   MailFilled,
   LockFilled,
@@ -31,8 +30,6 @@ import { AppLogo } from 'components/layout';
 export const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
   const capsLock = useKeyLock('CapsLock');
-  // const userName = useSelector(authSelectors.getUsername);
-  // const errorMessage = useSelector(authSelectors.getErrorMessage);
 
   const initialValues = {
     username: '',
@@ -45,12 +42,7 @@ export const AuthForm = ({ type }) => {
     type === 'register'
     ? dispatch(registerUser({ email, password, username }))
     : dispatch(logInUser({ email, password }));
-  // if (userName) {
-  //   return toast.success(`Welcome ${userName}!`);
-  // }
-  //   if (errorMessage){
-  //   return toast.error(`Something went wrong: ${errorMessage}`);
-  // }
+
     resetForm();
   };
  
