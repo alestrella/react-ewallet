@@ -145,7 +145,7 @@ text-align: left;
 export const WarningText = styled.p`
 text-align: right;
 margin-left: auto;
-  color: ${p => p.theme.colors.accent};
+  color: ${p => p.theme.colors.secondary};
   font-size: ${p => p.theme.fontSizes.m};
   width: 280px;
   @media (${breakpoints.tablet}) {
