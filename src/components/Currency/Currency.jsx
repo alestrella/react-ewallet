@@ -22,6 +22,30 @@ const Currency = () => {
     fetchCurrency(searchParams).then(setFoundedCurrency);
   }, [searchParams]);
 
+  //counter dynamic
+
+  function counter(className, start, end, duration) {
+    let obj = document.querySelector(className),
+      current = start,
+      range = end - start,
+      increment = end > start ? 1 : -1,
+      step = Math.abs(Math.floor(duration / range)),
+      timer = setInterval(() => {
+        current += increment;
+        obj.textContent = current;
+        if (current === end) {
+          clearInterval(timer);
+        }
+      }, step);
+    console.log(obj);
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    counter('USDBuy', 0, 400, 3000);
+    counter('counterSale', 0, 50, 2500);
+  });
+
+  //counter dynamic
+
   return (
     <CurrencyBox>
       <CurrencyTitle>
@@ -35,11 +59,18 @@ const Currency = () => {
             return (
               <CurrencyDataItem key={code}>
                 <CurrencyDataItemText>{code}</CurrencyDataItemText>
-                <CurrencyDataItemText>
-                  {parseFloat(buy).toFixed(2)}
+                <CurrencyDataItemText
+                  className={`${code}Buy`}
+                  onClick={() => {
+                    counter(`${code}Buy`, 0, parseFloat(buy.toFixed(2)), 300);
+                    console.log(typeof parseFloat(buy.toFixed(2)));
+                    console.log(parseFloat(buy.toFixed(2)));
+                  }}
+                >
+                  {parseFloat(buy.toFixed(2))}
                 </CurrencyDataItemText>
-                <CurrencyDataItemText>
-                  {parseFloat(sale).toFixed(2)}
+                <CurrencyDataItemText className={`${code}Sell`}>
+                  {/* {parseFloat(sale).toFixed(2)} */}
                 </CurrencyDataItemText>
               </CurrencyDataItem>
             );
