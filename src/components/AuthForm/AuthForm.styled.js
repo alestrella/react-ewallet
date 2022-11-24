@@ -6,13 +6,22 @@ import { Link } from "react-router-dom";
 
 
 export const FormWrapper = styled.div`
+transition: all .3s ease;
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 margin: 0 auto;
-text-align: center;
-width: 280px;
+width: 100vw;
+height: 100vh;
 padding-top: ${p => p.theme.space[6]}px;
 background-color: ${p => p.theme.colors.primary};
+z-index: 999;
   @media (${breakpoints.tablet}) {
     width: 533px;
+    height: auto;
+    margin-top: 50px;
     padding: ${p => p.theme.space[8]}px ${p => p.theme.space[10]}px ${p => p.theme.space[12]}px ${p => p.theme.space[12]}px;
     border-radius: ${p => p.theme.radii.medium};
   };
@@ -113,8 +122,7 @@ color: ${p => p.theme.colors.black};
     color: ${p => p.theme.colors.shadow};
     background: ${p => p.theme.colors.primary};
 }
-`
-
+`;
 export const InputWrapper = styled.div`
 position: relative;
 margin-bottom: ${p => p.theme.space[8]}px;
@@ -134,7 +142,16 @@ text-align: left;
     font-size: ${p => p.theme.fontSizes.s};
   };
 `;
-
+export const WarningText = styled.p`
+text-align: right;
+margin-left: auto;
+  color: ${p => p.theme.colors.accent};
+  font-size: ${p => p.theme.fontSizes.m};
+  width: 280px;
+  @media (${breakpoints.tablet}) {
+    width: 410px;
+  };
+`;
 export const PrimaryButton = styled.button`
 transition: all .3s ease;
 width: 280px;
@@ -149,6 +166,9 @@ font-size: ${p => p.theme.fontSizes.l};
 text-transform: uppercase;
 color: ${p => p.theme.colors.primary};
 background-color: ${p => p.theme.colors.accent};
+&:disabled {
+  background-color: ${p => p.theme.colors.shadow};;
+}
 border-radius: ${p => p.theme.radii.medium};
 outline: none;
 border: none;
