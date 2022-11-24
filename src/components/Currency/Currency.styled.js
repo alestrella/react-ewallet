@@ -118,7 +118,8 @@ export const ButtonCurrency = styled.button`
   overflow: hidden;
   min-width: 45%;
   min-height: 30px;
-  background-color: ${p => p.theme.colors.accent};
+  background-color: ${p => `${p.theme.colors.accent}35`};
+
   font-family: ${p => p.theme.fonts.primary};
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.bold};
@@ -126,6 +127,7 @@ export const ButtonCurrency = styled.button`
   line-height: ${p => p.theme.lineHeights.body};
   color: ${p => p.theme.colors.primary};
   border-radius: ${p => p.theme.radii.large};
+  box-shadow: 0px 4px 4px 0px #00000040;
 
   //optional
   &:not(:disabled) {
@@ -150,7 +152,7 @@ export const ButtonCurrency = styled.button`
       }
       &:hover,
       &:focus {
-        box-shadow: 0px 4px 4px 0px #00000040;
+        /* box-shadow: 0px 4px 4px 0px #00000040; */
         color: ${p => p.theme.colors.black};
         /* background-color: ${p => p.theme.colors.secondary}; */
       }
@@ -161,7 +163,12 @@ export const ButtonCurrency = styled.button`
 
   &:disabled {
     /* background-color: gray; */
-    background-color: ${p => p.theme.colors.secondary};
-    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
+    /* background-color: ${p => p.theme.colors.secondary}; */
+    background-color: ${p => p.theme.colors.accent};
+    box-shadow: inset 0px 4px 4px 0px #00000040,
+      0px 0px 15px 5px ${p => p.theme.colors.accent};
+    color: ${p => p.theme.colors.black};
+
+    /* border: ${p => p.theme.borders.normal} ${p => p.theme.colors.border}; */
   }
 `;

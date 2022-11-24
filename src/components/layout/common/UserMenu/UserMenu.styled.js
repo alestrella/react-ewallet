@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LogoutOutlined  } from '@ant-design/icons';
+import { LogoutOutlined } from '@ant-design/icons';
 import { breakpoints } from 'styleConfig/breakpoints';
 
 export const Menu = styled.div`
@@ -31,7 +31,7 @@ export const LogOutButton = styled.button`
 `;
 
 export const LogOutIcon = styled(LogoutOutlined)`
-  font-size: ${({ theme }) => theme.fontSizes.xxl};;
+  font-size: ${({ theme }) => theme.fontSizes.xxl};
   color: ${({ theme }) => theme.colors.shadow};
 
   @media screen and (${breakpoints.tablet}) {
