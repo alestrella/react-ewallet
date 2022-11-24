@@ -1,7 +1,10 @@
-import { Table, Popconfirm } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTransactions, transactionsSelectors } from '../../redux';
+import { Table, Popconfirm, Button } from 'antd';
+import React, {
+  // useEffect,
+  useState,
+} from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getTransactions, transactionsSelectors } from '../../redux';
 import styled from 'styled-components';
 
 const TransactionsTable = () => {
@@ -13,7 +16,7 @@ const TransactionsTable = () => {
       comment: 'spending money',
       category: '6378dbbf7f1022fdac49bdf1',
       sum: 1200,
-      balance: 1.005,
+      balance: 10.05,
     },
     {
       id: '63794341dcad1aa066a8abf6',
@@ -22,7 +25,7 @@ const TransactionsTable = () => {
       comment: 'got money',
       category: '6378dbbf7f1022fdac49bdf3',
       sum: 12000,
-      balance: 1.005,
+      balance: 100.5,
     },
     {
       id: '63794018e00f3397247682ce',
@@ -31,7 +34,7 @@ const TransactionsTable = () => {
       comment: 'got money',
       category: '6378dbbf7f1022fdac49bdf3',
       sum: 12000,
-      balance: 1.005,
+      balance: 1005,
     },
   ]);
 
@@ -100,7 +103,7 @@ const TransactionsTable = () => {
             title="Sure to delete?"
             onConfirm={() => handleDelete(record.id)}
           >
-            <a>Delete</a>
+            <Button type="link">Delete</Button>
           </Popconfirm>
         ) : null,
     },
