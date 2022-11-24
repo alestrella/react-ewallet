@@ -12,38 +12,51 @@ import {
 } from './Currency.styled';
 
 const Currency = () => {
-  const [foundedCurrency, setFoundedCurrency] = useState([]);
+  const [foundedCashlessCurrency, setFoundedCashlessCurrency] = useState([]);
+  const [foundedCashCurrency, setFoundedCashCurrency] = useState([]);
   const [searchParams, setSearchParams] = useState('cashless');
 
-  const changeSearchValue = value => {
-    setSearchParams(value);
-  };
   useEffect(() => {
-    fetchCurrency(searchParams).then(setFoundedCurrency);
-  }, [searchParams]);
+    fetchCurrency('cashless').then(setFoundedCashlessCurrency);
+    fetchCurrency('cash').then(setFoundedCashCurrency);
+  }, []);
 
   //counter dynamic
+  const changeSearchValue = value => {
+    setSearchParams(value);
+    if (value === 'cashless') {
+      foundedCashlessCurrency.map(({ code, buy, sell }, i, prevArray) => {
+        prevArray = foundedCashCurrency;
+        return (
+          counter(`${code}Buy`, prevArray[i].buy, buy.toFixed(2), 3),
+          counter(`${code}Sell`, prevArray[i].sell, sell.toFixed(2), 3)
+        );
+      });
+    } else {
+      foundedCashCurrency.map(({ code, buy, sell }, i, prevArray) => {
+        prevArray = foundedCashlessCurrency;
+        return (
+          counter(`${code}Buy`, prevArray[i].buy, buy.toFixed(2), 3),
+          counter(`${code}Sell`, prevArray[i].sell, sell.toFixed(2), 3)
+        );
+      });
+    }
+  };
 
-  function counter(className, start, end, duration) {
-    let obj = document.querySelector(className),
+  function counter(id, start, end, duration) {
+    let obj = document.getElementById(id),
       current = start,
       range = end - start,
-      increment = end > start ? 1 : -1,
-      step = Math.abs(Math.floor(duration / range)),
+      increment = end > start ? 0.01 : -0.01,
+      step = duration / range,
       timer = setInterval(() => {
         current += increment;
-        obj.textContent = current;
-        if (current === end) {
+        obj.textContent = current.toFixed(2);
+        if (current.toFixed(2) === end) {
           clearInterval(timer);
         }
       }, step);
-    console.log(obj);
   }
-  document.addEventListener('DOMContentLoaded', () => {
-    counter('USDBuy', 0, 400, 3000);
-    counter('counterSale', 0, 50, 2500);
-  });
-
   //counter dynamic
 
   return (
@@ -54,23 +67,16 @@ const Currency = () => {
         <CurrencyTitleItem>Sale</CurrencyTitleItem>
       </CurrencyTitle>
       <CurrencyData>
-        {foundedCurrency.map(
-          ({ code = 'No Data', buy = '00.00', sale = '00.00' }) => {
+        {foundedCashlessCurrency.map(
+          ({ code = 'No Data', buy = '00.00', sell = '00.00' }) => {
             return (
               <CurrencyDataItem key={code}>
                 <CurrencyDataItemText>{code}</CurrencyDataItemText>
-                <CurrencyDataItemText
-                  className={`${code}Buy`}
-                  onClick={() => {
-                    counter(`${code}Buy`, 0, parseFloat(buy.toFixed(2)), 300);
-                    console.log(typeof parseFloat(buy.toFixed(2)));
-                    console.log(parseFloat(buy.toFixed(2)));
-                  }}
-                >
-                  {parseFloat(buy.toFixed(2))}
+                <CurrencyDataItemText id={`${code}Buy`}>
+                  {parseFloat(buy).toFixed(2)}
                 </CurrencyDataItemText>
-                <CurrencyDataItemText className={`${code}Sell`}>
-                  {/* {parseFloat(sale).toFixed(2)} */}
+                <CurrencyDataItemText id={`${code}Sell`}>
+                  {parseFloat(sell).toFixed(2)}
                 </CurrencyDataItemText>
               </CurrencyDataItem>
             );
