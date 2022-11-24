@@ -118,7 +118,8 @@ export const ButtonCurrency = styled.button`
   overflow: hidden;
   min-width: 45%;
   min-height: 30px;
-  background-color: ${p => p.theme.colors.accent};
+  background-color: ${p => `${p.theme.colors.accent}35`};
+
   font-family: ${p => p.theme.fonts.primary};
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.bold};
