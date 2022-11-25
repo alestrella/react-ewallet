@@ -1,5 +1,6 @@
 import React from 'react';
 import Media from 'react-media';
+import { breakpoints } from 'styleConfig/breakpoints';
 import {
   NavigLink,
 	NavList,
@@ -14,7 +15,7 @@ import {
 const Navigation = () => {
 	return (
     <NavList>
-        <Media query='(max-width: 767px)'render={() =>
+        <Media query='(max-width: 767px)` render={() =>
           (
           <NavItem><NavigLink to="/">
           <IconWrapper>
