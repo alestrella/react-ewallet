@@ -22,6 +22,7 @@ export const UserMenu = () => {
           name={userName}
           size="30"
           textMarginRatio={0.1}
+          textSizeRatio={2}
           round={true}
           maxInitials="2"
         />
