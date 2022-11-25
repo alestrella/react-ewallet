@@ -4,7 +4,6 @@ import { breakpoints } from 'styleConfig/breakpoints';
 export const DashboardWrapper = styled.div`
 position:relative;
 width: 100%;
-height: 100vh;
 padding-top: 12px ;
 @media screen and (${breakpoints.tablet}) {
 padding: 32px 32px 0;

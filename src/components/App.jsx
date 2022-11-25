@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
-const DashboardPage = lazy(() => import('pages/DashboardPage'));
+const DashboardPage = lazy(() => import('pages/Dashboard/DashboardPage'));
 // const Layout = lazy(() => import('components/layout/Layout'));
 
 function App() {

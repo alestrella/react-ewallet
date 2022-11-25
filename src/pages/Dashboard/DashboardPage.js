@@ -10,7 +10,7 @@ import { Outlet } from 'react-router-dom';
 import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 import Balance from 'components/Balance'
 import Navigation from 'components/Navigation'
-import { DashboardWrapper }from 'components/DashboardStyled'
+import { DashboardWrapper }from './Dashboard.styled'
 
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
