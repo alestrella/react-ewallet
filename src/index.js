@@ -8,14 +8,13 @@ import { theme } from './styleConfig/theme';
 import 'antd/dist/antd.min.css';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor} from './redux';
+import { store, persistor } from './redux';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 
 
 // back-end address
 axios.defaults.baseURL = 'https://ewallet-api.onrender.com/api/';
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
