@@ -6,14 +6,21 @@ export const BalanceBox = styled.div`
   height: 80px;
   padding: 8px 32px 12px 32px;
   background-color: beige;
+  margin: 0 auto 32px;
   border-radius: ${p => p.theme.radii.large};
   @media screen and (${breakpoints.tablet}) {
     width: 336px;
     height: 80px;
+    margin-right: 32px;
+    margin-left: 0;
+    margin-bottom: 20px;
   }
   @media screen and (${breakpoints.laptop}) {
     width: 395px;
     height: 80px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 32px;
   }
 `;
 

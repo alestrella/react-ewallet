@@ -7,14 +7,16 @@ export const CurrencyBox = styled.div`
   border-radius: ${p => p.theme.radii.large};
   max-width: 280px;
   min-height: 174px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   @media screen and (${breakpoints.tablet}) {
     max-width: 336px;
     min-height: 182px;
+    margin:0;
   }
   @media screen and (${breakpoints.laptop}) {
     max-width: 393px;
     min-height: 347px;
+    margin:0;
   }
 `;
 export const CurrencyTitle = styled.ul`
