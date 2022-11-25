@@ -12,7 +12,6 @@ import Balance from 'components/Balance'
 import Navigation from 'components/Navigation'
 import { DashboardWrapper }from 'components/DashboardStyled'
 
-
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
