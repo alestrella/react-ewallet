@@ -9,10 +9,9 @@ const initialState = {
 export const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(getCategories.fulfilled, (state, { payload }) => {
-        console.log(payload);
         return {
           ...initialState,
           ...payload,
@@ -24,5 +23,5 @@ export const categoriesSlice = createSlice({
           errorMessage: payload,
         };
       });
-  }
+  },
 });

@@ -1,40 +1,65 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './layout/Layout';
 // import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { PrivateRoute, PublicRoute } from 'hocs';
+import { useDispatch, useSelector } from 'react-redux';
+import authSelectors from '../redux/auth/authSelectors';
+import { reconnectUser } from '../redux/auth/authThunk';
+import { Navigate } from 'react-router-dom/dist';
+
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
 const DashboardPage = lazy(() => import('pages/DashboardPage'));
 // const Layout = lazy(() => import('components/layout/Layout'));
 
 function App() {
+  const dispatch = useDispatch();
+  const isFetching = useSelector(authSelectors.getIsFetching);
 
-  return (
+  useEffect(() => {
+    dispatch(reconnectUser());
+  }, [dispatch]);
+
+  return isFetching ? (
+    <h1>Refreshing user...</h1>
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<Navigate to="/login" />} />
         <Route
-          path="/login"
+          path="login"
           element={
-            <PublicRoute restricted>
-              <LoginPage />
-            </PublicRoute>
+            // <PublicRoute restricted redirectTo="/dashbord">
+            //   <LoginPage />
+            // </PublicRoute>
+            <PublicRoute
+              restricted
+              redirectTo="/dashboard"
+              component={<LoginPage />}
+            />
           }
         />
         <Route
-          path="/signup"
+          path="signup"
           element={
-            <PublicRoute restricted>
-              <SignupPage />
-            </PublicRoute>
+            // <PublicRoute restricted redirectTo="/dashbord">
+            //   <SignupPage />
+            // </PublicRoute>
+            <PublicRoute
+              restricted
+              redirectTo="/dashboard"
+              component={<SignupPage />}
+            />
           }
         />
         <Route
-          path="/dashboard/*"
+          path="dashboard"
           element={
-            <PrivateRoute>
-              <DashboardPage />
-            </PrivateRoute>
+            // <PrivateRoute redirectTo="/login">
+            //   <DashboardPage />
+            // </PrivateRoute>
+            <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
           }
         />
       </Route>
