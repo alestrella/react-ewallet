@@ -12,15 +12,52 @@ import {
 } from './Currency.styled';
 
 const Currency = () => {
-  const [foundedCurrency, setFoundedCurrency] = useState([]);
+  const [foundedCashlessCurrency, setFoundedCashlessCurrency] = useState([]);
+  const [foundedCashCurrency, setFoundedCashCurrency] = useState([]);
   const [searchParams, setSearchParams] = useState('cashless');
 
+  useEffect(() => {
+    fetchCurrency('cashless').then(setFoundedCashlessCurrency);
+    fetchCurrency('cash').then(setFoundedCashCurrency);
+  }, []);
+
+  //counter dynamic
   const changeSearchValue = value => {
     setSearchParams(value);
+    if (value === 'cashless') {
+      foundedCashlessCurrency.map(({ code, buy, sell }, i, prevArray) => {
+        prevArray = foundedCashCurrency;
+        return (
+          counter(`${code}Buy`, prevArray[i].buy, buy.toFixed(2), 3),
+          counter(`${code}Sell`, prevArray[i].sell, sell.toFixed(2), 3)
+        );
+      });
+    } else {
+      foundedCashCurrency.map(({ code, buy, sell }, i, prevArray) => {
+        prevArray = foundedCashlessCurrency;
+        return (
+          counter(`${code}Buy`, prevArray[i].buy, buy.toFixed(2), 3),
+          counter(`${code}Sell`, prevArray[i].sell, sell.toFixed(2), 3)
+        );
+      });
+    }
   };
-  useEffect(() => {
-    fetchCurrency(searchParams).then(setFoundedCurrency);
-  }, [searchParams]);
+
+  function counter(id, start, end, duration) {
+    let obj = document.getElementById(id),
+      current = start,
+      range = end - start,
+      increment = end > start ? 0.01 : -0.01,
+      step = duration / range,
+      timer = setInterval(() => {
+        current += increment;
+        obj.textContent = current.toFixed(2);
+        if (current.toFixed(2) === end) {
+          clearInterval(timer);
+        }
+      }, step);
+  }
+  //counter dynamic
 
   return (
     <CurrencyBox>
@@ -30,16 +67,16 @@ const Currency = () => {
         <CurrencyTitleItem>Sale</CurrencyTitleItem>
       </CurrencyTitle>
       <CurrencyData>
-        {foundedCurrency.map(
-          ({ code = 'No Data', buy = '00.00', sale = '00.00' }) => {
+        {foundedCashlessCurrency.map(
+          ({ code = 'No Data', buy = '00.00', sell = '00.00' }) => {
             return (
               <CurrencyDataItem key={code}>
                 <CurrencyDataItemText>{code}</CurrencyDataItemText>
-                <CurrencyDataItemText>
+                <CurrencyDataItemText id={`${code}Buy`}>
                   {parseFloat(buy).toFixed(2)}
                 </CurrencyDataItemText>
-                <CurrencyDataItemText>
-                  {parseFloat(sale).toFixed(2)}
+                <CurrencyDataItemText id={`${code}Sell`}>
+                  {parseFloat(sell).toFixed(2)}
                 </CurrencyDataItemText>
               </CurrencyDataItem>
             );

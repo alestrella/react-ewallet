@@ -1,28 +1,22 @@
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import authSelectors  from 'redux/auth/authSelectors';
 
 
-export const PublicRoute = ({ 
-  children,
+export const PublicRoute = ({
+  component: Component,
   restricted = false,
-  redirectTo = '/dashboard/*',
- }) => {
-
+  redirectTo = '/',
+}) => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const shouldRedirect = isLoggedIn && restricted;
 
-  return (
-    <>
-    {shouldRedirect ? <Navigate to={redirectTo} /> : children}
-    </>
-    );
-
+  return <>{shouldRedirect ? <Navigate to={redirectTo} /> : Component}</>;
 };
 
-PublicRoute.propTypes = {
-  children: PropTypes.element.isRequired,
-};
+// PublicRoute.propTypes = {
+//   children: PropTypes.element.isRequired,
+// };
 

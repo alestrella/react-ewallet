@@ -22,59 +22,61 @@ export const authSlice = createSlice({
       state.errorMessage = null;
     },
   },
-  extraReducers: {
-    [logInUser.fulfilled](state, { payload }) {
-      return {
-        ...initialState,
-        ...payload,
-        isLoggedIn: true,
-      };
-    },
-    [registerUser.fulfilled](state, { payload }) {
-      return {
-        ...initialState,
-        ...payload,
-        isLoggedIn: true,
-      };
-    },
-    [logOutUser.fulfilled](state, _) {
-      return { ...initialState };
-    },
-    [reconnectUser.fulfilled](state, { payload }) {
-      return { ...state, isLoggedIn: true, isFetching: false };
-    },
-    [logInUser.pending](state, _) {
-      return { ...state, isFetching: true };
-    },
-    [registerUser.pending](state, _) {
-      return { ...state, isFetching: true };
-    },
-    [logOutUser.pending](state, _) {
-      return { ...state, isFetching: true };
-    },
-    [reconnectUser.pending](state, _) {
-      return { ...state, isFetching: true };
-    },
-    [logInUser.rejected](state, { payload }) {
-      return {
-        ...initialState,
-        username: state.username, // debatable
-        token: state.token, // debatable
-        errorMessage: payload,
-      };
-    },
-    [registerUser.rejected](state, { payload }) {
-      return {
-        ...initialState,
-        errorMessage: payload,
-      };
-    },
-    [logOutUser.rejected](state, { payload }) {
-      return { ...initialState, errorMessage: payload };
-    },
-    [reconnectUser.rejected](state, { payload }) {
-      return { ...initialState, errorMessage: payload };
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(logInUser.fulfilled, (state, { payload }) => {
+        return {
+          ...initialState,
+          ...payload,
+          isLoggedIn: true,
+        };
+      })
+      .addCase(logInUser.pending, (state, _) => {
+        return { ...state, isFetching: true };
+      })
+      .addCase(logInUser.rejected, (state, { payload }) => {
+        return {
+          ...initialState,
+          username: state.username, // debatable
+          token: state.token, // debatable
+          errorMessage: payload,
+        };
+      })
+      .addCase(registerUser.fulfilled, (state, { payload }) => {
+        return {
+          ...initialState,
+          ...payload,
+          isLoggedIn: true,
+        };
+      })
+      .addCase(registerUser.pending, (state, _) => {
+        return { ...state, isFetching: true };
+      })
+      .addCase(registerUser.rejected, (state, { payload }) => {
+        return {
+          ...initialState,
+          errorMessage: payload,
+        };
+      })
+      .addCase(logOutUser.fulfilled, (state, _) => {
+        return { ...initialState };
+      })
+      .addCase(logOutUser.pending, (state, _) => {
+        return { ...state, isFetching: true };
+      })
+      .addCase(logOutUser.rejected, (state, { payload }) => {
+        return { ...initialState, errorMessage: payload };
+      })
+      .addCase(reconnectUser.fulfilled, (state, { payload }) => {
+        console.log(payload);
+        return { ...state, ...payload, isLoggedIn: true, isFetching: false };
+      })
+      .addCase(reconnectUser.pending, (state, _) => {
+        return { ...state, isFetching: true };
+      })
+      .addCase(reconnectUser.rejected, (state, { payload }) => {
+        return { ...initialState, errorMessage: payload };
+      });
   },
 });
 
