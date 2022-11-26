@@ -24,7 +24,7 @@ export const UserMenu = () => {
           textMarginRatio={0.1}
           textSizeRatio={2}
           round={true}
-          maxInitials="2"
+          maxInitials={2}
         />
       </UserName>
       <LogOutButton type="button" onClick={() => dispatch(logOutUser())}>

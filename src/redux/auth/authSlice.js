@@ -68,7 +68,8 @@ export const authSlice = createSlice({
         return { ...initialState, errorMessage: payload };
       })
       .addCase(reconnectUser.fulfilled, (state, { payload }) => {
-        return { ...state, isLoggedIn: true, isFetching: false };
+        console.log(payload);
+        return { ...state, ...payload, isLoggedIn: true, isFetching: false };
       })
       .addCase(reconnectUser.pending, (state, _) => {
         return { ...state, isFetching: true };

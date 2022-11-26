@@ -10,7 +10,7 @@ const AUTH_ENDPOINTS = {
   logIn: '/auth/login',
   logOut: '/auth/logout',
   register: '/auth/signup',
-  getUser: '/auth/current',
+  getUser: '/users/current',
 };
 
 export const logInUser = createAsyncThunk(
@@ -18,12 +18,14 @@ export const logInUser = createAsyncThunk(
   async (userCredentials, thunkAPI) => {
     try {
       const { data } = await axios.post(AUTH_ENDPOINTS.logIn, userCredentials);
+      console.log('	loginUser :>> ', data);
+
       token.set(data.token);
       toast.success(`Welcome ${data.user.username}!`);
       return {
         email: data.user.email,
         username: data.user.username,
-        token: data.token,
+        token: data.accessToken,
       };
     } catch (err) {
       switch (err.response.status) {
@@ -76,11 +78,12 @@ export const registerUser = createAsyncThunk(
         AUTH_ENDPOINTS.register,
         userCredentials
       );
+      console.log('	registerUser :>> ', data);
       toast.success(`Welcome ${data.user.username}!`);
       return {
         email: data.user.email,
         username: data.user.username,
-        token: data.token,
+        token: data.accessToken,
       };
     } catch (err) {
       switch (err.response.status) {
@@ -107,12 +110,16 @@ export const reconnectUser = createAsyncThunk(
   'auth/reconnect',
   async (_, thunkAPI) => {
     const persistedToken = thunkAPI.getState().auth.token;
-
+    // console.log("persistToken>>>>>>",persistedToken );
+    console.log('thunk>>>', thunkAPI.getState());
     if (persistedToken === null) return thunkAPI.rejectWithValue();
-
+// console.log(token);
     token.set(persistedToken);
     try {
       const { data } = await axios.get(AUTH_ENDPOINTS.getUser);
+      console.log('	reconnectUser :>> ', data);
+
+      console.log('Hello');
       return data;
     } catch (err) {
       switch (err.response.status) {
