@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import authSelectors from '../redux/auth/authSelectors';
 import { reconnectUser } from '../redux/auth/authThunk';
 import { Navigate } from 'react-router-dom/dist';
+import { LoaderSpinner } from './Loader/Loader';
 
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
@@ -22,7 +23,7 @@ function App() {
   }, [dispatch]);
 
   return isFetching ? (
-    <h1>Refreshing user...</h1>
+    <LoaderSpinner />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

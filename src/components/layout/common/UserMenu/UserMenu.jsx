@@ -1,5 +1,7 @@
 import {
   Menu,
+  UserInfo,
+  UserAvatar,
   UserName,
   LogOutButton,
   LogOutIcon,
@@ -16,8 +18,9 @@ export const UserMenu = () => {
 
   return (
     <Menu>
-      <UserName>
-        <Avatar
+      <UserInfo>
+        <UserAvatar>
+          <Avatar
           color={'#4A56E2'}
           name={userName}
           size="30"
@@ -26,7 +29,9 @@ export const UserMenu = () => {
           round={true}
           maxInitials={2}
         />
-      </UserName>
+        </UserAvatar>
+        <UserName>{userName}</UserName>
+      </UserInfo>
       <LogOutButton type="button" onClick={() => dispatch(logOutUser())}>
         <LogOutIcon />
         <LogOutText>Exit</LogOutText>

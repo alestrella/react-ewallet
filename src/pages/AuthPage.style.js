@@ -18,7 +18,7 @@ export const AuthFormContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 731px;
+    width: 65%;
     position: relative;
     background: ${({ theme }) => theme.colors.blur};
     backdrop-filter: blur(25px);
@@ -33,7 +33,7 @@ export const AuthPageTitleGroup = styled.div`
   z-index: 999;
   @media screen and (${breakpoints.laptop}) {
     flex-direction: column;
-    width: 549px;
+    width: 45%;
     padding-left: 76px;
   }
 `;
