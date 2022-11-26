@@ -1,17 +1,20 @@
-import { Table, Popconfirm, Button } from 'antd';
-import React, {
-  // useEffect,
-  useState,
-} from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getTransactions, transactionsSelectors } from '../../redux';
+import {
+  Table,
+  Popconfirm,
+  Button,
+  // List
+} from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTransactions, transactionsSelectors } from '../../redux';
 import styled from 'styled-components';
+import Media from 'react-media';
 
 const TransactionsTable = () => {
   const [dataSource, setDataSource] = useState([
     {
       id: '6379436603242dc9c4ee5ba7',
-      date: '2022-11-19T20:58:14.882Z',
+      date: '2022-11-20T20:58:14.882Z',
       income: false,
       comment: 'spending money',
       category: '6378dbbf7f1022fdac49bdf1',
@@ -29,7 +32,7 @@ const TransactionsTable = () => {
     },
     {
       id: '63794018e00f3397247682ce',
-      date: '2022-11-19T20:44:08.250Z',
+      date: '2022-11-18T20:44:08.250Z',
       income: true,
       comment: 'got money',
       category: '6378dbbf7f1022fdac49bdf3',
@@ -49,6 +52,7 @@ const TransactionsTable = () => {
       dataIndex: 'date',
       key: 'date',
       sorter: true,
+      render: record => record.slice(0, 10).replaceAll('-', '.'),
       width: '15%',
     },
     {
@@ -109,33 +113,54 @@ const TransactionsTable = () => {
     },
   ];
 
-  // const dispatch = useDispatch();
-  // const transactions = useSelector(transactionsSelectors.getTransactions);
-  // console.log(transactions);
+  const dispatch = useDispatch();
+  const transactions = useSelector(transactionsSelectors.getTransactions);
+  console.log(transactions);
 
-  // useEffect(() => {
-  //   dispatch(getTransactions());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getTransactions());
+  }, [dispatch]);
 
   return (
-    <StyledTable
-      columns={columns}
-      dataSource={dataSource}
-      // dataSource={transactions?.map(item => ({
-      //   ...item,
-      //   key: item.id,
-      // }))}
+    <div>
+      <Media query="(min-width: 768px)">
+        {matches =>
+          matches ? (
+            <StyledTable
+              columns={columns}
+              dataSource={dataSource}
+              // dataSource={transactions?.map(item => ({
+              //   ...item,
+              //   key: item.id,
+              // }))}
 
-      pagination={{
-        defaultPageSize: '10',
-        showSizeChanger: true,
-        pageSizeOptions: [5, 10, 15],
-        position: ['bottomRight'],
-      }}
-      scroll={{
-        y: 255,
-      }}
-    />
+              pagination={{
+                defaultPageSize: '10',
+                showSizeChanger: true,
+                pageSizeOptions: [5, 10, 15],
+                position: ['bottomRight'],
+              }}
+              scroll={{
+                y: 255,
+              }}
+            />
+          ) : (
+            <div>
+              <p>The document is less 768px wide.</p>
+              {/* <List
+                size="small"
+                bordered
+                dataSource={dataSource?.map(item => ({
+                  ...item,
+                  key: item.id,
+                }))}
+                renderItem={item => <List.Item key={item.id}>{item}</List.Item>}
+              /> */}
+            </div>
+          )
+        }
+      </Media>
+    </div>
   );
 };
 
