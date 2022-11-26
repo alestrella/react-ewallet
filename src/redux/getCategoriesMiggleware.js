@@ -1,4 +1,4 @@
-import { logInUser } from './auth/authThunk';
+import { logInUser, reconnectUser } from './auth/authThunk';
 import { getCategories } from './categories/categoriesThunk';
 
 export const getCategoriesMiddleware = store => next => action => {
@@ -7,6 +7,12 @@ export const getCategoriesMiddleware = store => next => action => {
     action.payload.username &&
     action.payload.email
   ) {
+    setTimeout(() => store.dispatch(getCategories()), 250);
+  }
+  if (
+    action.type === reconnectUser.fulfilled.type
+  ) {
+    console.log("Hello from middleware reconnectUser");
     setTimeout(() => store.dispatch(getCategories()), 250);
   }
   next(action);
