@@ -13,6 +13,7 @@ import {
   ListItem,
   ListText,
   StyledTable,
+  TableWrapper,
 } from './TransactionsTable.styled';
 
 const TransactionsTable = () => {
@@ -96,7 +97,7 @@ const TransactionsTable = () => {
   ];
 
   return (
-    <div>
+    <TableWrapper>
       <Media query="(min-width: 768px)">
         {matches =>
           matches ? (
@@ -159,8 +160,10 @@ const TransactionsTable = () => {
           )
         }
       </Media>
-    </div>
+    </TableWrapper>
   );
 };
 
 export default TransactionsTable;
+
+
