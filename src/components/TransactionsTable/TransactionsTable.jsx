@@ -1,78 +1,59 @@
-import {
-  Table,
-  Popconfirm,
-  Button,
-  // List
-} from 'antd';
-import React, { useEffect, useState } from 'react';
+import { Popconfirm, Button } from 'antd';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTransactions, transactionsSelectors } from '../../redux';
-import styled from 'styled-components';
+import {
+  getTransactions,
+  deleteTransaction,
+  transactionsSelectors,
+} from '../../redux';
+
 import Media from 'react-media';
+import {
+  List,
+  ListItem,
+  ListText,
+  StyledTable,
+} from './TransactionsTable.styled';
 
 const TransactionsTable = () => {
-  const [dataSource, setDataSource] = useState([
-    {
-      id: '6379436603242dc9c4ee5ba7',
-      date: '2022-11-20T20:58:14.882Z',
-      income: false,
-      comment: 'spending money',
-      category: '6378dbbf7f1022fdac49bdf1',
-      sum: 1200,
-      balance: 10.05,
-    },
-    {
-      id: '63794341dcad1aa066a8abf6',
-      date: '2022-11-19T20:57:37.123Z',
-      income: true,
-      comment: 'got money',
-      category: '6378dbbf7f1022fdac49bdf3',
-      sum: 12000,
-      balance: 100.5,
-    },
-    {
-      id: '63794018e00f3397247682ce',
-      date: '2022-11-18T20:44:08.250Z',
-      income: true,
-      comment: 'got money',
-      category: '6378dbbf7f1022fdac49bdf3',
-      sum: 12000,
-      balance: 1005,
-    },
-  ]);
+  const dispatch = useDispatch();
+  const transactions = useSelector(transactionsSelectors.getTransactions);
+  console.log(transactions);
 
   const handleDelete = id => {
-    const newData = dataSource.filter(item => item.id !== id);
-    setDataSource(newData);
+    dispatch(deleteTransaction(id));
   };
+
+  useEffect(() => {
+    dispatch(getTransactions());
+  }, [dispatch]);
 
   const columns = [
     {
       title: 'Date',
       dataIndex: 'date',
       key: 'date',
-      sorter: true,
       render: record => record.slice(0, 10).replaceAll('-', '.'),
-      width: '15%',
+      width: '17%',
     },
     {
       title: 'Type',
-      dataIndex: 'income',
-      key: 'income',
-      render: (_, { income }) => (income ? '+' : '-'),
+      dataIndex: 'type',
+      key: 'type',
+      render: (_, { type }) => (type === 'income' ? '+' : '-'),
 
       filters: [
         {
           text: '+',
-          value: '+',
+          value: 'income',
         },
         {
           text: '-',
-          value: '-',
+          value: 'expense',
         },
       ],
       width: '10%',
-      onFilter: (value, item) => item.income.includes(value),
+      onFilter: (value, item) => item.type.includes(value),
     },
     {
       title: 'Category',
@@ -96,13 +77,14 @@ const TransactionsTable = () => {
       title: 'Balance',
       dataIndex: 'balance',
       key: 'balance',
+      render: (_, { balance }) => balance.toFixed(2),
       width: '15%',
     },
     {
-      title: 'operation',
+      title: 'Operation',
       dataIndex: 'operation',
       render: (_, record) =>
-        dataSource.length >= 1 ? (
+        transactions.length >= 1 ? (
           <Popconfirm
             title="Sure to delete?"
             onConfirm={() => handleDelete(record.id)}
@@ -113,14 +95,6 @@ const TransactionsTable = () => {
     },
   ];
 
-  const dispatch = useDispatch();
-  const transactions = useSelector(transactionsSelectors.getTransactions);
-  console.log(transactions);
-
-  useEffect(() => {
-    dispatch(getTransactions());
-  }, [dispatch]);
-
   return (
     <div>
       <Media query="(min-width: 768px)">
@@ -128,12 +102,10 @@ const TransactionsTable = () => {
           matches ? (
             <StyledTable
               columns={columns}
-              dataSource={dataSource}
-              // dataSource={transactions?.map(item => ({
-              //   ...item,
-              //   key: item.id,
-              // }))}
-
+              dataSource={transactions?.map(item => ({
+                ...item,
+                key: item.id,
+              }))}
               pagination={{
                 defaultPageSize: '10',
                 showSizeChanger: true,
@@ -145,18 +117,45 @@ const TransactionsTable = () => {
               }}
             />
           ) : (
-            <div>
-              <p>The document is less 768px wide.</p>
-              {/* <List
-                size="small"
-                bordered
-                dataSource={dataSource?.map(item => ({
-                  ...item,
-                  key: item.id,
-                }))}
-                renderItem={item => <List.Item key={item.id}>{item}</List.Item>}
-              /> */}
-            </div>
+            <>
+              {transactions?.map(item => (
+                <List key={item.id}>
+                  <ListItem>
+                    <ListText>Date</ListText>
+                    {item.date.slice(0, 10).replaceAll('-', '.')}
+                  </ListItem>
+                  <ListItem>
+                    <ListText>Type</ListText>
+                    {item.type}
+                  </ListItem>
+                  <ListItem>
+                    <ListText>Category</ListText>
+                    {item.category}
+                  </ListItem>
+                  <ListItem>
+                    <ListText>Comment</ListText>
+                    {item.comment}
+                  </ListItem>
+                  <ListItem>
+                    <ListText>Sum</ListText>
+                    {item.sum}
+                  </ListItem>
+                  <ListItem>
+                    <ListText>Balance</ListText>
+                    {item.balance.toFixed(2)}
+                  </ListItem>
+                  <ListItem>
+                    <ListText>Operation</ListText>
+                    <Popconfirm
+                      title="Sure to delete?"
+                      onConfirm={() => handleDelete(item.id)}
+                    >
+                      <Button type="link">Delete</Button>
+                    </Popconfirm>
+                  </ListItem>
+                </List>
+              ))}
+            </>
           )
         }
       </Media>
@@ -165,27 +164,3 @@ const TransactionsTable = () => {
 };
 
 export default TransactionsTable;
-
-const StyledTable = styled(Table)`
-  .ant-table {
-    border-radius: ${p => p.theme.radii.large};
-    background: transparent;
-  }
-  .ant-table .ant-table-container {
-    border-radius: 0;
-  }
-  .ant-table table {
-    border-radius: 30px;
-  }
-  thead.ant-table-thead tr th {
-    background: ${p => p.theme.colors.primary};
-  }
-  .ant-table-container,
-  .ant-table-container table > thead > tr:first-child th:first-child {
-    border-radius: 30px 0 0 30px;
-  }
-  .ant-table-container,
-  .ant-table-container table > thead > tr:first-child th:last-child {
-    border-radius: 0 30px 30px 0;
-  }
-`;
