@@ -26,16 +26,16 @@ const DashboardPage = () => {
             <Navigation />
             <Balance />
             </WrapperBase>
-          <IconButton onClick={() => setIsModalOpen(true)}>
-          <PlusOutlined style={{ fontSize: '20px' }} />
-          </IconButton>
             <Currency />
             </DashboardTabletWrapper>
         </DashboardLaptopWrapper>
+        <TransactionsTable />
+        <IconButton onClick={() => setIsModalOpen(true)}>
+          <PlusOutlined style={{ fontSize: '20px' }} />
+          </IconButton>
         {isModalOpen && (
           <ModalAddTransaction onClose={() => setIsModalOpen(false)} />
         )}
-        <TransactionsTable />
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
