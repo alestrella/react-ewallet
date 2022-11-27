@@ -19,7 +19,7 @@ const Currency = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lastTimeStamp, setLastTimeStamp] = useState(0);
 
-  const refreshTime = 600000;
+  const refreshTime = 3600000;
 
   useEffect(() => {
     fetchData();
