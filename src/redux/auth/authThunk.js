@@ -102,12 +102,9 @@ export const registerUser = createAsyncThunk(
 export const reconnectUser = createAsyncThunk(
   'auth/reconnect',
   async (_, thunkAPI) => {
-    const persistedToken = thunkAPI.getState().auth.token;
-    if (persistedToken === null) return thunkAPI.rejectWithValue();
-    token.set(persistedToken);
     try {
       const { data } = await axios.get(AUTH_ENDPOINTS.getUser);
-      return data;
+      return data.user;
     } catch (err) {
       switch (err.response.status) {
         case 401:

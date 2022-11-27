@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   username: null,
-  // token: null,
+  token: null,
   refreshToken: null,
   isLoggedIn: false,
   isFetching: false,
