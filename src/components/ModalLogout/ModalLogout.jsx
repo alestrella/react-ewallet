@@ -2,14 +2,20 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
 import { logOutUser } from '../../redux/auth/authThunk';
-import { Overlay, ModalWindow, Title } from './ModalLogout.styled';
-import { Button } from 'antd';
+import {
+  BackDrop,
+  Overlay,
+  ModalWindow,
+  Title,
+  PrimaryButton,
+  SecondaryButton,
+} from './ModalLogout.styled';
 
-const modalRoot = document.getElementById('modal-root');
+const modalRoot = document.querySelector('#modal-root');
 
 export const ModalLogout = ({ onClose }) => {
-    const dispatch = useDispatch();
-   useEffect(() => {
+  const dispatch = useDispatch();
+  useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
         onClose();
@@ -33,12 +39,14 @@ export const ModalLogout = ({ onClose }) => {
       <ModalWindow>
         <Title>Do you want to quit the app?</Title>
         <>
-            <button onClick={onClose} >NO</button>
-             | 
-            <button onClick={() => dispatch(logOutUser())}>YES</button>
+          <PrimaryButton onClick={() => dispatch(logOutUser())}>
+            YES
+          </PrimaryButton>
+          <SecondaryButton onClick={onClose}>NO</SecondaryButton>
         </>
       </ModalWindow>
     </Overlay>,
+
     modalRoot
   );
 };
