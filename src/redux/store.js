@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { authSlice } from './auth/authSlice';
 import { transactionsSlice } from './transactions/transactionsSlice';
 import { categoriesSlice } from './categories/categoriesSlice';
-import getCategoriesMiddleware from './middlewares/getCategoriesMiggleware';
+import getCategoriesMiddleware from './middlewares/getCategoriesMiddleware';
 import getUserMiddleware from './middlewares/getUserMiddleware';
 import reLogInMiddleware from './middlewares/reLogInMiddleware';
 import {

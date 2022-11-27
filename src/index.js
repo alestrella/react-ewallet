@@ -8,7 +8,7 @@ import { theme } from './styleConfig/theme';
 import 'antd/dist/antd.min.css';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor, reLogInUser } from './redux';
+import { store, persistor } from './redux';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 
@@ -34,7 +34,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     />
     <Provider store={store}>
       {/* <BrowserRouter basename="/xtodo-wallet"> */}
-      <BrowserRouter >
+      <BrowserRouter>
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
             <App />

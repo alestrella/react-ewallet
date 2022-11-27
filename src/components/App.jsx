@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './layout/Layout';
 // import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
-import { lazy, useEffect } from 'react';
+import { lazy } from 'react';
 import { PrivateRoute, PublicRoute } from 'hocs';
-import { useDispatch, useSelector } from 'react-redux';
-import { reLogInUser, authSelectors } from '../redux';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../redux';
 import { Navigate } from 'react-router-dom/dist';
 import { LoaderSpinner } from './Loader/Loader';
 
