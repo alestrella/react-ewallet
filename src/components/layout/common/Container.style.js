@@ -12,7 +12,7 @@ export const Container = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.colors.PageBgColor};
   margin: 0 auto;
-  max-width: 1280px;
+  width: 100%;
   overflow: hidden;
   :after {
     display: none;

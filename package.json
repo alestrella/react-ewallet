@@ -2,7 +2,6 @@
   "name": "wallet",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Shan-Vision.github.io/xtodo-wallet/",
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "@reduxjs/toolkit": "^1.9.0",
@@ -21,6 +20,7 @@
     "react-helmet": "^6.1.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.6.0",
+    "react-loader-spinner": "^5.3.4",
     "react-media": "^1.10.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",

@@ -18,7 +18,6 @@ export const logInUser = createAsyncThunk(
   async (userCredentials, thunkAPI) => {
     try {
       const { data } = await axios.post(AUTH_ENDPOINTS.logIn, userCredentials);
-      console.log('	loginUser :>> ', data);
 
       token.set(data.token);
       toast.success(`Welcome ${data.user.username}!`);
@@ -30,13 +29,12 @@ export const logInUser = createAsyncThunk(
     } catch (err) {
       switch (err.response.status) {
         case 401:
-          toast.error('Incorrect name or password');
           return thunkAPI.rejectWithValue('Incorrect name or password');
         case 404:
-          toast.error('No user with this name');
           return thunkAPI.rejectWithValue('No user with this name');
+        case 500:
+          return thunkAPI.rejectWithValue('Something is wrong with server');
         default:
-          toast.error(`Something went wrong! Try again!`);
           return thunkAPI.rejectWithValue(
             'Uknown error code ' + err.response.status
           );
@@ -55,13 +53,10 @@ export const logOutUser = createAsyncThunk(
     } catch (err) {
       switch (err.response.status) {
         case 401:
-          toast.error('Unauthorized user');
           return thunkAPI.rejectWithValue('Unauthorized user');
         case 500:
-          toast.error('Something is wrong with connection');
-          return thunkAPI.rejectWithValue('Something is wrong with connection');
+          return thunkAPI.rejectWithValue('Something is wrong with server');
         default:
-          toast.error(`Something went wrong! Try again!`);
           return thunkAPI.rejectWithValue(
             'Uknown error code ' + err.response.status
           );
@@ -78,7 +73,6 @@ export const registerUser = createAsyncThunk(
         AUTH_ENDPOINTS.register,
         userCredentials
       );
-      console.log('	registerUser :>> ', data);
       toast.success(`Welcome ${data.user.username}!`);
       return {
         email: data.user.email,
@@ -88,16 +82,12 @@ export const registerUser = createAsyncThunk(
     } catch (err) {
       switch (err.response.status) {
         case 409:
-          toast.error('This user email is already in use');
           return thunkAPI.rejectWithValue('This user name is already in use');
         case 400:
-          toast.error('Bad request. Try another one');
           return thunkAPI.rejectWithValue('Bad request. Try another one');
         case 500:
-          toast.error('Something is wrong with connection');
-          return thunkAPI.rejectWithValue('Something is wrong with connection');
+          return thunkAPI.rejectWithValue('Something is wrong with server');
         default:
-          toast.error(`Something went wrong! Try again!`);
           return thunkAPI.rejectWithValue(
             'Uknown error code ' + err.response.status
           );
@@ -110,27 +100,18 @@ export const reconnectUser = createAsyncThunk(
   'auth/reconnect',
   async (_, thunkAPI) => {
     const persistedToken = thunkAPI.getState().auth.token;
-    // console.log("persistToken>>>>>>",persistedToken );
-    console.log('thunk>>>', thunkAPI.getState());
     if (persistedToken === null) return thunkAPI.rejectWithValue();
-// console.log(token);
     token.set(persistedToken);
     try {
       const { data } = await axios.get(AUTH_ENDPOINTS.getUser);
-      console.log('	reconnectUser :>> ', data);
-
-      console.log('Hello');
       return data;
     } catch (err) {
       switch (err.response.status) {
         case 401:
-          toast.error('Your token has expired');
           return thunkAPI.rejectWithValue('Your token has expired');
         case 500:
-          toast.error('Something is wrong with connection');
-          return thunkAPI.rejectWithValue('Something is wrong with connection');
+          return thunkAPI.rejectWithValue('Something is wrong with server');
         default:
-          toast.error(`Something went wrong! Try again!`);
           return thunkAPI.rejectWithValue(
             'Uknown error code ' + err.response.status
           );
