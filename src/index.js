@@ -13,8 +13,7 @@ import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 
 // back-end address
-// axios.defaults.baseURL = 'https://ewallet-api.onrender.com/api/';
-axios.defaults.baseURL = 'http://localhost:3001/api/';
+axios.defaults.baseURL = 'https://ewallet-api.onrender.com/api/';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
