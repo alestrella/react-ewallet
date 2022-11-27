@@ -7,7 +7,8 @@ export const Menu = styled.div`
   align-items: center;
 `;
 
-export const UserName = styled.div`
+export const UserInfo = styled.div`
+  display: flex;
   font-family: ${({ theme }) => theme.fonts.primary};
   font-weight: ${({ theme }) => theme.fontWeights.normal};
   font-size: ${({ theme }) => theme.fontSizes.l};
@@ -22,6 +23,22 @@ export const UserName = styled.div`
     margin-right: 12px;
   }
 `;
+
+export const UserAvatar = styled.div`
+  margin-right: 0;
+  @media screen and (${breakpoints.tablet}) {
+    margin-right: 10px;
+}
+`;
+
+export const UserName = styled.div`
+display: none;
+
+@media screen and (${breakpoints.tablet}) {
+  display: block;
+  padding-top: 3px;
+}
+`
 
 export const LogOutButton = styled.button`
   display: flex;
