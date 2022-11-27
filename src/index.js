@@ -33,7 +33,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       }}
     />
     <Provider store={store}>
-      <BrowserRouter basename="/xtodo-wallet">
+      {/* <BrowserRouter basename="/xtodo-wallet"> */}
+      <BrowserRouter >
         <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider theme={theme}>
             <App />
