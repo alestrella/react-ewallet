@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
 import { logOutUser } from '../../redux/auth/authThunk';
 import {
-  BackDrop,
   Overlay,
   ModalWindow,
   Title,
