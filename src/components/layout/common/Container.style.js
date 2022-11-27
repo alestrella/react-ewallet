@@ -13,7 +13,11 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.PageBgColor};
   margin: 0 auto;
   width: 100%;
+  height: 100vmax;
   overflow: hidden;
+  @media screen and (${breakpoints.laptop}) {
+    height: 100vh;
+  }
   :after {
     display: none;
     @media screen and (${breakpoints.tablet}) {
