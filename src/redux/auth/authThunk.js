@@ -11,6 +11,7 @@ const AUTH_ENDPOINTS = {
   logOut: '/auth/logout',
   register: '/auth/signup',
   getUser: '/users/current',
+  reLogIn: '/auth/refresh',
 };
 
 export const logInUser = createAsyncThunk(
@@ -19,12 +20,13 @@ export const logInUser = createAsyncThunk(
     try {
       const { data } = await axios.post(AUTH_ENDPOINTS.logIn, userCredentials);
 
-      token.set(data.token);
+      token.set(data.accessToken);
       toast.success(`Welcome ${data.user.username}!`);
       return {
         email: data.user.email,
         username: data.user.username,
         token: data.accessToken,
+        refreshToken: data.refreshToken,
       };
     } catch (err) {
       switch (err.response.status) {
@@ -48,6 +50,7 @@ export const logOutUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get(AUTH_ENDPOINTS.logOut);
+      console.log(data);
       token.unset();
       return data;
     } catch (err) {
@@ -78,6 +81,7 @@ export const registerUser = createAsyncThunk(
         email: data.user.email,
         username: data.user.username,
         token: data.accessToken,
+        refreshToken: data.refreshToken,
       };
     } catch (err) {
       switch (err.response.status) {
@@ -109,6 +113,38 @@ export const reconnectUser = createAsyncThunk(
       switch (err.response.status) {
         case 401:
           return thunkAPI.rejectWithValue('Your token has expired');
+        case 500:
+          return thunkAPI.rejectWithValue('Something is wrong with server');
+        default:
+          return thunkAPI.rejectWithValue(
+            'Uknown error code ' + err.response.status
+          );
+      }
+    }
+  }
+);
+
+export const reLogInUser = createAsyncThunk(
+  'auth/reLogIn',
+  async (refreshToken, thunkAPI) => {
+    try {
+      const { data } = await axios.post(AUTH_ENDPOINTS.reLogIn, {
+        refreshToken: refreshToken,
+      });
+      token.set(data.accessToken);
+      console.log(data);
+      return {
+        token: data.accessToken,
+        refreshToken: data.refreshToken,
+      };
+    } catch (err) {
+      switch (err.response.status) {
+        case 400:
+          return thunkAPI.rejectWithValue('Bad request');
+        case 401:
+          return thunkAPI.rejectWithValue('Unauthorized');
+        case 404:
+          return thunkAPI.rejectWithValue('No user with this name');
         case 500:
           return thunkAPI.rejectWithValue('Something is wrong with server');
         default:
