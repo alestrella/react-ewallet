@@ -1,6 +1,0 @@
-[[redirects]]
-  from = "/"
-  to = "/login"
-  force = true
-  status = 200
-  signed = "W6p0ef1yPkooFqOPQipQWgXmNMifGXT-QP8s5eKiitU"
