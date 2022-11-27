@@ -50,7 +50,6 @@ export const logOutUser = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get(AUTH_ENDPOINTS.logOut);
-      console.log(data);
       token.unset();
       return data;
     } catch (err) {
@@ -132,7 +131,6 @@ export const reLogInUser = createAsyncThunk(
         refreshToken: refreshToken,
       });
       token.set(data.accessToken);
-      console.log(data);
       return {
         token: data.accessToken,
         refreshToken: data.refreshToken,
