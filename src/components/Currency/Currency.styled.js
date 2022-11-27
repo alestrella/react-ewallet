@@ -11,12 +11,12 @@ export const CurrencyBox = styled.div`
   @media screen and (${breakpoints.tablet}) {
     max-width: 336px;
     min-height: 182px;
-    margin:0;
+    margin: 0;
   }
   @media screen and (${breakpoints.laptop}) {
     max-width: 393px;
     min-height: 347px;
-    margin:0;
+    margin: 0;
   }
 `;
 export const CurrencyTitle = styled.ul`
@@ -141,7 +141,6 @@ export const ButtonCurrency = styled.button`
       width: 100%;
       height: 100%;
       border-radius: inherit;
-      /* background-color: ${p => p.theme.colors.secondary}; */
       background-color: ${p => p.theme.colors.primary};
       opacity: 0.4;
       transform: translateX(-100%);
@@ -154,9 +153,7 @@ export const ButtonCurrency = styled.button`
       }
       &:hover,
       &:focus {
-        /* box-shadow: 0px 4px 4px 0px #00000040; */
         color: ${p => p.theme.colors.black};
-        /* background-color: ${p => p.theme.colors.secondary}; */
       }
     }
   }
@@ -164,13 +161,9 @@ export const ButtonCurrency = styled.button`
   //optional
 
   &:disabled {
-    /* background-color: gray; */
-    /* background-color: ${p => p.theme.colors.secondary}; */
     background-color: ${p => p.theme.colors.accent};
     box-shadow: inset 0px 4px 4px 0px #00000040,
       0px 0px 15px 5px ${p => p.theme.colors.accent};
-    color: ${p => p.theme.colors.black};
-
-    /* border: ${p => p.theme.borders.normal} ${p => p.theme.colors.border}; */
+    /* color: ${p => p.theme.colors.black}; */
   }
 `;
