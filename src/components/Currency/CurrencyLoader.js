@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { breakpoints } from 'styleConfig/breakpoints';
 
 export const CurrencyLoaderBox = styled.div`

@@ -57,9 +57,9 @@ function App() {
           path="dashboard"
           element={
             // <PrivateRoute redirectTo="/login">
-            <DashboardPage />
+            // <DashboardPage />
             // </PrivateRoute>
-            // <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
+            <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
           }
         />
       </Route>
