@@ -16,6 +16,7 @@ import {
   ListItem,
   ListText,
   StyledTable,
+  SumStyled,
 } from './TransactionsTable.styled';
 
 const TransactionsTable = () => {
@@ -49,7 +50,7 @@ const TransactionsTable = () => {
       title: 'Type',
       dataIndex: 'type',
       key: 'type',
-      render: (_, { type }) => (type === 'income' ? '+' : '-'),
+      render: type => (type === 'income' ? '+' : '-'),
 
       filters: [
         {
@@ -85,11 +86,9 @@ const TransactionsTable = () => {
       title: 'Sum',
       dataIndex: 'sum',
       key: 'sum',
-      // render: sum => (<>
-      //   { if (columns.type === 'income') { return (<span>{sum.toFixed(2)}</span>)
-      //   } else {return (<span>{sum.toFixed(3)}</span>)}
-      //   }
-      // </>),
+      render: (sum, item) => (
+        <SumStyled type={item.type}>{sum.toFixed(2)} </SumStyled>
+      ),
       width: '15%',
     },
     {
@@ -115,7 +114,7 @@ const TransactionsTable = () => {
         ) : null,
     },
   ];
-  console.log();
+  console.log(columns[1].type);
 
   return (
     <div>
@@ -141,7 +140,7 @@ const TransactionsTable = () => {
           ) : (
             <>
               {transactions?.map(item => (
-                <List key={item.id}>
+                <List type={item.type} key={item.id}>
                   <ListItem>
                     <ListText>Date</ListText>
                     {item.date.slice(0, 10).replaceAll('-', '.')}
@@ -152,8 +151,9 @@ const TransactionsTable = () => {
                   </ListItem>
                   <ListItem>
                     <ListText>Category</ListText>
-                    {item.category}
-                    {/* {categories.find(elem => elem.id === item.category).name} */}
+                    {categories
+                      .filter(elem => elem.id === item.category)
+                      .map(el => el.name)}
                   </ListItem>
                   <ListItem>
                     <ListText>Comment</ListText>
@@ -161,7 +161,9 @@ const TransactionsTable = () => {
                   </ListItem>
                   <ListItem>
                     <ListText>Sum</ListText>
-                    {item.sum.toFixed(2)}
+                    <SumStyled type={item.type}>
+                      {item.sum.toFixed(2)}
+                    </SumStyled>
                   </ListItem>
                   <ListItem>
                     <ListText>Balance</ListText>

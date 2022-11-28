@@ -39,7 +39,8 @@ export const List = styled.ul`
   max-width: 280px;
   margin-bottom: ${p => p.theme.space[1]};
   border-radius: 10px;
-  border-left: 5px solid #dcdcdf;
+  border-left: 5px solid;
+  border-left-color: ${({ type }) => (type === 'income' ? 'green' : 'red')};
   background: ${p => p.theme.colors.primary};
   overflow: hidden;
 `;
@@ -61,4 +62,11 @@ export const ListText = styled.span`
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.l};
+`;
+
+export const SumStyled = styled.span`
+  color: ${({ type }) => (type === 'income' ? 'green' : 'red')};
+  font-family: ${p => p.theme.fonts.primary};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.m};
 `;
