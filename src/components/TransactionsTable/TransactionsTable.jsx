@@ -69,7 +69,9 @@ const TransactionsTable = () => {
       dataIndex: 'category',
       key: 'category',
       render: category => (
-        <>{categories.map(elem => (elem.id === category ? elem.name : '0'))}</>
+        <>
+          {categories.filter(elem => elem.id === category).map(el => el.name)}
+        </>
       ),
       width: '15%',
     },
