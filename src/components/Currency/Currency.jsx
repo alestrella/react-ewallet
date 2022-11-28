@@ -9,6 +9,7 @@ import {
   CurrencyDataItemText,
   ButtonBox,
   ButtonCurrency,
+  CurrencyWrapper
 } from './Currency.styled';
 import { CurrencyLoaderBox } from './CurrencyLoader';
 
@@ -86,7 +87,7 @@ const Currency = () => {
   }
 
   return (
-    <>
+    <CurrencyWrapper>
       <CurrencyBox>
         {isLoading ? (
           <CurrencyLoaderBox>
@@ -160,7 +161,7 @@ const Currency = () => {
           </>
         )}
       </CurrencyBox>
-    </>
+    </CurrencyWrapper>
   );
 };
 

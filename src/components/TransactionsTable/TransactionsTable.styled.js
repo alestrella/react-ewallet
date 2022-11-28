@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Table } from 'antd';
+import { breakpoints } from 'styleConfig/breakpoints';
 
 export const StyledTable = styled(Table)`
   max-width: 715px;
@@ -61,4 +62,14 @@ export const ListText = styled.span`
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.l};
+`;
+
+export const TableWrapper = styled.div`
+@media screen and (${breakpoints.tablet}) { 
+padding-right: 0;
+}
+@media screen and (${breakpoints.laptop}) { 
+padding: 46px 0 0 69px;
+width: 100%;
+}
 `;

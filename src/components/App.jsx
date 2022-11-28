@@ -12,7 +12,7 @@ import { WarningDispatcher } from './WarningDispatcher/WarningDispatcher';
 
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
-const DashboardPage = lazy(() => import('pages/Dashboard/DashboardPage'));
+const DashboardPage = lazy(() => import('pages/Dashboard'));
 // const Layout = lazy(() => import('components/layout/Layout'));
 
 function App() {

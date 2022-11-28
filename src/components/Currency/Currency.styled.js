@@ -167,3 +167,13 @@ export const ButtonCurrency = styled.button`
     /* color: ${p => p.theme.colors.black}; */
   }
 `;
+
+export const CurrencyWrapper = styled.div`
+@media screen and (${breakpoints.tablet}) {
+  padding: 40px 0px 0px 0px; 
+width: 100%;
+}
+@media screen and (${breakpoints.laptop}) {
+  padding: 0;
+}
+`
