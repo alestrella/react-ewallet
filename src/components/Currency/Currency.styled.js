@@ -106,15 +106,11 @@ export const CurrencyDataItemText = styled.p`
 `;
 
 export const ButtonBox = styled.div`
-  /* position: absolute; */
   display: flex;
   width: 100%;
   bottom: 10px;
   justify-content: space-between;
   padding: 6px 20px;
-  /* @media screen and (${breakpoints.tablet}) {
-    padding: 0 20px;
-  } */
 
   @media screen and (${breakpoints.laptop}) {
     padding: 10px 60px;
@@ -136,7 +132,6 @@ export const ButtonCurrency = styled.button`
   border-radius: ${p => p.theme.radii.large};
   box-shadow: 0px 4px 4px 0px #00000040;
 
-  //optional
   &:not(:disabled) {
     &::after {
       content: '';
@@ -163,13 +158,10 @@ export const ButtonCurrency = styled.button`
     }
   }
 
-  //optional
-
   &:disabled {
     background-color: ${p => p.theme.colors.accent};
     box-shadow: inset 0px 4px 4px 0px #00000040,
       0px 0px 15px 5px ${p => p.theme.colors.accent};
-    /* color: ${p => p.theme.colors.black}; */
   }
 `;
 
