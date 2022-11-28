@@ -6,11 +6,11 @@ export const CurrencyBox = styled.div`
   background-color: ${p => p.theme.colors.secondary};
   border-radius: ${p => p.theme.radii.large};
   max-width: 280px;
-  min-height: 174px;
+  max-height: 174px;
   margin: 0 auto;
   @media screen and (${breakpoints.tablet}) {
     max-width: 336px;
-    min-height: 182px;
+    max-height: 182px;
     margin: 0;
   }
   @media screen and (${breakpoints.laptop}) {
@@ -48,11 +48,11 @@ export const CurrencyData = styled.ul`
   align-items: stretch;
   padding: 2px 20px;
   overflow: hidden;
-  max-height: 86px;
+  max-height: 67px;
 
   @media screen and (${breakpoints.tablet}) {
     padding: 6px 20px;
-    max-height: 94px;
+    max-height: 76px;
   }
 
   @media screen and (${breakpoints.laptop}) {
