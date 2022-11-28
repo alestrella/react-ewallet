@@ -1,8 +1,6 @@
-import React from 'react';
-// import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux/es/exports';
-import { useDispatch } from 'react-redux/es/exports';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -20,7 +18,11 @@ import {
 } from './ModalAddTransaction.styled';
 // import { Button } from 'antd';
 
-import { addTransaction } from '../../redux';
+import {
+  addTransaction,
+  categoriesSelectors,
+  getCategories,
+} from '../../redux';
 
 const modalRoot = document.getElementById('modal-root');
 
@@ -30,22 +32,11 @@ const FormError = ({ name }) => {
   );
 };
 
-const expenseCategory = [
-  'Main',
-  'Food',
-  'Auto',
-  'Development',
-  'Children',
-  'House',
-  'Education',
-  'Reset',
-];
-
 const transactionSchema = yup.object().shape({
-  amount: yup.number().required(),
-  category: yup.string().oneOf(expenseCategory),
+  sum: yup.number().required(),
+  category: yup.string().required(),
   comment: yup.string(),
-  date: yup
+  operationDate: yup
     .date()
     .default(() => new Date())
     .required(),
@@ -57,17 +48,28 @@ const ModalAddTransaction = ({ onClose }) => {
   // const [category, setCategory] = useState('');
   // const [comment, setComment] = useState('');
   // const [date, setDate] = useState('');
-  // const [income, setIncome] = useState(false);
+  const [income, setIncome] = useState('expense');
 
   const initialValues = {
-    amount: '',
+    sum: 0,
     category: '',
     comment: '',
-    date: new Date(),
+    operationDate: new Date(),
     income: false,
   };
 
   const dispatch = useDispatch();
+
+  const categories = useSelector(categoriesSelectors.getCategories);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
+
+  const handleIncome = e => {
+    if (e.target.checked === true) return setIncome('income');
+    setIncome('expense');
+  };
 
   // const handleChange = e => {
   //   const { name, value } = e.target;
@@ -91,7 +93,7 @@ const ModalAddTransaction = ({ onClose }) => {
   // };
 
   const handleSubmit = (
-    { amount, category, comment, date, income },
+    { sum, category, comment, operationDate, income },
     { resetForm }
   ) => {
     // const newTransaction = {
@@ -102,9 +104,9 @@ const ModalAddTransaction = ({ onClose }) => {
     //   income,
     // };
 
-    dispatch(addTransaction({ amount, category, comment, date, income }));
+    dispatch(addTransaction({ sum, category, comment, operationDate, income }));
 
-    console.log({ amount, category, comment, date, income });
+    console.log({ sum, category, comment, operationDate, income });
     onClose();
   };
 
@@ -143,7 +145,12 @@ const ModalAddTransaction = ({ onClose }) => {
               <div>
                 <div>
                   <label htmlFor="income">
-                    <Field name="income" type="checkbox" />
+                    <Field
+                      name="income"
+                      type="checkbox"
+                      // checked={income}
+                      onClick={e => handleIncome(e)}
+                    />
                     Income
                   </label>
                 </div>
@@ -154,35 +161,40 @@ const ModalAddTransaction = ({ onClose }) => {
                 <div>
                   <Field name="category" as="select">
                     <option value="">Select a category</option>
-                    {expenseCategory.map((category, idx) => (
-                      <option value={category} key={idx}>
-                        {category}
-                      </option>
-                    ))}
+                    {categories
+                      .filter(elem => elem.type === income)
+                      .map(({ name, id }) => (
+                        <option value={id} key={id}>
+                          {name}
+                        </option>
+                      ))}
                   </Field>
-                  <FormError name="category" />
+                  {/* <FormError name="category" /> */}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="amount"></label>
+                <label htmlFor="sum"></label>
                 <div>
-                  <Field name="amount" type="number" placeholder="0.00" />
-                  <FormError name="amount" />
+                  <Field name="sum" type="number" placeholder="0.00" />
+                  <FormError name="sum" />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="date"></label>
+                <label htmlFor="operationDate"></label>
                 <div>
-                  <Field name="date">
+                  <Field name="operationDate">
                     {({ field, form: { isSubmitting } }) => (
                       <Datetime
                         dateFormat="DD.MM.YYYY"
                         timeFormat={false}
                         initialValue={new Date()}
-                        onChange={date => {
-                          setFieldValue('date', date.format('YYYY-MM-DD'));
+                        onChange={operationDate => {
+                          setFieldValue(
+                            'operationDate',
+                            operationDate.format('YYYY-MM-DD')
+                          );
                         }}
                       />
                     )}

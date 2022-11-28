@@ -19,7 +19,7 @@ import {
 const TransactionsTable = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(transactionsSelectors.getTransactions);
-  console.log(transactions);
+  // console.log(transactions);
 
   const handleDelete = id => {
     dispatch(deleteTransaction(id));
@@ -165,4 +165,3 @@ const TransactionsTable = () => {
 };
 
 export default TransactionsTable;
-
