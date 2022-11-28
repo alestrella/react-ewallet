@@ -9,7 +9,7 @@ import { Outlet } from 'react-router-dom';
 import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 import Balance from 'components/Balance';
 import Navigation from 'components/Navigation';
-import { DashboardWrapper, DashbordBlur } from './Dashboard.styled';
+import { DashboardWrapper, DashbordBlur, DashboardLaptopWrapper, DashboardTabletWrapper, WrapperBase } from './Dashboard.styled';
 
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,17 +20,22 @@ const DashboardPage = () => {
         <Helmet>
           <title>Dashboard</title>
         </Helmet>
-        <Navigation />
-        <Balance />
+        <DashboardLaptopWrapper>
+          <DashboardTabletWrapper>
+            <WrapperBase>
+            <Navigation />
+            <Balance />
+            </WrapperBase>
+            <Currency />
+            </DashboardTabletWrapper>
+        </DashboardLaptopWrapper>
+        <TransactionsTable />
         <IconButton onClick={() => setIsModalOpen(true)}>
           <PlusOutlined style={{ fontSize: '20px' }} />
-        </IconButton>
-
+          </IconButton>
         {isModalOpen && (
           <ModalAddTransaction onClose={() => setIsModalOpen(false)} />
         )}
-        <Currency />
-        <TransactionsTable />
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>

@@ -15,7 +15,7 @@ export const CurrencyBox = styled.div`
   }
   @media screen and (${breakpoints.laptop}) {
     max-width: 393px;
-    min-height: 347px;
+    max-height: 347px;
     margin: 0;
   }
 `;
@@ -46,13 +46,18 @@ export const CurrencyData = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 12px 20px;
+  padding: 2px 20px;
+  overflow: hidden;
+  max-height: 86px;
+
   @media screen and (${breakpoints.tablet}) {
-    padding: 16px 20px;
+    padding: 6px 20px;
+    max-height: 94px;
   }
 
   @media screen and (${breakpoints.laptop}) {
     padding: 20px 60px;
+    max-height: 235px;
   }
 
   &::after {
@@ -101,18 +106,18 @@ export const CurrencyDataItemText = styled.p`
 `;
 
 export const ButtonBox = styled.div`
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   width: 100%;
   bottom: 10px;
   justify-content: space-between;
-  padding: 0 20px;
-  @media screen and (${breakpoints.tablet}) {
+  padding: 6px 20px;
+  /* @media screen and (${breakpoints.tablet}) {
     padding: 0 20px;
-  }
+  } */
 
   @media screen and (${breakpoints.laptop}) {
-    padding: 0 60px;
+    padding: 10px 60px;
   }
 `;
 export const ButtonCurrency = styled.button`
@@ -165,5 +170,15 @@ export const ButtonCurrency = styled.button`
     box-shadow: inset 0px 4px 4px 0px #00000040,
       0px 0px 15px 5px ${p => p.theme.colors.accent};
     /* color: ${p => p.theme.colors.black}; */
+  }
+`;
+
+export const CurrencyWrapper = styled.div`
+  @media screen and (${breakpoints.tablet}) {
+    padding: 40px 0px 0px 0px;
+    width: 100%;
+  }
+  @media screen and (${breakpoints.laptop}) {
+    padding: 0;
   }
 `;
