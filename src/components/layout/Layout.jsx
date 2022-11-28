@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Container } from './common/Container.style';
-import { Header } from './common/Header/Header';
+import { Container } from './Container.style';
+import { Header } from '../Header/Header';
 import { useSelector } from 'react-redux';
-import authSelectors from '../../redux/auth/authSelectors'
+import authSelectors from '../../redux/auth/authSelectors';
 
 export const Layout = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -11,7 +11,7 @@ export const Layout = () => {
   return (
     <Container>
       <Suspense fallback={null}>
-        {isLoggedIn ? (<Header />) : (<></>)}
+        {isLoggedIn ? <Header /> : <></>}
         <Outlet />
       </Suspense>
     </Container>

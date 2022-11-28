@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import ellipseTop from '../../img/ellipseTop.svg';
-import ellipseBottom from '../../img/ellipseBottom.svg';
+import ellipseTop from '../img/ellipseTop.svg';
+import ellipseBottom from '../img/ellipseBottom.svg';
 import { breakpoints } from 'styleConfig/breakpoints';
 import { keyframes } from 'styled-components';
 
