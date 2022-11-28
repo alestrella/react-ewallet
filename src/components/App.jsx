@@ -1,14 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './layout/Layout';
 // import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
-import { lazy, useEffect } from 'react';
+import { lazy } from 'react';
 import { PrivateRoute, PublicRoute } from 'hocs';
-import { useDispatch, useSelector } from 'react-redux';
-import authSelectors from '../redux/auth/authSelectors';
-import { reconnectUser } from '../redux/auth/authThunk';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../redux';
 import { Navigate } from 'react-router-dom/dist';
 import { LoaderSpinner } from './Loader/Loader';
-import { WarningDispatcher } from './WarningDispatcher/WarningDispatcher';
 
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
@@ -16,18 +14,13 @@ const DashboardPage = lazy(() => import('pages/Dashboard'));
 // const Layout = lazy(() => import('components/layout/Layout'));
 
 function App() {
-  const dispatch = useDispatch();
   const isFetching = useSelector(authSelectors.getIsFetching);
-
-  useEffect(() => {
-    dispatch(reconnectUser());
-  }, [dispatch]);
 
   return isFetching ? (
     <LoaderSpinner />
   ) : (
     <>
-      <WarningDispatcher />
+      {/* <WarningDispatcher /> */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/login" />} />
