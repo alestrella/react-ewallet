@@ -1,10 +1,13 @@
 import { Popconfirm, Button } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getTransactions,
   deleteTransaction,
   transactionsSelectors,
+  categoriesSelectors,
+  getCategories,
 } from '../../redux';
 
 import Media from 'react-media';
@@ -19,6 +22,8 @@ const TransactionsTable = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(transactionsSelectors.getTransactions);
   console.log(transactions);
+  const categories = useSelector(categoriesSelectors.getCategories);
+  console.log(categories);
 
   const handleDelete = id => {
     dispatch(deleteTransaction(id));
@@ -26,6 +31,10 @@ const TransactionsTable = () => {
 
   useEffect(() => {
     dispatch(getTransactions());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getCategories());
   }, [dispatch]);
 
   const columns = [
@@ -59,6 +68,9 @@ const TransactionsTable = () => {
       title: 'Category',
       dataIndex: 'category',
       key: 'category',
+      render: category => (
+        <>{categories.map(elem => (elem.id === category ? elem.name : '0'))}</>
+      ),
       width: '15%',
     },
     {
@@ -71,6 +83,11 @@ const TransactionsTable = () => {
       title: 'Sum',
       dataIndex: 'sum',
       key: 'sum',
+      // render: sum => (<>
+      //   { if (columns.type === 'income') { return (<span>{sum.toFixed(2)}</span>)
+      //   } else {return (<span>{sum.toFixed(3)}</span>)}
+      //   }
+      // </>),
       width: '15%',
     },
     {
@@ -81,19 +98,22 @@ const TransactionsTable = () => {
       width: '15%',
     },
     {
-      title: 'Operation',
-      dataIndex: 'operation',
+      title: 'Actions',
+      dataIndex: 'actions',
       render: (_, record) =>
         transactions.length >= 1 ? (
           <Popconfirm
             title="Sure to delete?"
             onConfirm={() => handleDelete(record.id)}
           >
-            <Button type="link">Delete</Button>
+            <Button type="link">
+              <DeleteOutlined />
+            </Button>
           </Popconfirm>
         ) : null,
     },
   ];
+  console.log();
 
   return (
     <div>
@@ -126,11 +146,12 @@ const TransactionsTable = () => {
                   </ListItem>
                   <ListItem>
                     <ListText>Type</ListText>
-                    {item.type}
+                    {item.type === 'income' ? '+' : '-'}
                   </ListItem>
                   <ListItem>
                     <ListText>Category</ListText>
                     {item.category}
+                    {/* {categories.find(elem => elem.id === item.category).name} */}
                   </ListItem>
                   <ListItem>
                     <ListText>Comment</ListText>
@@ -138,19 +159,21 @@ const TransactionsTable = () => {
                   </ListItem>
                   <ListItem>
                     <ListText>Sum</ListText>
-                    {item.sum}
+                    {item.sum.toFixed(2)}
                   </ListItem>
                   <ListItem>
                     <ListText>Balance</ListText>
                     {item.balance.toFixed(2)}
                   </ListItem>
                   <ListItem>
-                    <ListText>Operation</ListText>
+                    <ListText>Actions</ListText>
                     <Popconfirm
                       title="Sure to delete?"
                       onConfirm={() => handleDelete(item.id)}
                     >
-                      <Button type="link">Delete</Button>
+                      <Button type="link">
+                        <DeleteOutlined />
+                      </Button>
                     </Popconfirm>
                   </ListItem>
                 </List>

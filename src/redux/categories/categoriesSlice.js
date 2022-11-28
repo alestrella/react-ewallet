@@ -13,8 +13,8 @@ export const categoriesSlice = createSlice({
     builder
       .addCase(getCategories.fulfilled, (state, { payload }) => {
         return {
-          ...initialState,
-          ...payload,
+          ...state,
+          categories: [...payload],
         };
       })
       .addCase(getCategories.rejected, (state, { payload }) => {
