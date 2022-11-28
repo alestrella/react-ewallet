@@ -23,7 +23,7 @@ import {
 } from './AuthForm.styled';
 import { FormError } from './FormError';
 import { PasswordStrengthChecker } from './PasswordstrengthChecker';
-import { AppLogo } from 'components/layout';
+import { AppLogo } from 'components/Logo/Logo';
 
 
 
