@@ -8,26 +8,38 @@ import { theme } from './styleConfig/theme';
 import 'antd/dist/antd.min.css';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor, getCategories } from './redux';
+import { store, persistor } from './redux';
 import axios from 'axios';
+import { Toaster } from 'react-hot-toast';
 
 // back-end address
 axios.defaults.baseURL = 'https://ewallet-api.onrender.com/api/';
 
-// get categories on app start
-store.dispatch(getCategories());
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalStyle />
-    <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/xtodo-wallet">
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+    <Toaster
+      position="top-center"
+      toastOptions={{
+        duration: 3000,
+        style: {
+          width: '280px',
+          background: '#E5E5E5',
+          color: '#000',
+          padding: '12px',
+          borderRadius: '10px',
+        },
+      }}
+    />
+    <Provider store={store}>
+      {/* <BrowserRouter basename="/xtodo-wallet"> */}
+      <BrowserRouter >
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider theme={theme}>
             <App />
-          </PersistGate>
-        </Provider>
+          </ThemeProvider>
+        </PersistGate>
       </BrowserRouter>
-    </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );

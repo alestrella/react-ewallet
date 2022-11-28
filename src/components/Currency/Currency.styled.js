@@ -3,18 +3,20 @@ import { breakpoints } from 'styleConfig/breakpoints';
 
 export const CurrencyBox = styled.div`
   position: relative;
-  background-color: #4a56e2;
+  background-color: ${p => p.theme.colors.secondary};
   border-radius: ${p => p.theme.radii.large};
   max-width: 280px;
   min-height: 174px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   @media screen and (${breakpoints.tablet}) {
     max-width: 336px;
     min-height: 182px;
+    margin: 0;
   }
   @media screen and (${breakpoints.laptop}) {
     max-width: 393px;
     min-height: 347px;
+    margin: 0;
   }
 `;
 export const CurrencyTitle = styled.ul`
@@ -96,4 +98,72 @@ export const CurrencyDataItemText = styled.p`
   display: flex;
   width: 75px;
   justify-content: center;
+`;
+
+export const ButtonBox = styled.div`
+  position: absolute;
+  display: flex;
+  width: 100%;
+  bottom: 10px;
+  justify-content: space-between;
+  padding: 0 20px;
+  @media screen and (${breakpoints.tablet}) {
+    padding: 0 20px;
+  }
+
+  @media screen and (${breakpoints.laptop}) {
+    padding: 0 60px;
+  }
+`;
+export const ButtonCurrency = styled.button`
+  position: relative;
+  overflow: hidden;
+  min-width: 45%;
+  min-height: 30px;
+  background-color: ${p => `${p.theme.colors.accent}35`};
+
+  font-family: ${p => p.theme.fonts.primary};
+  font-style: normal;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${p => p.theme.fontSizes.l};
+  line-height: ${p => p.theme.lineHeights.body};
+  color: ${p => p.theme.colors.primary};
+  border-radius: ${p => p.theme.radii.large};
+  box-shadow: 0px 4px 4px 0px #00000040;
+
+  //optional
+  &:not(:disabled) {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background-color: ${p => p.theme.colors.primary};
+      opacity: 0.4;
+      transform: translateX(-100%);
+      transition: transform 250ms linear;
+    }
+    @media screen and (${breakpoints.tablet}) {
+      &:hover::after,
+      &:focus::after {
+        transform: translateX(0);
+      }
+      &:hover,
+      &:focus {
+        color: ${p => p.theme.colors.black};
+      }
+    }
+  }
+
+  //optional
+
+  &:disabled {
+    background-color: ${p => p.theme.colors.accent};
+    box-shadow: inset 0px 4px 4px 0px #00000040,
+      0px 0px 15px 5px ${p => p.theme.colors.accent};
+    /* color: ${p => p.theme.colors.black}; */
+  }
 `;

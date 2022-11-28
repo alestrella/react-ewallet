@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useSelector } from 'react-redux/es/exports';
 import { categoriesSelectors } from '../../redux/';
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -13,11 +13,14 @@ import {
   Overlay,
   ModalWindow,
   StyledForm,
+  InputWrapper,
+  StyledInput,
+  InputDate,
   Title,
   PrimaryButton,
   SecondaryButton,
 } from './ModalAddTransaction.styled';
-import Switch from './Switch';
+import CategorySwitcher from './CategorySwitcher';
 
 const modalRoot = document.getElementById('modal-root');
 
@@ -27,16 +30,16 @@ const FormError = ({ name }) => {
   );
 };
 
-const expenseCategory = [
-  'Main',
-  'Food',
-  'Auto',
-  'Development',
-  'Children',
-  'House',
-  'Education',
-  'Reset',
-];
+// const expenseCategory = [
+//   'Main',
+//   'Food',
+//   'Auto',
+//   'Development',
+//   'Children',
+//   'House',
+//   'Education',
+//   'Reset',
+// ];
 
 const initialValues = {
   amount: '',
@@ -53,7 +56,7 @@ const ModalAddTransaction = ({ type, onClose }) => {
   // const [date, setDate] = useState('');
   // const [income, setIncome] = useState(false);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const allCategories = useSelector(categoriesSelectors.getCategories);
 
@@ -151,7 +154,7 @@ const ModalAddTransaction = ({ type, onClose }) => {
                 </div>
               </div> */}
 
-              <Switch />
+              <CategorySwitcher />
 
               {/* <div>
                 <label htmlFor="category" />
@@ -168,32 +171,30 @@ const ModalAddTransaction = ({ type, onClose }) => {
                 </div>
               </div> */}
 
-              <div>
-                <label htmlFor="amount"></label>
-                <div>
-                  <Field name="amount" type="number" placeholder="0.00" />
-                  <FormError name="amount" />
-                </div>
-              </div>
+              <InputWrapper>
+                {/* <label htmlFor="amount"></label> */}
 
-              <div>
-                <label htmlFor="date"></label>
-                <div>
-                  <Field name="date">
-                    {({ field, form: { isSubmitting } }) => (
-                      <Datetime
-                        dateFormat="DD.MM.YYYY"
-                        timeFormat={false}
-                        initialValue={new Date()}
-                        onChange={date => {
-                          setFieldValue('date', date.format('YYYY-MM-DD'));
-                        }}
-                      />
-                    )}
-                  </Field>
-                  <FormError name="date" />
-                </div>
-              </div>
+                <StyledInput name="amount" type="number" placeholder="0.00" />
+                <FormError name="amount" />
+              </InputWrapper>
+
+              <InputWrapper>
+                {/* <label htmlFor="date"></label> */}
+
+                <InputDate name="date">
+                  {({ field, form: { isSubmitting } }) => (
+                    <Datetime
+                      dateFormat="DD.MM.YYYY"
+                      timeFormat={false}
+                      initialValue={new Date()}
+                      onChange={date => {
+                        setFieldValue('date', date.format('YYYY-MM-DD'));
+                      }}
+                    />
+                  )}
+                </InputDate>
+                <FormError name="date" />
+              </InputWrapper>
 
               <div>
                 <label htmlFor="comment"></label>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ExportOutlined  } from '@ant-design/icons';
+import { LogoutOutlined } from '@ant-design/icons';
 import { breakpoints } from 'styleConfig/breakpoints';
 
 export const Menu = styled.div`
@@ -7,13 +7,13 @@ export const Menu = styled.div`
   align-items: center;
 `;
 
-export const UserName = styled.div`
+export const UserInfo = styled.div`
+  display: flex;
   font-family: ${({ theme }) => theme.fonts.primary};
   font-weight: ${({ theme }) => theme.fontWeights.normal};
   font-size: ${({ theme }) => theme.fontSizes.l};
   line-height: ${({ theme }) => theme.lineHeights.body};
   margin-right: 8px;
-  padding-top: 3px;
   color: ${({ theme }) => theme.colors.shadow};
 
   @media screen and (${breakpoints.tablet}) {
@@ -24,14 +24,30 @@ export const UserName = styled.div`
   }
 `;
 
+export const UserAvatar = styled.div`
+  margin-right: 0;
+  @media screen and (${breakpoints.tablet}) {
+    margin-right: 10px;
+}
+`;
+
+export const UserName = styled.div`
+display: none;
+
+@media screen and (${breakpoints.tablet}) {
+  display: block;
+  padding-top: 3px;
+}
+`
+
 export const LogOutButton = styled.button`
   display: flex;
   align-items: center;
   background-color: transparent;
 `;
 
-export const LogOutIcon = styled(ExportOutlined)`
-  font-size: ${({ theme }) => theme.fontSizes.xxl};;
+export const LogOutIcon = styled(LogoutOutlined)`
+  font-size: ${({ theme }) => theme.fontSizes.xxl};
   color: ${({ theme }) => theme.colors.shadow};
 
   @media screen and (${breakpoints.tablet}) {
