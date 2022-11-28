@@ -3,7 +3,6 @@ import { breakpoints } from 'styleConfig/breakpoints';
 
 export const StyledButton = styled.button`
   margin: auto;
-  /* padding: 12px; */
   border-radius: 50%;
   background-color: #24cca7;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -12,9 +11,10 @@ export const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  position: absolute;
+  position: fixed;
   right: 20px;
   bottom: 20px;
+  z-index: 1100;
 
   color: #fff;
   border: 0;

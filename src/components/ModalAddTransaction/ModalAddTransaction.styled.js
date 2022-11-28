@@ -19,7 +19,13 @@ export const Overlay = styled.div`
 `;
 
 export const ModalWindow = styled.div`
-  font-family: 'Poppins';
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  font-family: ${p => p.theme.fonts.primary};
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -28,24 +34,18 @@ export const ModalWindow = styled.div`
   background-color: ${p => p.theme.colors.primary};
   position: relative;
   top: 60px;
-  width: 100%;
-  height: 100%;
+
   @media (${breakpoints.tablet}) {
     width: 540px;
     height: 508px;
-
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
-export const StyledForm = styled(Form)`
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Title = styled.h2`
+  margin-bottom: 40px;
   font-size: ${p => p.theme.fontSizes.xxl};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
@@ -55,45 +55,108 @@ export const Title = styled.h2`
   }
 `;
 
-export const StyledInput = styled(Field)`
+export const StyledForm = styled(Form)`
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  @media (${breakpoints.tablet}) {
+    flex-flow: wrap;
+  }
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  @media (${breakpoints.tablet}) {
+    flex-direction: row;
+    flex-flow: wrap;
+    width: 394px;
+  }
+`;
+
+export const InputAmount = styled(Field)`
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  padding: 0 ${p => p.theme.space[1]}px;
+  margin-bottom: ${p => p.theme.space[8]}px;
+  padding: 0 ${p => p.theme.space[4]}px;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.l};
+  color: ${p => p.theme.colors.black};
   background-color: transparent;
   outline: 0;
-  border-radius: 0;
+  border: none;
   border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
   width: 280px;
   height: 32px;
-  color: ${p => p.theme.colors.black};
+
   &::placeholder {
+    font-family: ${p => p.theme.fonts.primary};
+    font-weight: ${p => p.theme.fontWeights.semibold};
+    font-size: ${p => p.theme.fontSizes.l};
+    line-height: ${p => p.theme.lineHeights.body};
     color: ${p => p.theme.colors.shadow};
-  }
-  svg {
-    width: 24px;
-    height: 24px;
-    color: ${p => p.theme.colors.border};
-    margin-right: ${p => p.theme.space[4]}px;
-  }
-  @media (${breakpoints.tablet}) {
-    width: 410px;
-  }
-  &:hover {
-    outline: none;
-    border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
-  }
-  &:focus {
-    outline: none;
-    border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
   }
 
-  &::selection {
+  @media (${breakpoints.tablet}) {
+    /* width: auto; */
+    width: 190px;
+    margin-right: 32px;
+    &::placeholder {
+      text-align: center;
+    }
+  }
+`;
+
+export const InputDate = styled.div`
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  margin-bottom: ${p => p.theme.space[8]}px;
+  padding: 0 ${p => p.theme.space[4]}px;
+  font-family: ${p => p.theme.fonts.primary};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.l};
+  color: ${p => p.theme.colors.black};
+  background-color: transparent;
+  outline: 0;
+  border: none;
+  border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
+  width: 280px;
+  height: 32px;
+
+  @media (${breakpoints.tablet}) {
+    width: 170px;
+  }
+`;
+
+export const InputComment = styled(Field)`
+  margin-bottom: ${p => p.theme.space[8]}px;
+
+  border: none;
+  border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
+  width: 280px;
+  height: 84px;
+  resize: none;
+  &::placeholder {
+    font-family: ${p => p.theme.fonts.primary};
+    font-weight: ${p => p.theme.fontWeights.normal};
+    font-size: ${p => p.theme.fontSizes.l};
+    line-height: ${p => p.theme.lineHeights.body};
     color: ${p => p.theme.colors.shadow};
-    background: ${p => p.theme.colors.primary};
+  }
+
+  @media (${breakpoints.tablet}) {
+    width: 394px;
+    height: 32px;
   }
 `;
 

@@ -14,13 +14,16 @@ import {
   ModalWindow,
   StyledForm,
   InputWrapper,
-  StyledInput,
+  InputAmount,
   InputDate,
+  InputComment,
   Title,
   PrimaryButton,
   SecondaryButton,
 } from './ModalAddTransaction.styled';
-import CategorySwitcher from './CategorySwitcher';
+import TypeSwitcher from './TypeSwitcher';
+import './rdt-styles.css';
+import { Box } from 'components/Box';
 
 const modalRoot = document.getElementById('modal-root');
 
@@ -154,7 +157,7 @@ const ModalAddTransaction = ({ type, onClose }) => {
                 </div>
               </div> */}
 
-              <CategorySwitcher />
+              <TypeSwitcher />
 
               {/* <div>
                 <label htmlFor="category" />
@@ -172,36 +175,43 @@ const ModalAddTransaction = ({ type, onClose }) => {
               </div> */}
 
               <InputWrapper>
-                {/* <label htmlFor="amount"></label> */}
-
-                <StyledInput name="amount" type="number" placeholder="0.00" />
-                <FormError name="amount" />
-              </InputWrapper>
-
-              <InputWrapper>
-                {/* <label htmlFor="date"></label> */}
-
-                <InputDate name="date">
-                  {({ field, form: { isSubmitting } }) => (
-                    <Datetime
-                      dateFormat="DD.MM.YYYY"
-                      timeFormat={false}
-                      initialValue={new Date()}
-                      onChange={date => {
-                        setFieldValue('date', date.format('YYYY-MM-DD'));
-                      }}
-                    />
-                  )}
-                </InputDate>
-                <FormError name="date" />
-              </InputWrapper>
-
-              <div>
-                <label htmlFor="comment"></label>
                 <div>
-                  <Field name="comment" as="textarea" placeholder="Comment" />
+                  {/* <label htmlFor="amount"></label> */}
+                  <InputAmount name="amount" type="number" placeholder="0.00" />
+                  <FormError name="amount" />
                 </div>
-              </div>
+
+                <div>
+                  <InputDate>
+                    {/* <label htmlFor="date"></label> */}
+                    <Field name="date">
+                      {({ field, form: { isSubmitting } }) => (
+                        <Datetime
+                          dateFormat="DD.MM.YYYY"
+                          timeFormat={false}
+                          initialValue={new Date()}
+                          inputProps={{
+                            border: 'none',
+                          }}
+                          onChange={date => {
+                            setFieldValue('date', date.format('YYYY-MM-DD'));
+                          }}
+                        />
+                      )}
+                    </Field>
+                    <FormError name="date" />
+                  </InputDate>
+                </div>
+
+                <div>
+                  {/* <label htmlFor="comment"></label> */}
+                  <InputComment
+                    name="comment"
+                    as="textarea"
+                    placeholder="Comment"
+                  />
+                </div>
+              </InputWrapper>
 
               <PrimaryButton type="primary" htmlType="submit">
                 Add
