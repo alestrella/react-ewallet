@@ -17,6 +17,7 @@ import {
   ListText,
   StyledTable,
   SumStyled,
+  TableWrapper,
 } from './TransactionsTable.styled';
 
 const TransactionsTable = () => {
@@ -114,7 +115,6 @@ const TransactionsTable = () => {
         ) : null,
     },
   ];
-  console.log(columns[1].type);
 
   return (
     <div>
@@ -138,7 +138,7 @@ const TransactionsTable = () => {
               }}
             />
           ) : (
-            <>
+            <TableWrapper>
               {transactions?.map(item => (
                 <List type={item.type} key={item.id}>
                   <ListItem>
@@ -182,7 +182,7 @@ const TransactionsTable = () => {
                   </ListItem>
                 </List>
               ))}
-            </>
+            </TableWrapper>
           )
         }
       </Media>
