@@ -6,7 +6,7 @@ export const DashbordBlur = styled.div`
   background: ${({ theme }) => theme.colors.blur};
   backdrop-filter: blur(25px);
   z-index: 1;
-  height: 100vh;
+  min-height: 100%;
 `;
 
 export const DashboardWrapper = styled.div`

@@ -6,6 +6,7 @@ export {
   logOutUser,
   registerUser,
   reconnectUser,
+  reLogInUser,
 } from './auth/authThunk';
 export { resetError as resetAuthError } from './auth/authSlice';
 export { default as authSelectors } from './auth/authSelectors';

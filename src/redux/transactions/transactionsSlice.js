@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import {
   addTransaction,
   deleteTransaction,
@@ -38,6 +39,7 @@ export const transactionsSlice = createSlice({
         };
       })
       .addCase(getTransactions.rejected, (state, { payload }) => {
+        toast(payload);
         return {
           ...initialState,
           page: state.page,
@@ -59,6 +61,7 @@ export const transactionsSlice = createSlice({
         };
       })
       .addCase(addTransaction.rejected, (state, { payload }) => {
+        toast(payload);
         return {
           ...state,
           errorMessage: payload,
@@ -77,6 +80,7 @@ export const transactionsSlice = createSlice({
         };
       })
       .addCase(deleteTransaction.rejected, (state, { payload }) => {
+        toast(payload);
         return {
           ...state,
           errorMessage: payload,
