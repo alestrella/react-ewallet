@@ -23,9 +23,7 @@ import {
 const TransactionsTable = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(transactionsSelectors.getTransactions);
-  console.log(transactions);
   const categories = useSelector(categoriesSelectors.getCategories);
-  console.log(categories);
 
   const handleDelete = id => {
     dispatch(deleteTransaction(id));
