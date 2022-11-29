@@ -58,7 +58,7 @@ const transactionSchema = yup.object().shape({
     .date()
     .default(() => new Date())
     .required(),
-  // income: yup.boolean().required(),
+  income: yup.string().required(),
 });
 
 const ModalAddTransaction = ({ onClose }) => {
@@ -69,7 +69,7 @@ const ModalAddTransaction = ({ onClose }) => {
     category: '',
     comment: '',
     operationDate: new Date(),
-    income: false,
+    income: '',
   };
 
   const dispatch = useDispatch();
@@ -81,11 +81,16 @@ const ModalAddTransaction = ({ onClose }) => {
   }, [dispatch]);
 
   const handleIncome = e => {
-    if (e.target.checked === true) return setIncome('income');
+    console.log('e.target.checked', e.target.checked);
+    if (e.target.checked === true) {
+      console.log('income in if before>>> ', income);
+      return setIncome('income');
+    }
     setIncome('expense');
   };
-
+  console.log('income after>>> ', income);
   const handleSubmit = ({ sum, category, comment, income }, { resetForm }) => {
+    console.log('in Sumbit', income);
     dispatch(addTransaction({ sum, category, comment, income }));
 
     console.log({ sum, category, comment, income });
@@ -120,7 +125,6 @@ const ModalAddTransaction = ({ onClose }) => {
           initialValues={initialValues}
           validationSchema={transactionSchema}
           onSubmit={handleSubmit}
-          // onChange={handleChange}
         >
           {({ setFieldValue }) => (
             <StyledForm autoComplete="off">
@@ -128,12 +132,11 @@ const ModalAddTransaction = ({ onClose }) => {
                 <Income checked={income === 'income'}>Income</Income>
 
                 <SwitchBox>
-                  <label htmlFor="checkbox">
+                  <label htmlFor="income">
                     <Switch
                       name="income"
                       type="checkbox"
-                      id="checkbox"
-                      // checked={income}
+                      id="income"
                       onClick={e => handleIncome(e)}
                     />
                     {income === 'income' ? (
