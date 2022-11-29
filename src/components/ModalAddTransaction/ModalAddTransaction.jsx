@@ -54,10 +54,10 @@ const transactionSchema = yup.object().shape({
   sum: yup.number().required(),
   category: yup.string().required(),
   comment: yup.string(),
-  operationDate: yup
-    .date()
-    .default(() => new Date())
-    .required(),
+  // operationDate: yup
+  //   .date()
+  //   .default(() => new Date())
+  //   .required(),
   income: yup.string().required(),
 });
 
@@ -68,7 +68,7 @@ const ModalAddTransaction = ({ onClose }) => {
     sum: 0,
     category: '',
     comment: '',
-    operationDate: new Date(),
+    // operationDate: new Date(),
     income: '',
   };
 
@@ -90,7 +90,7 @@ const ModalAddTransaction = ({ onClose }) => {
   };
   console.log('income after>>> ', income);
   const handleSubmit = ({ sum, category, comment, income }, { resetForm }) => {
-    console.log('in Sumbit', income);
+    console.log('in Sumbit >>>', comment, income);
     dispatch(addTransaction({ sum, category, comment, income }));
 
     console.log({ sum, category, comment, income });
