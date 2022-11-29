@@ -10,13 +10,13 @@ import {
 import Avatar from 'react-avatar';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import authSelectors from '../../../../redux/auth/authSelectors';
+import authSelectors from '../../redux/auth/authSelectors';
 import { ModalLogout } from 'components/ModalLogout/ModalLogout';
 
 export const UserMenu = () => {
   const userName = useSelector(authSelectors.getUsername);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleModal = () => setIsModalOpen(state => !state)
+  const toggleModal = () => setIsModalOpen(state => !state);
 
   return (
     <Menu>
@@ -39,11 +39,7 @@ export const UserMenu = () => {
         <LogOutText>Exit</LogOutText>
       </LogOutButton>
 
-      {isModalOpen && (
-        <ModalLogout
-          onClose={toggleModal}
-        />
-      )}
+      {isModalOpen && <ModalLogout onClose={toggleModal} />}
     </Menu>
   );
 };
