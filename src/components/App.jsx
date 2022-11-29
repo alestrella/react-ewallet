@@ -12,6 +12,9 @@ const LoginPage = lazy(() => import('pages/LoginPage'));
 const SignupPage = lazy(() => import('pages/SignupPage'));
 const DashboardPage = lazy(() => import('pages/Dashboard'));
 // const Layout = lazy(() => import('components/layout/Layout'));
+const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));
+
+
 
 function App() {
   const isFetching = useSelector(authSelectors.getIsFetching);
@@ -57,6 +60,19 @@ function App() {
               //   <DashboardPage />
               // </PrivateRoute>
               <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
+            }
+          />
+          <Route
+            path="statistic"
+            element={
+              <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
+            }
+          />
+
+          <Route
+            path="currency"
+            element={
+              <PrivateRoute redirectTo="/login" component={<CurrencyPage />} />
             }
           />
         </Route>
