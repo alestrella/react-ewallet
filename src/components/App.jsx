@@ -62,9 +62,19 @@ function App() {
               <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
             }
           />
-          <Route path="statistic" element={<DashboardPage />} />
-          
-          <Route path="currency" element={<CurrencyPage />} />
+          <Route
+            path="statistic"
+            element={
+              <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
+            }
+          />
+
+          <Route
+            path="currency"
+            element={
+              <PrivateRoute redirectTo="/login" component={<CurrencyPage />} />
+            }
+          />
         </Route>
         {/* <Route path="/redux-test" element={<TestReduxComponent />}></Route> */}
       </Routes>
