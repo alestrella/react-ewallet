@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
 import {
   Formik,
-  // Field,
+  Field,
   // ErrorMessage,
 } from 'formik';
 import * as yup from 'yup';
@@ -54,22 +54,22 @@ const transactionSchema = yup.object().shape({
   sum: yup.number().required(),
   category: yup.string().required(),
   comment: yup.string(),
-  operationDate: yup
-    .date()
-    .default(() => new Date())
-    .required(),
-  // income: yup.boolean().required(),
+  // operationDate: yup
+  //   .date()
+  //   .default(() => new Date())
+  //   .required(),
+  income: yup.string().required(),
 });
 
 const ModalAddTransaction = ({ onClose }) => {
-  const [income, setIncome] = useState('expense');
+  const [typeTransaction, setTypeTransaction] = useState('expense');
 
   const initialValues = {
     sum: 0,
     category: '',
     comment: '',
-    operationDate: new Date(),
-    income: false,
+    // operationDate: new Date(),
+    income: '',
   };
 
   const dispatch = useDispatch();
@@ -81,17 +81,18 @@ const ModalAddTransaction = ({ onClose }) => {
   }, [dispatch]);
 
   const handleIncome = e => {
-    if (e.target.checked === true) return setIncome('income');
-    setIncome('expense');
+    if (e.target.checked === true) {
+      return setTypeTransaction('income');
+    }
+    setTypeTransaction('expense');
   };
 
-  const handleSubmit = (
-    { sum, category, comment, operationDate, income },
-    { resetForm }
-  ) => {
-    dispatch(addTransaction({ sum, category, comment, operationDate, income }));
+  const handleSubmit = ({ sum, category, comment }, { resetForm }) => {
+    dispatch(
+      addTransaction({ sum, category, comment, income: typeTransaction })
+    );
 
-    console.log({ sum, category, comment, operationDate, income });
+    console.log({ sum, category, comment, income: typeTransaction });
     onClose();
   };
 
@@ -123,24 +124,22 @@ const ModalAddTransaction = ({ onClose }) => {
           initialValues={initialValues}
           validationSchema={transactionSchema}
           onSubmit={handleSubmit}
-          // onChange={handleChange}
         >
           {({ setFieldValue }) => (
             <StyledForm autoComplete="off">
               <Switcher>
-                <Income checked={income === 'income'}>Income</Income>
+                <Income checked={typeTransaction === 'income'}>Income</Income>
 
                 <SwitchBox>
-                  <label htmlFor="checkbox">
+                  <label htmlFor="income">
                     <Switch
                       name="income"
                       type="checkbox"
-                      id="checkbox"
-                      // checked={income}
+                      id="income"
                       onClick={e => handleIncome(e)}
                     />
-                    {income === 'income' ? (
-                      <StyledButton checked={income === 'income'}>
+                    {typeTransaction === 'income' ? (
+                      <StyledButton checked={typeTransaction === 'income'}>
                         <PlusOutlined style={{ fontSize: '22px' }} />
                       </StyledButton>
                     ) : (
@@ -151,26 +150,28 @@ const ModalAddTransaction = ({ onClose }) => {
                   </label>
                 </SwitchBox>
 
-                <Expense checked={income === 'expense'}>Expense</Expense>
+                <Expense checked={typeTransaction === 'expense'}>
+                  Expense
+                </Expense>
               </Switcher>
 
               <div>
                 <label htmlFor="category" />
-                <div>
-                  <InputCategory name="category" as="select">
+                <InputCategory>
+                  <Field name="category" as="select">
                     <option value="" selected disabled hidden>
                       Select a category
                     </option>
                     {categories
-                      .filter(elem => elem.type === income)
+                      .filter(elem => elem.type === typeTransaction)
                       .map(({ name, id }) => (
                         <option value={id} key={id}>
                           {name}
                         </option>
                       ))}
-                  </InputCategory>
+                  </Field>
                   {/* <FormError name="category" /> */}
-                </div>
+                </InputCategory>
               </div>
 
               <InputWrapper>

@@ -3,8 +3,8 @@ export const convertTransaction = {
     ...otherProps,
     type: income ? 'income' : 'expense',
   }),
-  frontToBack: ({ type, ...otherProps }) => ({
+  frontToBack: ({ income, ...otherProps }) => ({
     ...otherProps,
-    income: type === 'income' ? true : false,
+    income: income === 'income' ? true : false,
   }),
 };
