@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import ellipseTop from '../../img/ellipseTop.svg';
-import ellipseBottom from '../../img/ellipseBottom.svg';
+import ellipseTop from '../img/ellipseTop.svg';
+import ellipseBottom from '../img/ellipseBottom.svg';
 import { breakpoints } from 'styleConfig/breakpoints';
 import { keyframes } from 'styled-components';
 
@@ -16,13 +16,13 @@ export const Container = styled.div`
   height: 100%;
   
   @media screen and (${breakpoints.tablet}) {
-    height: 100vmax;
+    min-height: 100vh;
     overflow: hidden;
   }
-
+/* 
   @media screen and (${breakpoints.laptop}) {
-    height: 100vh;
-  }
+    max-height: 100%;
+  } */
   :after {
     display: none;
     @media screen and (${breakpoints.tablet}) {

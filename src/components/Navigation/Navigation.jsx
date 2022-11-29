@@ -12,46 +12,54 @@ import {
 } from './Navigation.style';
 
 const Navigation = () => {
-	return (
-    <NavList>
-        <Media query='(max-width: 767px)' render={() =>
-          (
-          <NavItem><NavigLink to="/">
-          <IconWrapper>
-            <IconHome size="18px" />
-          </IconWrapper>
-          <NavText>Home</NavText>
-        </NavigLink>
+  
+  return (
+        <NavList>
+      <Media
+        query="(max-width: 767px)"
+        render={() => (
+          <NavItem>
+            <NavigLink to="/dashboard">
+              <IconWrapper>
+                <IconHome size="38px" />
+              </IconWrapper>
+              <NavText>Home</NavText>
+            </NavigLink>
 
-        <NavigLink to="/">
-          <IconWrapper>
-            <IconGraph size="18px" />
-          </IconWrapper>
-          <NavText>Statistics</NavText>
-        </NavigLink>
-        <NavigLink to="/">
-          <IconWrapper>
-            <IconCurrency size="18px" />
-          </IconWrapper>
-        </NavigLink>
+            <NavigLink to="/statistic">
+              <IconWrapper>
+                <IconGraph size="38px" />
+              </IconWrapper>
+              <NavText>Statistics</NavText>
+            </NavigLink>
+            <NavigLink to="/currency">
+              <IconWrapper>
+                <IconCurrency size="38px" />
+              </IconWrapper>
+            </NavigLink>
           </NavItem>
-      )} />
-      <Media query='(min-width: 768px)'render={() =>
-          (<NavItem><NavigLink to="/">
-          <IconWrapper>
-            <IconHome size="18px" />
-          </IconWrapper>
-          <NavText>Home</NavText>
-        </NavigLink>
+        )}
+      />
+      <Media
+        query="(min-width: 768px)"
+        render={() => (
+          <NavItem>
+            <NavigLink to="/dashboard">
+              <IconWrapper>
+                <IconHome size="18px" />
+              </IconWrapper>
+              <NavText>Home</NavText>
+            </NavigLink>
 
-        <NavigLink to="/">
-          <IconWrapper>
-            <IconGraph size="18px" />
-          </IconWrapper>
-          <NavText>Statistics</NavText>
-        </NavigLink>
-          </NavItem>)} />
-      
+            <NavigLink to="/statistic">
+              <IconWrapper>
+                <IconGraph size="18px" />
+              </IconWrapper>
+              <NavText>Statistics</NavText>
+            </NavigLink>
+          </NavItem>
+        )}
+      />
     </NavList>
   );
 };

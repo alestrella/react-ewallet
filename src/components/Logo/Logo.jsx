@@ -1,4 +1,4 @@
-import  logoIcon  from '../../../img/logoIcon.svg'
+import  logoIcon  from '../img/logoIcon.svg'
 import {Logo, LogoText, LogoIcon} from './Logo.styled'
 
 export const AppLogo = () => {

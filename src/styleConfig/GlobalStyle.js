@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
 html {
@@ -39,5 +40,11 @@ button {
   outline: none;
   border: none;
   cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 `;

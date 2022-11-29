@@ -5,7 +5,7 @@ export const BalanceBox = styled.div`
   width: 280px;
   height: 80px;
   padding: 8px 32px 12px 32px;
-  background-color: beige;
+  background-color: ${p => p.theme.colors.primary};
   margin: 0 auto 32px;
   border-radius: ${p => p.theme.radii.large};
   @media screen and (${breakpoints.tablet}) {
