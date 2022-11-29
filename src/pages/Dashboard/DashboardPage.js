@@ -11,6 +11,7 @@ import Balance from 'components/Balance';
 import Navigation from 'components/Navigation';
 import { DashboardWrapper, DashbordBlur, DashboardLaptopWrapper, DashboardTabletWrapper, WrapperBase } from './Dashboard.styled';
 import Media from 'react-media';
+import { DiagramTab } from 'components/DiagramTab/DiagramTab';
 
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,6 +34,7 @@ const DashboardPage = () => {
             </DashboardTabletWrapper>
           </DashboardLaptopWrapper>
           <TransactionsTable />
+          <DiagramTab />
           <IconButton onClick={() => setIsModalOpen(true)}>
             <PlusOutlined style={{ fontSize: '20px' }} />
           </IconButton>
