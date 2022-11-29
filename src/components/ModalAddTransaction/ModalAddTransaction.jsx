@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
-import { Formik, Field, ErrorMessage } from 'formik';
+import {
+  Formik,
+  // Field,
+  // ErrorMessage,
+} from 'formik';
 import * as yup from 'yup';
-import Datetime from 'react-datetime';
+// import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
-import toast, { Toaster } from 'react-hot-toast';
+// import toast, { Toaster } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 import {
   Overlay,
@@ -16,7 +20,7 @@ import {
   InputWrapper,
   InputCategory,
   InputAmount,
-  InputDate,
+  // InputDate,
   InputComment,
   PrimaryButton,
   SecondaryButton,
@@ -36,15 +40,15 @@ import {
   categoriesSelectors,
   getCategories,
 } from '../../redux';
-import './rdt-styles.css';
+// import './rdt-styles.css';
 
 const modalRoot = document.getElementById('modal-root');
 
-const FormError = ({ name }) => {
-  return (
-    <ErrorMessage name={name} render={message => toast.error(`${message}`)} />
-  );
-};
+// const FormError = ({ name }) => {
+//   return (
+//     <ErrorMessage name={name} render={message => toast.error(`${message}`)} />
+//   );
+// };
 
 const transactionSchema = yup.object().shape({
   sum: yup.number().required(),
@@ -124,25 +128,27 @@ const ModalAddTransaction = ({ onClose }) => {
           {({ setFieldValue }) => (
             <StyledForm autoComplete="off">
               <Switcher>
-                <label htmlFor="income"></label>
                 <Income checked={income === 'income'}>Income</Income>
 
                 <SwitchBox>
-                  <Switch
-                    name="income"
-                    type="checkbox"
-                    // checked={income}
-                    onClick={e => handleIncome(e)}
-                  />
-                  {income === 'income' ? (
-                    <StyledButton checked={income === 'income'}>
-                      <PlusOutlined style={{ fontSize: '22px' }} />
-                    </StyledButton>
-                  ) : (
-                    <StyledButton>
-                      <MinusOutlined style={{ fontSize: '22px' }} />
-                    </StyledButton>
-                  )}
+                  <label htmlFor="checkbox">
+                    <Switch
+                      name="income"
+                      type="checkbox"
+                      id="checkbox"
+                      // checked={income}
+                      onClick={e => handleIncome(e)}
+                    />
+                    {income === 'income' ? (
+                      <StyledButton checked={income === 'income'}>
+                        <PlusOutlined style={{ fontSize: '22px' }} />
+                      </StyledButton>
+                    ) : (
+                      <StyledButton>
+                        <MinusOutlined style={{ fontSize: '22px' }} />
+                      </StyledButton>
+                    )}
+                  </label>
                 </SwitchBox>
 
                 <Expense checked={income === 'expense'}>Expense</Expense>
@@ -176,7 +182,7 @@ const ModalAddTransaction = ({ onClose }) => {
                   </div>
                 </div>
 
-                <div>
+                {/* <div>
                   <label htmlFor="operationDate"></label>
                   <InputDate>
                     <Field name="operationDate">
@@ -196,7 +202,7 @@ const ModalAddTransaction = ({ onClose }) => {
                     </Field>
                     <FormError name="date" />
                   </InputDate>
-                </div>
+                </div> */}
               </InputWrapper>
 
               <div>
@@ -219,7 +225,7 @@ const ModalAddTransaction = ({ onClose }) => {
           )}
         </Formik>
 
-        <Toaster position="top-center" />
+        {/* <Toaster position="top-center" /> */}
       </ModalWindow>
     </Overlay>,
     modalRoot
