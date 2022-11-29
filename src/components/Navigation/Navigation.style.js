@@ -18,14 +18,17 @@ export const NavList = styled.ul`
 `;
 
 export const NavigLink = styled(NavLink)`
-  color: gray;
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
+  &:not(:last-child) {
+    margin-right: 28px;
+  }
   @media screen and (${breakpoints.tablet}) {
     &:not(:last-child) {
       margin-bottom: 12px;
     }
-  } 
+  }
 `;
 
 export const NavItem = styled.li`
@@ -75,15 +78,89 @@ export const IconHome = styled(FaHome)`
   color: ${p => p.theme.colors.primary};
   background-color: ${p => p.theme.colors.secondary};
   border-radius: ${p => p.theme.radii.small};
+  background-color: #6e78e8;
+  padding: 2px;
+  :hover,
+  :focus {
+    transition: color 250ms linear;
+    background-color: ${p => p.theme.colors.secondary};
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  }
+
+  @media screen and (${breakpoints.tablet}) {
+    :hover,
+    :focus {
+      transition: color 250ms linear;
+      background-color: ${p => p.theme.colors.secondary};
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    }
+  }
+  @media screen and (${breakpoints.laptop}) {
+    :hover,
+    :focus {
+      transition: color 250ms linear;
+      background-color: ${p => p.theme.colors.secondary};
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    }
+  }
 `;
 export const IconGraph = styled(SlGraph)`
   color: ${p => p.theme.colors.primary};
   background-color: ${p => p.theme.colors.secondary};
   border-radius: ${p => p.theme.radii.small};
+  background-color: #6e78e8;
+  padding: 2px;
+  :hover,
+  :focus {
+    transition: color 250ms linear;
+    background-color: ${p => p.theme.colors.secondary};
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  }
+
+  @media screen and (${breakpoints.tablet}) {
+    :hover,
+    :focus {
+      transition: color 250ms linear;
+      background-color: ${p => p.theme.colors.secondary};
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    }
+  }
+  @media screen and (${breakpoints.laptop}) {
+    :hover,
+    :focus {
+      transition: color 250ms linear;
+      background-color: ${p => p.theme.colors.secondary};
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    }
+  }
 `;
 
 export const IconCurrency = styled(MdOutlineAttachMoney)`
   color: ${p => p.theme.colors.primary};
   background-color: ${p => p.theme.colors.secondary};
   border-radius: ${p => p.theme.radii.small};
+  background-color: #6e78e8;
+  :hover,
+  :focus {
+    transition: color 250ms linear;
+    background-color: ${p => p.theme.colors.secondary};
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  }
+
+  @media screen and (${breakpoints.tablet}) {
+    :hover,
+    :focus {
+      transition: color 250ms linear;
+      background-color: ${p => p.theme.colors.secondary};
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    }
+  }
+  @media screen and (${breakpoints.laptop}) {
+    :hover,
+    :focus {
+      transition: color 250ms linear;
+      background-color: ${p => p.theme.colors.secondary};
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    }
+  }
 `;
