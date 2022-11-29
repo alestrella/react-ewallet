@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
   width: 100vw;
+ 
   overflow-x: hidden;
 }
 *,
@@ -46,5 +47,8 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+.to-top-progress {
+  z-index: 1111111 !important;
 }
 `;
