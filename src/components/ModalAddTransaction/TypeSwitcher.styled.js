@@ -48,7 +48,7 @@ export const StyledButton = styled.span`
   color: #fff;
   border: 0;
   text-decoration: none;
-  /* cursor: pointer; */
+  cursor: pointer;
   font-family: inherit;
   width: 44px;
   height: 44px;

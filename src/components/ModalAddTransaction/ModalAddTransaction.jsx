@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
 import {
   Formik,
-  // Field,
+  Field,
   // ErrorMessage,
 } from 'formik';
 import * as yup from 'yup';
@@ -85,13 +85,10 @@ const ModalAddTransaction = ({ onClose }) => {
     setIncome('expense');
   };
 
-  const handleSubmit = (
-    { sum, category, comment, operationDate, income },
-    { resetForm }
-  ) => {
-    dispatch(addTransaction({ sum, category, comment, operationDate, income }));
+  const handleSubmit = ({ sum, category, comment, income }, { resetForm }) => {
+    dispatch(addTransaction({ sum, category, comment, income }));
 
-    console.log({ sum, category, comment, operationDate, income });
+    console.log({ sum, category, comment, income });
     onClose();
   };
 
@@ -156,8 +153,8 @@ const ModalAddTransaction = ({ onClose }) => {
 
               <div>
                 <label htmlFor="category" />
-                <div>
-                  <InputCategory name="category" as="select">
+                <InputCategory>
+                  <Field name="category" as="select">
                     <option value="" selected disabled hidden>
                       Select a category
                     </option>
@@ -168,9 +165,9 @@ const ModalAddTransaction = ({ onClose }) => {
                           {name}
                         </option>
                       ))}
-                  </InputCategory>
+                  </Field>
                   {/* <FormError name="category" /> */}
-                </div>
+                </InputCategory>
               </div>
 
               <InputWrapper>
