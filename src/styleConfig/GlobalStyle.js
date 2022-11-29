@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
   width: 100vw;
- 
+  height: 100%;
   overflow-x: hidden;
 }
 *,
@@ -24,6 +24,7 @@ body {
 ul {
   list-style: none;
   padding: 0;
+  
 };
 p, h1, h2, h3, h4, button {
   margin: 0;

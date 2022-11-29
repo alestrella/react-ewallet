@@ -10,10 +10,10 @@ export const NavList = styled.ul`
   padding: 12px 62px;
 
   @media screen and (${breakpoints.tablet}) {
-  padding: 40px 0 28px 0;
+  padding: 40px 0 0 0;
   }
   @media screen and (${breakpoints.laptop}) {
-    padding: 40px 0 28px 0;
+    padding: 40px 0 14px 0;
   }
 `;
 
