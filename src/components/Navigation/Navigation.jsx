@@ -25,13 +25,13 @@ const Navigation = () => {
               <NavText>Home</NavText>
             </NavigLink>
 
-            <NavigLink to="/">
+            <NavigLink to="/statistic">
               <IconWrapper>
                 <IconGraph size="38px" />
               </IconWrapper>
               <NavText>Statistics</NavText>
             </NavigLink>
-            <NavigLink to="/">
+            <NavigLink to="/currency">
               <IconWrapper>
                 <IconCurrency size="38px" />
               </IconWrapper>
@@ -50,7 +50,7 @@ const Navigation = () => {
               <NavText>Home</NavText>
             </NavigLink>
 
-            <NavigLink to="/statistics">
+            <NavigLink to="/statistic">
               <IconWrapper>
                 <IconGraph size="18px" />
               </IconWrapper>
