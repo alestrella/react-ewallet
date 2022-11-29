@@ -62,7 +62,7 @@ const transactionSchema = yup.object().shape({
 });
 
 const ModalAddTransaction = ({ onClose }) => {
-  const [income, setIncome] = useState('expense');
+  const [typeTransaction, setTypeTransaction] = useState('expense');
 
   const initialValues = {
     sum: 0,
@@ -81,19 +81,18 @@ const ModalAddTransaction = ({ onClose }) => {
   }, [dispatch]);
 
   const handleIncome = e => {
-    console.log('e.target.checked', e.target.checked);
     if (e.target.checked === true) {
-      console.log('income in if before>>> ', income);
-      return setIncome('income');
+      return setTypeTransaction('income');
     }
-    setIncome('expense');
+    setTypeTransaction('expense');
   };
-  console.log('income after>>> ', income);
-  const handleSubmit = ({ sum, category, comment, income }, { resetForm }) => {
-    console.log('in Sumbit >>>', comment, income);
-    dispatch(addTransaction({ sum, category, comment, income }));
 
-    console.log({ sum, category, comment, income });
+  const handleSubmit = ({ sum, category, comment }, { resetForm }) => {
+    dispatch(
+      addTransaction({ sum, category, comment, income: typeTransaction })
+    );
+
+    console.log({ sum, category, comment, income: typeTransaction });
     onClose();
   };
 
@@ -129,7 +128,7 @@ const ModalAddTransaction = ({ onClose }) => {
           {({ setFieldValue }) => (
             <StyledForm autoComplete="off">
               <Switcher>
-                <Income checked={income === 'income'}>Income</Income>
+                <Income checked={typeTransaction === 'income'}>Income</Income>
 
                 <SwitchBox>
                   <label htmlFor="income">
@@ -139,8 +138,8 @@ const ModalAddTransaction = ({ onClose }) => {
                       id="income"
                       onClick={e => handleIncome(e)}
                     />
-                    {income === 'income' ? (
-                      <StyledButton checked={income === 'income'}>
+                    {typeTransaction === 'income' ? (
+                      <StyledButton checked={typeTransaction === 'income'}>
                         <PlusOutlined style={{ fontSize: '22px' }} />
                       </StyledButton>
                     ) : (
@@ -151,7 +150,9 @@ const ModalAddTransaction = ({ onClose }) => {
                   </label>
                 </SwitchBox>
 
-                <Expense checked={income === 'expense'}>Expense</Expense>
+                <Expense checked={typeTransaction === 'expense'}>
+                  Expense
+                </Expense>
               </Switcher>
 
               <div>
@@ -162,7 +163,7 @@ const ModalAddTransaction = ({ onClose }) => {
                       Select a category
                     </option>
                     {categories
-                      .filter(elem => elem.type === income)
+                      .filter(elem => elem.type === typeTransaction)
                       .map(({ name, id }) => (
                         <option value={id} key={id}>
                           {name}
