@@ -82,7 +82,7 @@ export const InputWrapper = styled.div`
   }
 `;
 
-export const InputCategory = styled.div`
+export const InputCategory = styled.select`
   /* appearance: none; */
   transition: all 0.3s ease;
   display: flex;
@@ -133,6 +133,8 @@ export const InputAmount = styled(Field)`
     /* width: auto; */
     width: 190px;
     margin-right: 32px;
+    text-align: center;
+
     &::placeholder {
       text-align: center;
     }

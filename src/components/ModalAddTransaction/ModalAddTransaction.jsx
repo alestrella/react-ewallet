@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
 import {
   Formik,
-  Field,
+  // Field,
   // ErrorMessage,
 } from 'formik';
 import * as yup from 'yup';
@@ -58,18 +58,17 @@ const transactionSchema = yup.object().shape({
   //   .date()
   //   .default(() => new Date())
   //   .required(),
-  income: yup.string().required(),
+  type: yup.string().required(),
 });
 
 const ModalAddTransaction = ({ onClose }) => {
   const [typeTransaction, setTypeTransaction] = useState('expense');
 
   const initialValues = {
-    sum: 0,
     category: '',
     comment: '',
     // operationDate: new Date(),
-    income: '',
+    type: false,
   };
 
   const dispatch = useDispatch();
@@ -87,12 +86,19 @@ const ModalAddTransaction = ({ onClose }) => {
     setTypeTransaction('expense');
   };
 
-  const handleSubmit = ({ sum, category, comment }, { resetForm }) => {
-    dispatch(
-      addTransaction({ sum, category, comment, income: typeTransaction })
-    );
+  console.log('typeTransaction now >>>', typeTransaction);
 
-    console.log({ sum, category, comment, income: typeTransaction });
+  const handleSubmit = ({ sum, category, comment }, { resetForm }) => {
+    console.log('comment inside submit', comment);
+
+    dispatch(addTransaction({ sum, category, comment, type: typeTransaction }));
+
+    console.log('inside handleSubmit', {
+      sum,
+      category,
+      comment,
+      type: typeTransaction,
+    });
     onClose();
   };
 
@@ -131,11 +137,11 @@ const ModalAddTransaction = ({ onClose }) => {
                 <Income checked={typeTransaction === 'income'}>Income</Income>
 
                 <SwitchBox>
-                  <label htmlFor="income">
+                  <label htmlFor="type">
                     <Switch
-                      name="income"
+                      name="type"
                       type="checkbox"
-                      id="income"
+                      id="type"
                       onClick={e => handleIncome(e)}
                     />
                     {typeTransaction === 'income' ? (
@@ -157,21 +163,17 @@ const ModalAddTransaction = ({ onClose }) => {
 
               <div>
                 <label htmlFor="category" />
-                <InputCategory>
-                  <Field name="category" as="select">
-                    <option value="" selected disabled hidden>
-                      Select a category
-                    </option>
-                    {categories
-                      .filter(elem => elem.type === typeTransaction)
-                      .map(({ name, id }) => (
-                        <option value={id} key={id}>
-                          {name}
-                        </option>
-                      ))}
-                  </Field>
-                  {/* <FormError name="category" /> */}
+                <InputCategory name="category">
+                  <option value="">Select a category</option>
+                  {categories
+                    .filter(elem => elem.type === typeTransaction)
+                    .map(({ name, id }) => (
+                      <option value={id} key={id}>
+                        {name}
+                      </option>
+                    ))}
                 </InputCategory>
+                {/* <FormError name="category" /> */}
               </div>
 
               <InputWrapper>
@@ -208,11 +210,8 @@ const ModalAddTransaction = ({ onClose }) => {
 
               <div>
                 <label htmlFor="comment" />
-                <InputComment
-                  name="comment"
-                  as="textarea"
-                  placeholder="Comment"
-                />
+                <InputComment name="comment" placeholder="Comment" />
+                {/* <Field name="comment" as="textarea" placeholder="Comment" /> */}
               </div>
 
               <PrimaryButton type="primary" htmlType="submit">
