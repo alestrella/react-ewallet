@@ -132,7 +132,7 @@ const TransactionsTable = () => {
                 position: ['bottomRight'],
               }}
               scroll={{
-                y: 255,
+                y: 400,
               }}
             />
           ) : (
