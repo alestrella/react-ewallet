@@ -6,12 +6,12 @@ export const CurrencyBlur = styled.div`
   background: ${({ theme }) => theme.colors.blur};
   backdrop-filter: blur(25px);
   z-index: 1;
-  min-height: 100%;
+  min-height: 89.5vh;
 `;
 
 export const CurrencyWrapper = styled.div`
   position: relative;
-  max-width: 1280px;
+  //max-width: 1280px;
   margin: 0 auto;
   @media screen and (${breakpoints.tablet}) {
     padding: 0 32px;
