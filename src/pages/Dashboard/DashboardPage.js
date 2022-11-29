@@ -22,7 +22,7 @@ import { DiagramTab } from 'components/DiagramTab/DiagramTab';
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const location = useLocation();
-  // console.log(location);
+  console.log("Hello form Dashboard!");
   return (
     <DashbordBlur>
       {location.pathname === '/dashboard' && (

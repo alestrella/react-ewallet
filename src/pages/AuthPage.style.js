@@ -6,11 +6,10 @@ export const Container = styled.div`
   flex-direction: column;
   margin: 0 auto;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   @media screen and (${breakpoints.laptop}) {
     flex-direction: row;
     justify-content: center;
-    //height: 100vh;
   }
 `;
 
