@@ -37,7 +37,7 @@ export const ModalWindow = styled.div`
 
   @media (${breakpoints.tablet}) {
     width: 540px;
-    height: 508px;
+    max-height: 603px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -51,6 +51,7 @@ export const Title = styled.h2`
   line-height: ${p => p.theme.lineHeights.body};
   color: ${p => p.theme.colors.black};
   @media (${breakpoints.tablet}) {
+    margin-bottom: 40px;
     font-size: ${p => p.theme.fontSizes.xxxl};
   }
 `;
@@ -77,6 +78,55 @@ export const InputWrapper = styled.div`
   @media (${breakpoints.tablet}) {
     flex-direction: row;
     flex-flow: wrap;
+    width: 394px;
+  }
+`;
+
+export const InputCategory = styled(Field)`
+  /* appearance: none; */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  margin-bottom: ${p => p.theme.space[8]}px;
+  padding: 0 ${p => p.theme.space[4]}px;
+  font-family: ${p => p.theme.fonts.primary};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.l};
+  color: ${p => p.theme.colors.black};
+  /* background-color: transparent; */
+  outline: 0;
+  border: none;
+  border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
+  width: 280px;
+  height: 32px;
+
+  &::placeholder {
+    font-family: ${p => p.theme.fonts.primary};
+    font-weight: ${p => p.theme.fontWeights.normal};
+    font-size: ${p => p.theme.fontSizes.l};
+    line-height: ${p => p.theme.lineHeights.body};
+    color: ${p => p.theme.colors.shadow};
+  }
+
+  & option {
+    color: ${p => p.theme.colors.black};
+  }
+  :first-child {
+    color: ${p => p.theme.colors.shadow};
+  }
+
+  & select:active,
+  select:hover {
+    outline: none
+    outline-color: red;
+  }
+
+  /* background-color: ${p => p.theme.colors.blur};
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(25px);
+  border-radius: 20px; */
+
+  @media (${breakpoints.tablet}) {
     width: 394px;
   }
 `;
@@ -140,7 +190,12 @@ export const InputDate = styled.div`
 
 export const InputComment = styled(Field)`
   margin-bottom: ${p => p.theme.space[8]}px;
-
+  padding: 0 ${p => p.theme.space[4]}px;
+  font-family: ${p => p.theme.fonts.primary};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.l};
+  color: ${p => p.theme.colors.black};
+  background-color: transparent;
   border: none;
   border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
   width: 280px;
@@ -155,6 +210,7 @@ export const InputComment = styled(Field)`
   }
 
   @media (${breakpoints.tablet}) {
+    overflow: hidden;
     width: 394px;
     height: 32px;
   }

@@ -1,14 +1,21 @@
 import styled from 'styled-components';
+import { Field } from 'formik';
 
-export const SwitchBox = styled.div`
+export const Switcher = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 40px;
 `;
 
-export const Switch = styled.button`
+export const SwitchBox = styled.div`
   position: relative;
   margin: 0px 20px 0px 20px;
+`;
+
+export const Switch = styled(Field)`
+  -webkit-appearance: none;
+  appearance: none;
+
   width: 80px;
   height: 40px;
   border-radius: 30px;
@@ -24,24 +31,24 @@ export const StyledButton = styled.span`
   margin-right: 20px;
   border-radius: 50%;
   background-color: ${p =>
-    p.type ? p.theme.colors.accent : p.theme.colors.accentSecondary};
+    p.checked ? p.theme.colors.accent : p.theme.colors.accentSecondary};
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
 
   align-items: center;
   justify-content: center;
   position: absolute;
-  left: ${p => (p.type ? '-4px' : '40px')};
-  top: -3px;
+  left: ${p => (p.checked ? '-2px' : '40px')};
+  top: -2px;
   color: #fff;
   border: 0;
   text-decoration: none;
-  cursor: pointer;
+  /* cursor: pointer; */
   font-family: inherit;
   width: 44px;
   height: 44px;
   box-shadow: ${p =>
-    p.type
+    p.checked
       ? '0px 6px 15px rgba(36, 204, 167, 0.5)'
       : '0px 6px 15px rgba(255, 101, 150, 0.5)'};
 `;
@@ -51,7 +58,7 @@ export const Income = styled.p`
   font-weight: ${p => p.theme.fontWeights.semibold};
   font-size: ${p => p.theme.fontSizes.m};
   line-height: ${p => p.theme.lineHeights.body};
-  color: ${p => (p.type ? p.theme.colors.accent : p.theme.colors.border)};
+  color: ${p => (p.checked ? p.theme.colors.accent : p.theme.colors.border)};
   transition: all 0.5s ease;
 `;
 
@@ -61,6 +68,6 @@ export const Expense = styled.p`
   font-size: ${p => p.theme.fontSizes.m};
   line-height: ${p => p.theme.lineHeights.body};
   color: ${p =>
-    p.type ? p.theme.colors.border : p.theme.colors.accentSecondary};
+    p.checked ? p.theme.colors.accentSecondary : p.theme.colors.border};
   transition: all 0.5s ease;
 `;

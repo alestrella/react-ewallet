@@ -9,7 +9,7 @@ import {
 } from './TypeSwitcher.styled';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 
-const TypeSwitcher = () => {
+const TypeSwitcher = ({ setTransaction }) => {
   const [typeTransaction, setTypeTransaction] = useState(false);
 
   const toggle = () => {
