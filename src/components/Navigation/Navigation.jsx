@@ -12,8 +12,9 @@ import {
 } from './Navigation.style';
 
 const Navigation = () => {
-	return (
-    <NavList>
+  
+  return (
+        <NavList>
       <Media
         query="(max-width: 767px)"
         render={() => (
