@@ -16,13 +16,13 @@ export const Container = styled.div`
   height: 100%;
   
   @media screen and (${breakpoints.tablet}) {
-    height: 100vmax;
+    min-height: 100vh;
     overflow: hidden;
   }
-
+/* 
   @media screen and (${breakpoints.laptop}) {
-    height: 100vh;
-  }
+    max-height: 100%;
+  } */
   :after {
     display: none;
     @media screen and (${breakpoints.tablet}) {
