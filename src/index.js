@@ -14,6 +14,7 @@ import { Toaster } from 'react-hot-toast';
 
 // back-end address
 axios.defaults.baseURL = 'https://ewallet-api.onrender.com/api/';
+// axios.defaults.baseURL = 'http://localhost:4000/api/';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -32,14 +33,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       }}
     />
     <Provider store={store}>
-      {/* <BrowserRouter basename="/xtodo-wallet"> */}
-      <BrowserRouter >
-        <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
+        {/* <BrowserRouter basename="/xtodo-wallet"> */}
+        <BrowserRouter>
           <ThemeProvider theme={theme}>
             <App />
           </ThemeProvider>
-        </PersistGate>
-      </BrowserRouter>
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

@@ -6,16 +6,16 @@ export const CurrencyBox = styled.div`
   background-color: ${p => p.theme.colors.secondary};
   border-radius: ${p => p.theme.radii.large};
   max-width: 280px;
-  min-height: 174px;
+  max-height: 174px;
   margin: 0 auto;
   @media screen and (${breakpoints.tablet}) {
     max-width: 336px;
-    min-height: 182px;
+    max-height: 182px;
     margin: 0;
   }
   @media screen and (${breakpoints.laptop}) {
     max-width: 393px;
-    min-height: 347px;
+    max-height: 347px;
     margin: 0;
   }
 `;
@@ -46,13 +46,18 @@ export const CurrencyData = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 12px 20px;
+  padding: 2px 20px;
+  overflow: hidden;
+  max-height: 67px;
+
   @media screen and (${breakpoints.tablet}) {
-    padding: 16px 20px;
+    padding: 6px 20px;
+    max-height: 76px;
   }
 
   @media screen and (${breakpoints.laptop}) {
     padding: 20px 60px;
+    max-height: 235px;
   }
 
   &::after {
@@ -101,18 +106,14 @@ export const CurrencyDataItemText = styled.p`
 `;
 
 export const ButtonBox = styled.div`
-  position: absolute;
   display: flex;
   width: 100%;
   bottom: 10px;
   justify-content: space-between;
-  padding: 0 20px;
-  @media screen and (${breakpoints.tablet}) {
-    padding: 0 20px;
-  }
+  padding: 6px 20px;
 
   @media screen and (${breakpoints.laptop}) {
-    padding: 0 60px;
+    padding: 10px 60px;
   }
 `;
 export const ButtonCurrency = styled.button`
@@ -131,7 +132,6 @@ export const ButtonCurrency = styled.button`
   border-radius: ${p => p.theme.radii.large};
   box-shadow: 0px 4px 4px 0px #00000040;
 
-  //optional
   &:not(:disabled) {
     &::after {
       content: '';
@@ -158,12 +158,19 @@ export const ButtonCurrency = styled.button`
     }
   }
 
-  //optional
-
   &:disabled {
     background-color: ${p => p.theme.colors.accent};
     box-shadow: inset 0px 4px 4px 0px #00000040,
       0px 0px 15px 5px ${p => p.theme.colors.accent};
-    /* color: ${p => p.theme.colors.black}; */
+  }
+`;
+
+export const CurrencyWrapper = styled.div`
+  @media screen and (${breakpoints.tablet}) {
+    padding: 40px 0px 0px 0px;
+    width: 100%;
+  }
+  @media screen and (${breakpoints.laptop}) {
+    padding: 0;
   }
 `;

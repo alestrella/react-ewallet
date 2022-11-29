@@ -80,7 +80,7 @@ export const CurrencyLoaderBox = styled.div`
   }
   @media screen and (${breakpoints.laptop}) {
     max-width: 393px;
-    min-height: 347px;
+    max-height: 347px;
     margin: 0;
   }
   @keyframes rotate {

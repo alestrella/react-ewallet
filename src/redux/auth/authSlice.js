@@ -1,14 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import {
   logInUser,
   logOutUser,
   reconnectUser,
   registerUser,
+  reLogInUser,
 } from './authThunk';
 
 const initialState = {
   username: null,
   token: null,
+  refreshToken: null,
   isLoggedIn: false,
   isFetching: false,
   errorMessage: null,
@@ -37,8 +40,8 @@ export const authSlice = createSlice({
       .addCase(logInUser.rejected, (state, { payload }) => {
         return {
           ...initialState,
-          username: state.username, // debatable
-          token: state.token, // debatable
+          username: state.username,
+          refreshToken: state.refreshToken,
           errorMessage: payload,
         };
       })
@@ -53,6 +56,7 @@ export const authSlice = createSlice({
         return { ...state, isFetching: true };
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
+        toast(payload);
         return {
           ...initialState,
           errorMessage: payload,
@@ -65,16 +69,32 @@ export const authSlice = createSlice({
         return { ...state, isFetching: true };
       })
       .addCase(logOutUser.rejected, (state, { payload }) => {
+        toast(payload);
         return { ...initialState, errorMessage: payload };
       })
       .addCase(reconnectUser.fulfilled, (state, { payload }) => {
-        console.log(payload);
         return { ...state, ...payload, isLoggedIn: true, isFetching: false };
       })
       .addCase(reconnectUser.pending, (state, _) => {
         return { ...state, isFetching: true };
       })
       .addCase(reconnectUser.rejected, (state, { payload }) => {
+        toast(payload);
+        return { ...state, isFetching: false, errorMessage: payload };
+      })
+      .addCase(reLogInUser.fulfilled, (state, { payload }) => {
+        return {
+          ...state,
+          ...payload,
+          isLoggedIn: true,
+          isFetching: false,
+        };
+      })
+      .addCase(reLogInUser.pending, (state, _) => {
+        return { ...state, isFetching: true };
+      })
+      .addCase(reLogInUser.rejected, (state, { payload }) => {
+        toast(payload);
         return { ...initialState, errorMessage: payload };
       });
   },
