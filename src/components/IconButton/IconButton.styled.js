@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { breakpoints } from 'styleConfig/breakpoints';
 
 export const StyledButton = styled.button`
   margin: auto;
-  /* padding: 12px; */
   border-radius: 50%;
   background-color: #24cca7;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -11,26 +11,28 @@ export const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  position: absolute;
+  position: fixed;
   right: 20px;
   bottom: 20px;
+  z-index: 1100;
 
   color: #fff;
   border: 0;
   text-decoration: none;
   cursor: pointer;
   font-family: inherit;
-  /* font-size: 18px;
-  line-height: 24px; */
-  /* font-style: normal;
-  font-weight: 500; */
   width: 44px;
   height: 44px;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
 
   :hover,
   :focus {
     background-color: #303f9f;
+  }
+
+  @media (${breakpoints.tablet}) {
+    right: 40px;
+    bottom: 40px;
   }
 `;
