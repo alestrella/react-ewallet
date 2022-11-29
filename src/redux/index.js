@@ -6,15 +6,20 @@ export {
   logOutUser,
   registerUser,
   reconnectUser,
+  reLogInUser,
 } from './auth/authThunk';
 export { resetError as resetAuthError } from './auth/authSlice';
 export { default as authSelectors } from './auth/authSelectors';
+
+// object to set/unset token
+export { token } from './auth/token';
 
 // transactions
 export {
   addTransaction,
   deleteTransaction,
   getTransactions,
+  getBalance,
 } from './transactions/transactionsThunk';
 export { resetError as resetTransactionsError } from './transactions/transactionsSlice';
 export { default as transactionsSelectors } from './transactions/transactionsSelectors';

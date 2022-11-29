@@ -1,16 +1,84 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
-import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
+import { Layout } from './layout/Layout';
+// import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
+import { lazy } from 'react';
+import { PrivateRoute, PublicRoute } from 'hocs';
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../redux';
+import { Navigate } from 'react-router-dom/dist';
+import { LoaderSpinner } from './Loader/Loader';
+
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const SignupPage = lazy(() => import('pages/SignupPage'));
+const DashboardPage = lazy(() => import('pages/Dashboard'));
+// const Layout = lazy(() => import('components/layout/Layout'));
+const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));
+
+
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        {/* <Route path="/login" element={<LoginPage />}></Route> */}
-        {/* <Route path="/signup" element={<SignupPage />}></Route> */}
-      </Route>
-      <Route path="/redux-test" element={<TestReduxComponent />}></Route>
-    </Routes>
+  const isFetching = useSelector(authSelectors.getIsFetching);
+
+  return isFetching ? (
+    <LoaderSpinner />
+  ) : (
+    <>
+      {/* <WarningDispatcher /> */}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/login" />} />
+          <Route
+            path="login"
+            element={
+              // <PublicRoute restricted redirectTo="/dashbord">
+              //   <LoginPage />
+              // </PublicRoute>
+              <PublicRoute
+                restricted
+                redirectTo="/dashboard"
+                component={<LoginPage />}
+              />
+            }
+          />
+          <Route
+            path="signup"
+            element={
+              // <PublicRoute restricted redirectTo="/dashbord">
+              //   <SignupPage />
+              // </PublicRoute>
+              <PublicRoute
+                restricted
+                redirectTo="/dashboard"
+                component={<SignupPage />}
+              />
+            }
+          />
+          <Route
+            path="dashboard"
+            element={
+              // <PrivateRoute redirectTo="/login">
+              //   <DashboardPage />
+              // </PrivateRoute>
+              <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
+            }
+          />
+          <Route
+            path="statistic"
+            element={
+              <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
+            }
+          />
+
+          <Route
+            path="currency"
+            element={
+              <PrivateRoute redirectTo="/login" component={<CurrencyPage />} />
+            }
+          />
+        </Route>
+        {/* <Route path="/redux-test" element={<TestReduxComponent />}></Route> */}
+      </Routes>
+    </>
   );
 }
 

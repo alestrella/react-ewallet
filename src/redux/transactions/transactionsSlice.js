@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import {
   addTransaction,
   deleteTransaction,
   getTransactions,
+  getBalance,
 } from './transactionsThunk';
 
 const initialState = {
@@ -14,16 +16,15 @@ const initialState = {
   errorMessage: null,
 };
 
-const { temporaryData } = require('./temporaryData');
-
 export const transactionsSlice = createSlice({
   name: 'transactions',
-  initialState: { ...initialState, ...temporaryData }, // while developing back
+  initialState: { ...initialState },
   reducers: {
     resetError: state => {
       state.errorMessage = null;
     },
   },
+<<<<<<< HEAD
   extraReducers: {
     [getTransactions.fulfilled](state, { payload }) {
       return {
@@ -81,6 +82,88 @@ export const transactionsSlice = createSlice({
         errorMessage: payload,
       };
     },
+=======
+  extraReducers: builder => {
+    builder
+      .addCase(getTransactions.fulfilled, (state, { payload }) => {
+        return {
+          ...initialState,
+          ...payload,
+        };
+      })
+      .addCase(getTransactions.pending, (state, _) => {
+        return {
+          ...state,
+          isFetching: true,
+        };
+      })
+      .addCase(getTransactions.rejected, (state, { payload }) => {
+        toast(payload);
+        return {
+          ...initialState,
+          page: state.page,
+          totalPages: state.totalPages,
+          errorMessage: payload,
+        };
+      })
+      .addCase(addTransaction.fulfilled, (state, { payload }) => {
+        state.transactions.pop();
+        return {
+          ...state,
+          transactions: [payload, ...state.transactions],
+        };
+      })
+      .addCase(addTransaction.pending, (state, _) => {
+        return {
+          ...state,
+          isFetching: true,
+        };
+      })
+      .addCase(addTransaction.rejected, (state, { payload }) => {
+        toast(payload);
+        return {
+          ...state,
+          errorMessage: payload,
+        };
+      })
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        return {
+          ...state,
+          transactions: state.transactions.filter(e => e.id !== payload.id),
+        };
+      })
+      .addCase(deleteTransaction.pending, (state, _) => {
+        return {
+          ...state,
+          isFetching: true,
+        };
+      })
+      .addCase(deleteTransaction.rejected, (state, { payload }) => {
+        toast(payload);
+        return {
+          ...state,
+          errorMessage: payload,
+        };
+      })
+      .addCase(getBalance.fulfilled, (state, { payload }) => {
+        return {
+          ...state,
+          balance: payload,
+        };
+      })
+      .addCase(getBalance.pending, (state, _) => {
+        return {
+          ...state,
+          balance: 'loading...',
+        };
+      })
+      .addCase(getBalance.rejected, (state, { payload }) => {
+        return {
+          ...state,
+          errorMessage: payload,
+        };
+      });
+>>>>>>> dev
   },
 });
 

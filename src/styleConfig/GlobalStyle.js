@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
 html {
@@ -49,5 +50,11 @@ img.ant-image-preview-img {
 }
 thead {
   border-radius: 30px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 `;

@@ -7,7 +7,10 @@ export const theme = {
     accentSecondary: '#FF6596',
     shadow: '#BDBDBD',
     shade: '#A6A6A6',
-    border: '#E0E0E0'
+    border: '#E0E0E0',
+    errorColor: '#93252F',
+    PageBgColor: '#E7EAF2',
+    blur: 'rgba(255, 255, 255, 0.4)',
   },
   space: [5, 8, 10, 15, 20, 25, 30, 35, 50, 65, 90, 100, 120, 150],
   fonts: {
