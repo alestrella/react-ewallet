@@ -9,8 +9,15 @@ import { Outlet, useLocation } from 'react-router-dom';
 import TransactionsTable from 'components/TransactionsTable/TransactionsTable';
 import Balance from 'components/Balance';
 import Navigation from 'components/Navigation';
-import { DashboardWrapper, DashbordBlur, DashboardLaptopWrapper, DashboardTabletWrapper, WrapperBase } from './Dashboard.styled';
+import {
+  DashboardWrapper,
+  DashbordBlur,
+  DashboardLaptopWrapper,
+  DashboardTabletWrapper,
+  WrapperBase,
+} from './Dashboard.styled';
 import Media from 'react-media';
+import { DiagramTab } from 'components/DiagramTab/DiagramTab';
 
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,8 +66,7 @@ const DashboardPage = () => {
             </DashboardTabletWrapper>
           </DashboardLaptopWrapper>
           <>
-            <h3>THIS IS STATISTIC PAGE</h3>
-            {/* <StatisticPage /> */}
+            <DiagramTab />
           </>
           <Suspense fallback={null}>
             <Outlet />
