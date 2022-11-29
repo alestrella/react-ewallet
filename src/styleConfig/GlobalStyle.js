@@ -4,7 +4,8 @@ import 'modern-normalize';
 export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
 }
 *,
@@ -23,6 +24,7 @@ body {
 ul {
   list-style: none;
   padding: 0;
+  
 };
 li.selected {
 background-color: #eead71;

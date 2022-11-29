@@ -9,7 +9,7 @@ import {
   CurrencyDataItemText,
   ButtonBox,
   ButtonCurrency,
-  CurrencyWrapper
+  CurrencyWrapper,
 } from './Currency.styled';
 import { CurrencyLoaderBox } from './CurrencyLoader';
 
@@ -32,8 +32,7 @@ const Currency = () => {
       let currentTime = Date.now();
       if (lastTimeStamp === 0) {
         setLastTimeStamp(currentTime);
-        clearInterval(timer);
-        return;
+        return clearInterval(timer);
       }
       fetchData();
       if (lastTimeStamp + refreshTime * 0.9 < currentTime) {
