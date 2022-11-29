@@ -90,6 +90,7 @@ const ModalAddTransaction = ({ onClose }) => {
 
   const handleSubmit = ({ sum, category, comment }, { resetForm }) => {
     console.log('comment inside submit', comment);
+    console.log('sum inside submit', sum);
 
     dispatch(addTransaction({ sum, category, comment, type: typeTransaction }));
 
