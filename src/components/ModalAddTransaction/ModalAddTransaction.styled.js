@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Form, Field } from 'formik';
 import { breakpoints } from 'styleConfig/breakpoints';
+import { CloseOutlined, CalendarOutlined } from '@ant-design/icons';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -22,7 +23,7 @@ export const ModalWindow = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding: 20px;
+  padding: ${p => p.theme.space[4]}px;
   width: 100%;
   height: 100%;
   font-family: ${p => p.theme.fonts.primary};
@@ -42,14 +43,27 @@ export const ModalWindow = styled.div`
   }
 `;
 
+export const CloseButton = styled(CloseOutlined)`
+  font-size: 16px;
+
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  &:hover {
+    color: ${p => p.theme.colors.secondary};
+  }
+`;
+
 export const Title = styled.h2`
-  margin-bottom: 40px;
+  margin-bottom: ${p => p.theme.space[8]}px;
   font-size: ${p => p.theme.fontSizes.xxl};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
   color: ${p => p.theme.colors.black};
+
   @media (${breakpoints.tablet}) {
-    margin-bottom: 40px;
+    margin-top: ${p => p.theme.space[4]}px;
     font-size: ${p => p.theme.fontSizes.xxxl};
   }
 `;
@@ -151,7 +165,7 @@ export const InputDate = styled.div`
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  padding: 0 ${p => p.theme.space[4]}px;
+  padding: 0 ${p => p.theme.space[1]}px;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.l};
@@ -162,10 +176,20 @@ export const InputDate = styled.div`
   border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
   width: 280px;
   height: 32px;
+  position: relative;
 
   @media (${breakpoints.tablet}) {
     width: 170px;
   }
+`;
+
+export const CalendarIcon = styled(CalendarOutlined)`
+  font-size: 20px;
+  color: ${p => p.theme.colors.secondary};
+
+  position: absolute;
+  bottom: ${p => p.theme.space[1]}px;
+  right: ${p => p.theme.space[1]}px;
 `;
 
 export const InputComment = styled(Field)`

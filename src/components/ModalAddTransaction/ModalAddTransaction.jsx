@@ -11,11 +11,12 @@ import { FormError } from '../AuthForm/FormError';
 import * as yup from 'yup';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
-// import toast, { Toaster } from 'react-hot-toast';
+import Media from 'react-media';
 import PropTypes from 'prop-types';
 import {
   Overlay,
   ModalWindow,
+  CloseButton,
   Title,
   StyledForm,
   InputBox,
@@ -23,6 +24,7 @@ import {
   InputCategory,
   InputAmount,
   InputDate,
+  CalendarIcon,
   InputComment,
   PrimaryButton,
   SecondaryButton,
@@ -45,12 +47,6 @@ import {
 import './rdt-styles.css';
 
 const modalRoot = document.getElementById('modal-root');
-
-// const FormError = ({ name }) => {
-//   return (
-//     <ErrorMessage name={name} render={message => toast.error(`${message}`)} />
-//   );
-// };
 
 const transactionSchema = yup.object().shape({
   sum: yup.number().required(),
@@ -91,10 +87,6 @@ const ModalAddTransaction = ({ onClose }) => {
         setSum(value);
         break;
 
-      // case 'date':
-      //   setDate(value);
-      //   break;
-
       case 'comment':
         setComment(value);
         break;
@@ -126,13 +118,13 @@ const ModalAddTransaction = ({ onClose }) => {
       })
     );
 
-    console.log('inside handleSubmit', {
-      sum,
-      category,
-      comment,
-      date,
-      type: typeTransaction,
-    });
+    // console.log('inside handleSubmit', {
+    //   sum,
+    //   category,
+    //   comment,
+    //   date,
+    //   type: typeTransaction,
+    // });
     onClose();
   };
 
@@ -158,6 +150,11 @@ const ModalAddTransaction = ({ onClose }) => {
   return createPortal(
     <Overlay onClick={handleBackdropClick}>
       <ModalWindow>
+        <Media
+          query="(min-width: 768px)"
+          render={() => <CloseButton onClick={() => onClose()} />}
+        />
+
         <Title>Add transaction</Title>
 
         <Formik
@@ -239,6 +236,7 @@ const ModalAddTransaction = ({ onClose }) => {
                       )}
                     </Field>
                     {/* <FormError name="date" /> */}
+                    <CalendarIcon />
                   </InputDate>
                 </InputWrapper>
 
@@ -263,8 +261,6 @@ const ModalAddTransaction = ({ onClose }) => {
             </StyledForm>
           )}
         </Formik>
-
-        {/* <Toaster position="top-center" /> */}
       </ModalWindow>
     </Overlay>,
     modalRoot
