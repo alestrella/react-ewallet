@@ -11,7 +11,7 @@ export const DiagramTabContainer = styled.div`
   @media screen and (${breakpoints.tablet}) {
     flex-direction: row;
     justify-content: end;
-    padding: 20px 0 0 0;
+    padding: 0;
   }
   @media screen and (${breakpoints.laptop}) {
     padding: 32px 0 0 69px;
