@@ -39,6 +39,8 @@ export const DashboardTabletWrapper = styled.div`
 @media screen and (${breakpoints.tablet}) {
   display: flex;
   margin-bottom: 20px;
+  max-width: 715px;
+  margin: 0 auto 20px;
 }
 @media screen and (${breakpoints.laptop}) {
     display: block;
