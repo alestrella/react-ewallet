@@ -50,8 +50,7 @@ export const findColorById = id => {
   if (result) {
     return result.color;
   } else {
-    //console.log('ID??? --->', id);
-    return '#000000';
+    return theme.colors.shade;
   }
 };
 
@@ -60,6 +59,6 @@ export const findNameById = (id, array) => {
   if (result) {
     return result.name;
   } else {
-    return 'NO NAME!!!!!!!!!';
+    return 'Unnamed expenses';
   }
 };

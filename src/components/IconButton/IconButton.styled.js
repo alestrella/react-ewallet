@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { breakpoints } from 'styleConfig/breakpoints';
 
+
 export const StyledButton = styled.button`
   margin: auto;
   border-radius: 50%;
@@ -35,13 +36,13 @@ export const StyledButton = styled.button`
   @media (${breakpoints.tablet}) {
     position: absolute;
     left: 50%;
-    transition: (-50%);
-    bottom: 2%;
+  transition: (-50%);
+  bottom: 2%;
   }
   @media (${breakpoints.laptop}) {
     position: absolute;
     left: 50%;
-    transition: (-50%);
-    bottom: 5%;
+  transition: (-50%);
+  bottom: 5%;
   }
 `;

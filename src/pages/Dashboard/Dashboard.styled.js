@@ -13,6 +13,7 @@ export const DashbordBlur = styled.div`
   }
 `;
 
+
 export const DashboardWrapper = styled.div`
   position: relative;
   max-width: 1280px;

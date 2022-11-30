@@ -47,9 +47,7 @@ export const DiagramTab = () => {
 
   const getYearStatistic = async year => {
     try {
-      const { data } = await axios.get(
-        `/transactions/statistics?from=${year}&till=${+year + 1}`
-      );
+      const { data } = await axios.get(`/transactions/statistics?from=${year}&till=${+year + 1}`);
       statisticFormatter(data);
     } catch (error) {
       console.log(error);
@@ -72,7 +70,6 @@ export const DiagramTab = () => {
 
   useEffect(() => {
     getYearStatistic('2022');
-    console.log('mounting statistic...');
     // eslint-disable-next-line
   }, []);
 

@@ -65,7 +65,7 @@ export const AuthForm = ({ type }) => {
                   />
                 )}
               </Field>
-              {touched.email && errors.email && <FormError name="email" />}
+             {touched.email && errors.email && <FormError name="email" />}
             </InputWrapper>
             <InputWrapper>
               <Field name="password" type="password">
@@ -98,9 +98,7 @@ export const AuthForm = ({ type }) => {
                     )}
                   </Field>
                   <PasswordStrengthChecker password={values.password} />
-                  {touched.confirmPassword && errors.confirmPassword && (
-                    <FormError name="confirmPassword" />
-                  )}
+                  {touched.confirmPassword && errors.confirmPassword && <FormError name="confirmPassword" />}
                 </InputWrapper>
                 <InputWrapper>
                   <Field type="username" name="username">
@@ -114,9 +112,7 @@ export const AuthForm = ({ type }) => {
                       />
                     )}
                   </Field>
-                  {touched.username && errors.username && (
-                    <FormError name="username" />
-                  )}
+                  {touched.username && errors.username && <FormError name="username" />}
                 </InputWrapper>
               </>
             )}

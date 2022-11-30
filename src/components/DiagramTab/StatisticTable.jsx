@@ -19,7 +19,6 @@ export const StatisticTable = ({ data }) => {
       amount: totalSum.toFixed(2),
     };
   });
-
   const filteredSource = dataSource.sort((a, b) => b.amount - a.amount);
 
   const columns = [
