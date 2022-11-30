@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
 import {
   Formik,
-  // Field,
-  // ErrorMessage,
+  Field,
+  // ErrorMessage
 } from 'formik';
+import { FormError } from '../AuthForm/FormError';
 import * as yup from 'yup';
-// import Datetime from 'react-datetime';
+import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 // import toast, { Toaster } from 'react-hot-toast';
 import PropTypes from 'prop-types';
@@ -17,10 +18,11 @@ import {
   ModalWindow,
   Title,
   StyledForm,
+  InputBox,
   InputWrapper,
   InputCategory,
   InputAmount,
-  // InputDate,
+  InputDate,
   InputComment,
   PrimaryButton,
   SecondaryButton,
@@ -40,7 +42,7 @@ import {
   categoriesSelectors,
   getCategories,
 } from '../../redux';
-// import './rdt-styles.css';
+import './rdt-styles.css';
 
 const modalRoot = document.getElementById('modal-root');
 
@@ -54,20 +56,22 @@ const transactionSchema = yup.object().shape({
   sum: yup.number().required(),
   category: yup.string().required(),
   comment: yup.string(),
-  // operationDate: yup
-  //   .date()
-  //   .default(() => new Date())
-  //   .required(),
+  date: yup
+    .date()
+    .default(() => new Date().toISOString())
+    .required(),
   type: yup.string().required(),
 });
 
 const ModalAddTransaction = ({ onClose }) => {
+  const [sum, setSum] = useState();
+  const [comment, setComment] = useState();
   const [typeTransaction, setTypeTransaction] = useState('expense');
 
   const initialValues = {
     category: '',
     comment: '',
-    // operationDate: new Date(),
+    date: new Date().toISOString(),
     type: false,
   };
 
@@ -79,6 +83,27 @@ const ModalAddTransaction = ({ onClose }) => {
     dispatch(getCategories());
   }, [dispatch]);
 
+  const handleChange = e => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case 'sum':
+        setSum(value);
+        break;
+
+      // case 'date':
+      //   setDate(value);
+      //   break;
+
+      case 'comment':
+        setComment(value);
+        break;
+
+      default:
+        break;
+    }
+  };
+
   const handleIncome = e => {
     if (e.target.checked === true) {
       return setTypeTransaction('income');
@@ -86,17 +111,26 @@ const ModalAddTransaction = ({ onClose }) => {
     setTypeTransaction('expense');
   };
 
-  console.log('typeTransaction now >>>', typeTransaction);
+  // console.log('typeTransaction now >>>', typeTransaction);
 
-  const handleSubmit = ({ sum, category, comment }, { resetForm }) => {
-    console.log('comment inside submit', comment);
+  const handleSubmit = ({ sum, category, comment, date }, { resetForm }) => {
+    // console.log('comment inside submit', comment);
 
-    dispatch(addTransaction({ sum, category, comment, type: typeTransaction }));
+    dispatch(
+      addTransaction({
+        sum,
+        category,
+        comment,
+        date,
+        type: typeTransaction,
+      })
+    );
 
     console.log('inside handleSubmit', {
       sum,
       category,
       comment,
+      date,
       type: typeTransaction,
     });
     onClose();
@@ -130,6 +164,7 @@ const ModalAddTransaction = ({ onClose }) => {
           initialValues={initialValues}
           validationSchema={transactionSchema}
           onSubmit={handleSubmit}
+          onChange={handleChange}
         >
           {({ setFieldValue }) => (
             <StyledForm autoComplete="off">
@@ -161,9 +196,9 @@ const ModalAddTransaction = ({ onClose }) => {
                 </Expense>
               </Switcher>
 
-              <div>
+              <InputCategory>
                 <label htmlFor="category" />
-                <InputCategory name="category">
+                <Field name="category" as="select">
                   <option value="">Select a category</option>
                   {categories
                     .filter(elem => elem.type === typeTransaction)
@@ -172,47 +207,51 @@ const ModalAddTransaction = ({ onClose }) => {
                         {name}
                       </option>
                     ))}
-                </InputCategory>
-                {/* <FormError name="category" /> */}
-              </div>
+                </Field>
+                <FormError name="category" />
+              </InputCategory>
 
-              <InputWrapper>
-                <div>
-                  <label htmlFor="sum"></label>
-                  <div>
-                    <InputAmount name="sum" type="number" placeholder="0.00" />
-                    {/* <FormError name="sum" /> */}
-                  </div>
-                </div>
+              <InputBox>
+                <InputWrapper>
+                  <label htmlFor="sum" />
+                  <InputAmount
+                    name="sum"
+                    type="number"
+                    value={sum}
+                    placeholder="0.00"
+                  />
+                  <FormError name="sum" />
+                </InputWrapper>
 
-                {/* <div>
-                  <label htmlFor="operationDate"></label>
+                <InputWrapper>
+                  <label htmlFor="date" />
                   <InputDate>
-                    <Field name="operationDate">
+                    <Field name="date">
                       {({ field, form: { isSubmitting } }) => (
                         <Datetime
                           dateFormat="DD.MM.YYYY"
                           timeFormat={false}
                           initialValue={new Date()}
-                          onChange={operationDate => {
-                            setFieldValue(
-                              'operationDate',
-                              operationDate.format('YYYY-MM-DD')
-                            );
+                          onChange={date => {
+                            setFieldValue('date', date.toISOString());
                           }}
                         />
                       )}
                     </Field>
-                    <FormError name="date" />
+                    {/* <FormError name="date" /> */}
                   </InputDate>
-                </div> */}
-              </InputWrapper>
+                </InputWrapper>
 
-              <div>
-                <label htmlFor="comment" />
-                <InputComment name="comment" placeholder="Comment" />
-                {/* <Field name="comment" as="textarea" placeholder="Comment" /> */}
-              </div>
+                <InputWrapper>
+                  <label htmlFor="comment" />
+                  <InputComment
+                    name="comment"
+                    value={comment}
+                    placeholder="Comment"
+                  />
+                  {/* <Field name="comment" as="textarea" placeholder="Comment" /> */}
+                </InputWrapper>
+              </InputBox>
 
               <PrimaryButton type="primary" htmlType="submit">
                 Add
