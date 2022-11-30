@@ -10,7 +10,7 @@ export const DiagramTabContainer = styled.div`
   justify-content: center;
   @media screen and (${breakpoints.tablet}) {
     flex-direction: row;
-    justify-content: end;
+    justify-content: center;
     padding: 0;
   }
   @media screen and (${breakpoints.laptop}) {
