@@ -28,14 +28,12 @@ export const CustomPicker = styled(DatePicker)`
   text-align: center;
   outline: none;
   cursor: pointer;
-
   input {
     font-size: ${p => p.theme.fontSizes.s};
     @media screen and (${breakpoints.tablet}) {
       font-size: ${p => p.theme.fontSizes.xs};
     }
   }
-
   @media screen and (${breakpoints.tablet}) {
     width: 160px;
   }
