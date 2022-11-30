@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { breakpoints } from '../../styleConfig/breakpoints';
 
 export const DiagramTabContainer = styled.div`
-  padding: 40px 0 0 0;
+  padding: 40px 0 60px 0;
   //background-color: #E7EAF2;
   display: flex;
   flex-direction: column;
