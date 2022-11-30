@@ -16,7 +16,8 @@ export const DashbordBlur = styled.div`
 
 export const DashboardWrapper = styled.div`
   position: relative;
-  max-width: 1280px;
+  width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
   @media screen and (${breakpoints.tablet}) {
     padding: 0 32px;
@@ -37,6 +38,9 @@ export const DashboardLaptopWrapper = styled.div`
 export const DashboardTabletWrapper = styled.div`
 @media screen and (${breakpoints.tablet}) {
   display: flex;
+  margin-bottom: 20px;
+  max-width: 715px;
+  margin: 0 auto 20px;
 }
 @media screen and (${breakpoints.laptop}) {
     display: block;
