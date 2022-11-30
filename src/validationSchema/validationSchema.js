@@ -6,7 +6,7 @@ const authValidationSchema = Yup.object().shape({
     .min(10)
     .max(63)
     .matches(
-      /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{1,63})$/i,
+      /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]*\w{3,}@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{1,63})$/i,
       "must necessarily contain the sign '@' and '.' - there must be at least 2 characters before the '@'; the field can contain hyphens, and the it cannot be at the beginning or end of the Email"
     )
     .required('please, enter your email'),

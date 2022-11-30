@@ -6,8 +6,13 @@ export const DashbordBlur = styled.div`
   background: ${({ theme }) => theme.colors.blur};
   backdrop-filter: blur(25px);
   z-index: 1;
-  min-height: 100%;
+  min-height: 89.5vh;
+  display: flex;
+  @media screen and (${breakpoints.tablet}) {
+    min-height: 91.5vh;
+  }
 `;
+
 
 export const DashboardWrapper = styled.div`
   position: relative;

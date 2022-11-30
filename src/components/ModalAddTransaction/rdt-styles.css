@@ -172,7 +172,7 @@
 }
 
 .rdtPicker td.rdtActive.rdtToday:before {
-  /* border-bottom-color: #fff; */
+  border-bottom-color: #fff;
 }
 
 .rdtPicker td.rdtDisabled,
