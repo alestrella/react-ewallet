@@ -7,7 +7,7 @@ import { breakpoints } from 'styleConfig/breakpoints';
 
 export const NavList = styled.ul`
   display: flex;
-  padding: 20px 62px 12px;
+  padding: 30px 62px 12px;
 
   @media screen and (${breakpoints.tablet}) {
   padding: 40px 0 0 0;
