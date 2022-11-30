@@ -8,6 +8,7 @@ export const StyledTable = styled(Table)`
     max-width: 715px;
     border-radius: ${p => p.theme.radii.large};
     background: transparent;
+    /* transparent; */
   }
   .ant-table .ant-table-container {
     border-radius: 0;
@@ -32,6 +33,13 @@ export const StyledTable = styled(Table)`
   }
   .ant-table-container,
   .ant-table-container table > thead > tr:first-child th:last-child {
+    border-radius: 0 30px 30px 0;
+  }
+
+  .rowStyled > td:first-child {
+    border-radius: 30px 0 0 30px;
+  }
+  .rowStyled > td:last-child {
     border-radius: 0 30px 30px 0;
   }
 `;
