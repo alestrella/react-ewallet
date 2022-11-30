@@ -84,8 +84,10 @@ export const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 100%;
   @media screen and (${breakpoints.tablet}) {
     padding-right: 0;
+    min-width: 0;
   }
   @media screen and (${breakpoints.laptop}) {
     padding: 46px 0 0 69px;
