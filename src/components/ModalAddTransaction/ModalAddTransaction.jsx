@@ -5,22 +5,26 @@ import { createPortal } from 'react-dom';
 import {
   Formik,
   Field,
-  // ErrorMessage,
+  // ErrorMessage
 } from 'formik';
+import { FormError } from '../AuthForm/FormError';
 import * as yup from 'yup';
-// import Datetime from 'react-datetime';
+import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
-// import toast, { Toaster } from 'react-hot-toast';
+import Media from 'react-media';
 import PropTypes from 'prop-types';
 import {
   Overlay,
   ModalWindow,
+  CloseButton,
   Title,
   StyledForm,
+  InputBox,
   InputWrapper,
   InputCategory,
   InputAmount,
-  // InputDate,
+  InputDate,
+  CalendarIcon,
   InputComment,
   PrimaryButton,
   SecondaryButton,
@@ -40,36 +44,31 @@ import {
   categoriesSelectors,
   getCategories,
 } from '../../redux';
-// import './rdt-styles.css';
+import './rdt-styles.css';
 
 const modalRoot = document.getElementById('modal-root');
-
-// const FormError = ({ name }) => {
-//   return (
-//     <ErrorMessage name={name} render={message => toast.error(`${message}`)} />
-//   );
-// };
 
 const transactionSchema = yup.object().shape({
   sum: yup.number().required(),
   category: yup.string().required(),
   comment: yup.string(),
-  // operationDate: yup
-  //   .date()
-  //   .default(() => new Date())
-  //   .required(),
-  income: yup.string().required(),
+  date: yup
+    .date()
+    .default(() => new Date().toISOString())
+    .required(),
+  type: yup.string().required(),
 });
 
 const ModalAddTransaction = ({ onClose }) => {
+  const [sum, setSum] = useState();
+  const [comment, setComment] = useState();
   const [typeTransaction, setTypeTransaction] = useState('expense');
 
   const initialValues = {
-    sum: 0,
     category: '',
     comment: '',
-    // operationDate: new Date(),
-    income: '',
+    date: new Date().toISOString(),
+    type: false,
   };
 
   const dispatch = useDispatch();
@@ -80,6 +79,23 @@ const ModalAddTransaction = ({ onClose }) => {
     dispatch(getCategories());
   }, [dispatch]);
 
+  const handleChange = e => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case 'sum':
+        setSum(value);
+        break;
+
+      case 'comment':
+        setComment(value);
+        break;
+
+      default:
+        break;
+    }
+  };
+
   const handleIncome = e => {
     if (e.target.checked === true) {
       return setTypeTransaction('income');
@@ -87,12 +103,28 @@ const ModalAddTransaction = ({ onClose }) => {
     setTypeTransaction('expense');
   };
 
-  const handleSubmit = ({ sum, category, comment }, { resetForm }) => {
+  // console.log('typeTransaction now >>>', typeTransaction);
+
+  const handleSubmit = ({ sum, category, comment, date }, { resetForm }) => {
+    // console.log('comment inside submit', comment);
+
     dispatch(
-      addTransaction({ sum, category, comment, income: typeTransaction })
+      addTransaction({
+        sum,
+        category,
+        comment,
+        date,
+        type: typeTransaction,
+      })
     );
 
-    console.log({ sum, category, comment, income: typeTransaction });
+    // console.log('inside handleSubmit', {
+    //   sum,
+    //   category,
+    //   comment,
+    //   date,
+    //   type: typeTransaction,
+    // });
     onClose();
   };
 
@@ -118,12 +150,18 @@ const ModalAddTransaction = ({ onClose }) => {
   return createPortal(
     <Overlay onClick={handleBackdropClick}>
       <ModalWindow>
+        <Media
+          query="(min-width: 768px)"
+          render={() => <CloseButton onClick={() => onClose()} />}
+        />
+
         <Title>Add transaction</Title>
 
         <Formik
           initialValues={initialValues}
           validationSchema={transactionSchema}
           onSubmit={handleSubmit}
+          onChange={handleChange}
         >
           {({ setFieldValue }) => (
             <StyledForm autoComplete="off">
@@ -131,11 +169,11 @@ const ModalAddTransaction = ({ onClose }) => {
                 <Income checked={typeTransaction === 'income'}>Income</Income>
 
                 <SwitchBox>
-                  <label htmlFor="income">
+                  <label htmlFor="type">
                     <Switch
-                      name="income"
+                      name="type"
                       type="checkbox"
-                      id="income"
+                      id="type"
                       onClick={e => handleIncome(e)}
                     />
                     {typeTransaction === 'income' ? (
@@ -155,65 +193,63 @@ const ModalAddTransaction = ({ onClose }) => {
                 </Expense>
               </Switcher>
 
-              <div>
+              <InputCategory>
                 <label htmlFor="category" />
-                <InputCategory>
-                  <Field name="category" as="select">
-                    <option value="" selected disabled hidden>
-                      Select a category
-                    </option>
-                    {categories
-                      .filter(elem => elem.type === typeTransaction)
-                      .map(({ name, id }) => (
-                        <option value={id} key={id}>
-                          {name}
-                        </option>
-                      ))}
-                  </Field>
-                  {/* <FormError name="category" /> */}
-                </InputCategory>
-              </div>
+                <Field name="category" as="select">
+                  <option value="">Select a category</option>
+                  {categories
+                    .filter(elem => elem.type === typeTransaction)
+                    .map(({ name, id }) => (
+                      <option value={id} key={id}>
+                        {name}
+                      </option>
+                    ))}
+                </Field>
+                <FormError name="category" />
+              </InputCategory>
 
-              <InputWrapper>
-                <div>
-                  <label htmlFor="sum"></label>
-                  <div>
-                    <InputAmount name="sum" type="number" placeholder="0.00" />
-                    {/* <FormError name="sum" /> */}
-                  </div>
-                </div>
+              <InputBox>
+                <InputWrapper>
+                  <label htmlFor="sum" />
+                  <InputAmount
+                    name="sum"
+                    type="number"
+                    value={sum}
+                    placeholder="0.00"
+                  />
+                  <FormError name="sum" />
+                </InputWrapper>
 
-                {/* <div>
-                  <label htmlFor="operationDate"></label>
+                <InputWrapper>
+                  <label htmlFor="date" />
                   <InputDate>
-                    <Field name="operationDate">
+                    <Field name="date">
                       {({ field, form: { isSubmitting } }) => (
                         <Datetime
                           dateFormat="DD.MM.YYYY"
                           timeFormat={false}
                           initialValue={new Date()}
-                          onChange={operationDate => {
-                            setFieldValue(
-                              'operationDate',
-                              operationDate.format('YYYY-MM-DD')
-                            );
+                          onChange={date => {
+                            setFieldValue('date', date.toISOString());
                           }}
                         />
                       )}
                     </Field>
-                    <FormError name="date" />
+                    {/* <FormError name="date" /> */}
+                    <CalendarIcon />
                   </InputDate>
-                </div> */}
-              </InputWrapper>
+                </InputWrapper>
 
-              <div>
-                <label htmlFor="comment" />
-                <InputComment
-                  name="comment"
-                  as="textarea"
-                  placeholder="Comment"
-                />
-              </div>
+                <InputWrapper>
+                  <label htmlFor="comment" />
+                  <InputComment
+                    name="comment"
+                    value={comment}
+                    placeholder="Comment"
+                  />
+                  {/* <Field name="comment" as="textarea" placeholder="Comment" /> */}
+                </InputWrapper>
+              </InputBox>
 
               <PrimaryButton type="primary" htmlType="submit">
                 Add
@@ -225,8 +261,6 @@ const ModalAddTransaction = ({ onClose }) => {
             </StyledForm>
           )}
         </Formik>
-
-        {/* <Toaster position="top-center" /> */}
       </ModalWindow>
     </Overlay>,
     modalRoot

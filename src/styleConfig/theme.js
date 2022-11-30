@@ -12,10 +12,10 @@ export const theme = {
     PageBgColor: '#E7EAF2',
     blur: 'rgba(255, 255, 255, 0.4)',
   },
-  space: [5, 8, 10, 15, 20, 25, 30, 35, 50, 65, 90, 100, 120, 150],
+  space: [5, 8, 10, 15, 20, 25, 30, 35, 40, 50, 55, 60, 65, 90, 100, 120, 150],
   fonts: {
-    primary: 'Circe',
-    secondary: 'Poppins',
+    primary: 'Circe, sans serif',
+    secondary: 'Poppins, sans serif',
   },
   fontSizes: {
     xs: '12px',
@@ -37,7 +37,6 @@ export const theme = {
   borders: {
     none: 'none',
     normal: '1px solid',
-    
   },
   radii: {
     small: '2px',

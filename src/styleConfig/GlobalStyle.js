@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
   width: 100vw;
+  height: 100%;
   overflow-x: hidden;
 }
 *,
@@ -23,16 +24,8 @@ body {
 ul {
   list-style: none;
   padding: 0;
+  
 };
-li.selected {
-background-color: #eead71;
-}
-div.swiper-button-next::after{
-  color: #eead71 !important;
-}
-div.swiper-button-prev::after{
-  color: #eead71 !important;
-}
 p, h1, h2, h3, h4, button {
   margin: 0;
   padding: 0;
@@ -45,16 +38,18 @@ img {
 a {
   text-decoration: none;
 };
-img.ant-image-preview-img {
-  margin: 0 auto;
-}
-thead {
-  border-radius: 30px;
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+.to-top-progress {
+  z-index: 1111111 !important;
 }
 `;

@@ -32,7 +32,7 @@ export const BalanceTitle = styled.p`
 `;
 
 export const BalanceContent = styled.h3`
-  font-weight: ${p => p.theme.fontWeights.normal};  
+  font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.xxxl};
   line-height: 45px;
 `;

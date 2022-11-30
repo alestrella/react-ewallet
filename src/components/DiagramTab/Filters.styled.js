@@ -6,7 +6,7 @@ export const FiltersContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-   margin-bottom: ${p => p.theme.space[4]}px;
+  margin-bottom: ${p => p.theme.space[4]}px;
   @media screen and (${breakpoints.tablet}) {
     flex-direction: row;
     justify-content: space-between;
@@ -42,8 +42,9 @@ export const CustomPicker = styled(DatePicker)`
   @media screen and (${breakpoints.laptop}) {
     width: 180px;
   }
-  &:hover, &:focus {
-     border: ${p => p.theme.borders.normal} ${p => p.theme.colors.black};
+  &:hover,
+  &:focus {
+    border: ${p => p.theme.borders.normal} ${p => p.theme.colors.black};
   }
   &:first-child {
     margin-bottom: ${p => p.theme.space[4]}px;

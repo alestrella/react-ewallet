@@ -1,16 +1,13 @@
-import { useState, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Container } from './Container.style';
 import { Header } from '../Header/Header';
-import IconButton from 'components/IconButton';
-import { PlusOutlined } from '@ant-design/icons';
-import ModalAddTransaction from 'components/ModalAddTransaction';
 import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/authSelectors';
+import { ScrollToTop } from 'react-to-top';
 
 export const Layout = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <Container>
@@ -20,15 +17,14 @@ export const Layout = () => {
         <Outlet />
       </Suspense>
 
-      {isLoggedIn && (
-        <IconButton onClick={() => setIsModalOpen(true)}>
-          <PlusOutlined style={{ fontSize: '22px' }} />
-        </IconButton>
-      )}
-
-      {isModalOpen && (
-        <ModalAddTransaction onClose={() => setIsModalOpen(false)} />
-      )}
+      <ScrollToTop
+        bgColor="#4A56E2"
+        size={40}
+        strokeWidth={3}
+        strokeColor="#eead71"
+        symbolSize={25}
+        symbol="&#11165;"
+      />
     </Container>
   );
 };

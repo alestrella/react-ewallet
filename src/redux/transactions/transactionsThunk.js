@@ -16,7 +16,9 @@ export const getTransactions = createAsyncThunk(
   'transactions/load',
   async (pageNum, thunkAPI) => {
     try {
-      const getLink = pageNum ? `${ENDPOINTS.load}/${pageNum}` : ENDPOINTS.load;
+      const getLink = pageNum
+        ? `${ENDPOINTS.load}?page=${pageNum}`
+        : ENDPOINTS.load;
       const { data } = await axios.get(getLink);
       const transactions = data.transactions.map(
         convertTransaction.backToFront
@@ -35,9 +37,7 @@ export const addTransaction = createAsyncThunk(
   'transactions/add',
   async (newRecord, thunkAPI) => {
     try {
-      console.log('newRecord', newRecord);
       const postedRecord = convertTransaction.frontToBack(newRecord);
-      console.log('postedRecord', postedRecord);
       const { data } = await axios.post(ENDPOINTS.add, postedRecord);
       store.dispatch(getTransactions(1)); // on success gets newest data
       return convertTransaction.backToFront(data);

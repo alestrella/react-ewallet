@@ -2,19 +2,18 @@ import React from 'react';
 import Media from 'react-media';
 import {
   NavigLink,
-	NavList,
+  NavList,
   NavItem,
-	IconHome,
-	IconWrapper,
+  IconHome,
+  IconWrapper,
   NavText,
   IconGraph,
   IconCurrency,
 } from './Navigation.style';
 
 const Navigation = () => {
-  
   return (
-        <NavList>
+    <NavList>
       <Media
         query="(max-width: 767px)"
         render={() => (

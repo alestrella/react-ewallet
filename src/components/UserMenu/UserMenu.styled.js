@@ -28,17 +28,17 @@ export const UserAvatar = styled.div`
   margin-right: 0;
   @media screen and (${breakpoints.tablet}) {
     margin-right: 10px;
-}
+  }
 `;
 
 export const UserName = styled.div`
-display: none;
+  display: none;
 
-@media screen and (${breakpoints.tablet}) {
-  display: block;
-  padding-top: 3px;
-}
-`
+  @media screen and (${breakpoints.tablet}) {
+    display: block;
+    padding-top: 3px;
+  }
+`;
 
 export const LogOutButton = styled.button`
   display: flex;

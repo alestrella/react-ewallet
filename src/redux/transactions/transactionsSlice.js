@@ -24,65 +24,6 @@ export const transactionsSlice = createSlice({
       state.errorMessage = null;
     },
   },
-<<<<<<< HEAD
-  extraReducers: {
-    [getTransactions.fulfilled](state, { payload }) {
-      return {
-        ...initialState,
-        ...payload,
-      };
-    },
-    [getTransactions.pending](state, _) {
-      return {
-        ...state,
-        isFetching: true,
-      };
-    },
-    [getTransactions.rejected](state, { payload }) {
-      return {
-        ...initialState,
-        page: state.page,
-        totalPages: state.totalPages,
-        errorMessage: payload,
-      };
-    },
-    [addTransaction.fulfilled](state, { payload }) {
-      return {
-        ...initialState,
-        ...payload,
-      };
-    },
-    [addTransaction.pending](state, _) {
-      return {
-        ...state,
-        isFetching: true,
-      };
-    },
-    [addTransaction.rejected](state, { payload }) {
-      return {
-        ...state,
-        errorMessage: payload,
-      };
-    },
-    [deleteTransaction.fulfilled](state, { payload }) {
-      return {
-        ...initialState,
-        ...payload,
-      };
-    },
-    [deleteTransaction.pending](state, _) {
-      return {
-        ...state,
-        isFetching: true,
-      };
-    },
-    [deleteTransaction.rejected](state, { payload }) {
-      return {
-        ...state,
-        errorMessage: payload,
-      };
-    },
-=======
   extraReducers: builder => {
     builder
       .addCase(getTransactions.fulfilled, (state, { payload }) => {
@@ -163,7 +104,6 @@ export const transactionsSlice = createSlice({
           errorMessage: payload,
         };
       });
->>>>>>> dev
   },
 });
 

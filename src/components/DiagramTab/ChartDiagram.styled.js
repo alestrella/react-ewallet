@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { breakpoints } from "../../styleConfig/breakpoints";
+import styled from 'styled-components';
+import { breakpoints } from '../../styleConfig/breakpoints';
 
 export const ChartDiagramContainer = styled.div`
   margin: 0 auto;
@@ -11,7 +11,7 @@ export const ChartDiagramContainer = styled.div`
     width: 336px;
     height: 336px;
   }
-    
+
   @media screen and (${breakpoints.laptop}) {
     width: 288px;
     height: 288px;

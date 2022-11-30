@@ -14,8 +14,6 @@ const DashboardPage = lazy(() => import('pages/Dashboard'));
 // const Layout = lazy(() => import('components/layout/Layout'));
 const CurrencyPage = lazy(() => import('pages/CurrencyPage/CurrencyPage'));
 
-
-
 function App() {
   const isFetching = useSelector(authSelectors.getIsFetching);
 
