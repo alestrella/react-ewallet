@@ -137,7 +137,7 @@
 .rdtDay.rdtToday.rdtActive,
 .rdtDay.rdtActive,
 .rdtDay.rdtActive:hover {
-  background-color: #9c27b0 !important;
+  background-color: #24cca7 !important;
   color: #fff;
   box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2),
     0 13px 24px -11px rgba(156, 39, 176, 0.6);
@@ -217,7 +217,7 @@
 .rdtPicker th.rdtNext,
 .rdtPicker th.rdtPrev,
 .rdtPicker .rdtTimeToggle {
-  color: #9c27b0;
+  color: #24cca7;
 }
 
 .rdtPrev span,
@@ -309,9 +309,9 @@ td.rdtYear:hover {
 }
 
 .rdtCounters .rdtCounter:last-child .rdtCount {
-  color: #9c27b0;
+  color: #24cca7;
   border-radius: 50%;
-  border: 1px solid #9c27b0;
+  border: 1px solid #24cca7;
 }
 
 .rdtCounterSeparator {
@@ -386,6 +386,6 @@ td.rdtYear:hover {
 .rdtMonths .rdtYear.rdtActive,
 .rdtYears .rdtMonth.rdtActive,
 .rdtYears .rdtYear.rdtActive {
-  background-color: #9c27b0 !important;
+  background-color: #24cca7 !important;
   color: #fff;
 }

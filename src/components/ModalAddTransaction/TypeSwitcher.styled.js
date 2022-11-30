@@ -12,14 +12,9 @@ export const SwitchBox = styled.div`
   margin: 0px 20px 0px 20px;
 `;
 
-// export const StyledLabel = styled.label``;
-
 export const Switch = styled(Field)`
   -webkit-appearance: none;
   appearance: none;
-  /* position: absolute;
-  z-index: -1;
-  opacity: 0; */
 
   width: 80px;
   height: 40px;
