@@ -4,7 +4,7 @@ import 'modern-normalize';
 export const GlobalStyle = createGlobalStyle`
 html {
   box-sizing: border-box;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   overflow-x: hidden;
 }
@@ -58,5 +58,8 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+.to-top-progress {
+  z-index: 1111111 !important;
 }
 `;

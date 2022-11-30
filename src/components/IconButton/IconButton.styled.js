@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { breakpoints } from 'styleConfig/breakpoints';
 
+
 export const StyledButton = styled.button`
   margin: auto;
   border-radius: 50%;
@@ -11,10 +12,11 @@ export const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 1100;
+  position: sticky;
+  left: 50%;
+  transition: (-50%);
+  bottom: 15px;
+  z-index: 11000;
 
   color: #fff;
   border: 0;
@@ -32,7 +34,15 @@ export const StyledButton = styled.button`
   }
 
   @media (${breakpoints.tablet}) {
-    right: 40px;
-    bottom: 40px;
+    position: absolute;
+    left: 50%;
+  transition: (-50%);
+  bottom: 2%;
+  }
+  @media (${breakpoints.laptop}) {
+    position: absolute;
+    left: 50%;
+  transition: (-50%);
+  bottom: 5%;
   }
 `;
