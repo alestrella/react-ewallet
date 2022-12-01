@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 import {
   logInUser,
   logOutUser,
@@ -60,7 +60,7 @@ export const authSlice = createSlice({
         return { ...state, isFetching: true };
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
-        toast(payload);
+        // toast(payload);
         return {
           ...initialState,
           errorMessage: payload,
@@ -73,7 +73,7 @@ export const authSlice = createSlice({
         return { ...state, isFetching: true };
       })
       .addCase(logOutUser.rejected, (state, { payload }) => {
-        toast(payload);
+        // toast(payload);
         return { ...initialState, errorMessage: payload };
       })
       .addCase(reconnectUser.fulfilled, (state, { payload }) => {
@@ -83,7 +83,7 @@ export const authSlice = createSlice({
         return { ...state, isFetching: true };
       })
       .addCase(reconnectUser.rejected, (state, { payload }) => {
-        toast(payload);
+        // toast(payload);
         return { ...state, isFetching: false, errorMessage: payload };
       })
       .addCase(reLogInUser.fulfilled, (state, { payload }) => {
@@ -98,7 +98,7 @@ export const authSlice = createSlice({
         return { ...state, isFetching: true };
       })
       .addCase(reLogInUser.rejected, (state, { payload }) => {
-        toast(payload);
+        // toast(payload);
         return { ...initialState, errorMessage: payload };
       });
   },
