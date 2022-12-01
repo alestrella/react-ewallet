@@ -5,14 +5,30 @@ import { breakpoints } from '../../styleConfig/breakpoints';
 export const FiltersContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: ${p => p.theme.space[4]}px;
+`;
+
+export const FilterDescription = styled.div`
+  display: inline-block;
+  width: 90%;
+  font-family: ${p => p.theme.fonts.secondary};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.lineHeights.body};
+  @media screen and (${breakpoints.mobile}) {
+    text-align: center;
+  }
+`;
+export const FiltersSelect = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: ${p => p.theme.space[4]}px;
   @media screen and (${breakpoints.tablet}) {
     flex-direction: row;
     justify-content: space-between;
-  }
-  @media screen and (${breakpoints.laptop}) {
-    margin-top: ${p => p.theme.space[12]}px;
   }
 `;
 
