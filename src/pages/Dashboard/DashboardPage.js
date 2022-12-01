@@ -28,7 +28,7 @@ const DashboardPage = () => {
   }, [isModalOpen]);
 
   const location = useLocation();
-  console.log('Hello form Dashboard!');
+
   return (
     <DashbordBlur>
       {location.pathname === '/dashboard' && (
