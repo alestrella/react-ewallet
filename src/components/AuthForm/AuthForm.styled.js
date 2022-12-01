@@ -132,6 +132,10 @@ export const InputWrapper = styled.div`
   }
 `;
 export const ErrorText = styled.p`
+<<<<<<< HEAD
+  position: absolute;
+=======
+>>>>>>> dev
   text-align: left;
   color: ${p => p.theme.colors.errorColor};
   font-size: ${p => p.theme.fontSizes.xs};
@@ -162,7 +166,11 @@ export const PrimaryButton = styled.button`
   align-items: center;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
+<<<<<<< HEAD
+  font-size: ${p => p.theme.fontSizes.l};
+=======
   font-size: ${p => p.theme.fontSizes.m};
+>>>>>>> dev
   text-transform: uppercase;
   color: ${p => p.theme.colors.primary};
   background-color: ${p => p.theme.colors.accent};

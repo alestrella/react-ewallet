@@ -1,7 +1,7 @@
 import Currency from 'components/Currency/Currency';
 import { Suspense } from 'react';
 import { Helmet } from 'react-helmet';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ModalAddTransaction from 'components/ModalAddTransaction';
 import IconButton from 'components/IconButton';
 import { PlusOutlined } from '@ant-design/icons';
@@ -21,6 +21,12 @@ import { DiagramTab } from 'components/DiagramTab/DiagramTab';
 
 const DashboardPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isModalOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'visible';
+  }, [isModalOpen]);
+
   const location = useLocation();
   console.log('Hello form Dashboard!');
   return (
