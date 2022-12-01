@@ -12,8 +12,11 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import authSelectors from '../../redux/auth/authSelectors';
 import { ModalLogout } from 'components/ModalLogout/ModalLogout';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 
 export const UserMenu = () => {
+  const { t } = useTranslation();
   const userName = useSelector(authSelectors.getUsername);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => setIsModalOpen(state => !state);
@@ -36,7 +39,7 @@ export const UserMenu = () => {
       </UserInfo>
       <LogOutButton type="button" onClick={toggleModal}>
         <LogOutIcon />
-        <LogOutText>Exit</LogOutText>
+        <LogOutText>{t('LogOut.exit')}</LogOutText>
       </LogOutButton>
 
       {isModalOpen && <ModalLogout onClose={toggleModal} />}

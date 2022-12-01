@@ -1,0 +1,44 @@
+{
+  "links": {
+    "home": "Домашня сторінка",
+    "statistic": "Статистика"
+  },
+  "balance": {
+    "BalanceTitle": "ТВІЙ БАЛАНС"
+  },
+  "currency": {
+    "currency": "Валюта",
+    "purchase": "Купівля",
+    "sale": "Продаж",
+    "cash": "Готівковий",
+    "cashless": "Безготівковий"
+  },
+  "transactions": {
+    "date": "Дата",
+    "type": "Тип",
+    "category": "Категорія",
+    "comment": "Коментар",
+    "sum": "Сума",
+    "balance": "Баланс",
+    "actions": "Дія"
+  },
+  "diagram": {
+    "DiagramTabTitle": "СТАТИСТИКА",
+    "expenses": "Витрати",
+    "income": "Прибуток"
+  },
+  "LogOut": {
+    "exit": "Вихід",
+    "LogOutTitle": "Ви дійсно хочете вийти?",
+    "ButtonYES": "Так",
+    "ButtonNo": "Ні"
+  },
+  "ModalAdd": {
+    "modalTitle": "Додати транзакцію",
+    "income": "Прибуток",
+    "expense": "Витрати",
+    "Category": "Виберіть категорію",
+    "ButtonAdd": "Додати",
+    "ButtonCensel": "Відмінити"
+  }
+}
