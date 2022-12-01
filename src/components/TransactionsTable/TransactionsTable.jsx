@@ -1,6 +1,8 @@
 import { Popconfirm, Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getTransactions,
@@ -20,10 +22,12 @@ import {
   TableWrapper,
 } from './TransactionsTable.styled';
 
+
 const TransactionsTable = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(transactionsSelectors.getTransactions);
   const categories = useSelector(categoriesSelectors.getCategories);
+   const { t } = useTranslation();
 
   const handleDelete = id => {
     dispatch(deleteTransaction(id));
@@ -140,35 +144,35 @@ const TransactionsTable = () => {
               {transactions?.map(item => (
                 <List type={item.type} key={item.id}>
                   <ListItem>
-                    <ListText>Date</ListText>
+                    <ListText>{t('balance.BalanceTitle')}</ListText>
                     {item.date.slice(0, 10).replaceAll('-', '.')}
                   </ListItem>
                   <ListItem>
-                    <ListText>Type</ListText>
+                    <ListText>{t('transactions.type')}</ListText>
                     {item.type === 'income' ? '+' : '-'}
                   </ListItem>
                   <ListItem>
-                    <ListText>Category</ListText>
+                    <ListText>{t('transactions.category')}</ListText>
                     {categories
                       .filter(elem => elem.id === item.category)
                       .map(el => el.name)}
                   </ListItem>
                   <ListItem>
-                    <ListText>Comment</ListText>
+                    <ListText>{t('transactions.comment')}</ListText>
                     {item.comment}
                   </ListItem>
                   <ListItem>
-                    <ListText>Sum</ListText>
+                    <ListText>{t('transactions.sum')}</ListText>
                     <SumStyled type={item.type}>
                       {item.sum.toFixed(2)}
                     </SumStyled>
                   </ListItem>
                   <ListItem>
-                    <ListText>Balance</ListText>
+                    <ListText>{t('transactions.balance')}</ListText>
                     {item.balance.toFixed(2)}
                   </ListItem>
                   <ListItem>
-                    <ListText>Actions</ListText>
+                    <ListText>{t('transactions.actions')}</ListText>
                     <Popconfirm
                       title="Sure to delete?"
                       onConfirm={() => handleDelete(item.id)}

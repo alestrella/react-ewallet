@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchCurrency } from 'services/API-PB-currency';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 import {
   CurrencyDataItem,
   CurrencyData,
@@ -13,12 +15,14 @@ import {
 } from './Currency.styled';
 import { CurrencyLoaderBox } from './CurrencyLoader';
 
+
 const Currency = () => {
   const [foundedCashlessCurrency, setFoundedCashlessCurrency] = useState([]);
   const [foundedCashCurrency, setFoundedCashCurrency] = useState([]);
   const [searchParams, setSearchParams] = useState('cashless');
   const [isLoading, setIsLoading] = useState(true);
   const [lastTimeStamp, setLastTimeStamp] = useState(0);
+  const { t } = useTranslation();
 
   const refreshTime = 3600000;
 
@@ -93,9 +97,9 @@ const Currency = () => {
           <CurrencyLoaderBox>
             <span>
               <CurrencyTitle>
-                <CurrencyTitleItem>Currency</CurrencyTitleItem>
-                <CurrencyTitleItem>Purchase</CurrencyTitleItem>
-                <CurrencyTitleItem>Sale</CurrencyTitleItem>
+                <CurrencyTitleItem>{t('currency.currency')}</CurrencyTitleItem>
+                <CurrencyTitleItem>{t('currency.purchase')}</CurrencyTitleItem>
+                <CurrencyTitleItem>{t('currency.sale')}</CurrencyTitleItem>
               </CurrencyTitle>
               <h3>Loading...</h3>
             </span>
@@ -103,9 +107,9 @@ const Currency = () => {
         ) : (
           <>
             <CurrencyTitle>
-              <CurrencyTitleItem>Currency</CurrencyTitleItem>
-              <CurrencyTitleItem>Purchase</CurrencyTitleItem>
-              <CurrencyTitleItem>Sale</CurrencyTitleItem>
+              <CurrencyTitleItem>{t('currency.currency')}</CurrencyTitleItem>
+              <CurrencyTitleItem>{t('currency.purchase')}</CurrencyTitleItem>
+              <CurrencyTitleItem>{t('currency.sale')}</CurrencyTitleItem>
             </CurrencyTitle>
             <CurrencyData>
               {searchParams === 'cashless'
@@ -147,7 +151,7 @@ const Currency = () => {
                   changeSearchValue('cash');
                 }}
               >
-                Cash
+                {t('currency.cash')}
               </ButtonCurrency>
               <ButtonCurrency
                 disabled={searchParams === 'cashless' ? true : false}
@@ -155,7 +159,7 @@ const Currency = () => {
                   changeSearchValue('cashless');
                 }}
               >
-                Cashless
+                {t('currency.cashless')}
               </ButtonCurrency>
             </ButtonBox>
           </>

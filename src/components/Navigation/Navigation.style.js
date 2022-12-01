@@ -8,12 +8,11 @@ import { breakpoints } from 'styleConfig/breakpoints';
 export const NavList = styled.ul`
   display: flex;
   padding: 12px 62px;
-
   @media screen and (${breakpoints.tablet}) {
-  padding: 40px 0 28px 0;
+    padding: 40px 0 0 0;
   }
   @media screen and (${breakpoints.laptop}) {
-    padding: 40px 0 28px 0;
+    padding: 40px 0 14px 0;
   }
 `;
 
@@ -67,7 +66,6 @@ export const NavText = styled.span`
   }
 `;
 
-
 export const IconWrapper = styled.div`
   width: 18px;
   height: 18px;
@@ -86,7 +84,6 @@ export const IconHome = styled(FaHome)`
     background-color: ${p => p.theme.colors.secondary};
     filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
-
   @media screen and (${breakpoints.tablet}) {
     :hover,
     :focus {
@@ -116,7 +113,6 @@ export const IconGraph = styled(SlGraph)`
     background-color: ${p => p.theme.colors.secondary};
     filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
-
   @media screen and (${breakpoints.tablet}) {
     :hover,
     :focus {
@@ -146,7 +142,6 @@ export const IconCurrency = styled(MdOutlineAttachMoney)`
     background-color: ${p => p.theme.colors.secondary};
     filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
-
   @media screen and (${breakpoints.tablet}) {
     :hover,
     :focus {

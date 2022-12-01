@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 import {
   Formik,
   // Field,
@@ -63,6 +65,7 @@ const transactionSchema = yup.object().shape({
 
 const ModalAddTransaction = ({ onClose }) => {
   const [typeTransaction, setTypeTransaction] = useState('expense');
+  const { t } = useTranslation();
 
   const initialValues = {
     category: '',
@@ -124,7 +127,7 @@ const ModalAddTransaction = ({ onClose }) => {
   return createPortal(
     <Overlay onClick={handleBackdropClick}>
       <ModalWindow>
-        <Title>Add transaction</Title>
+        <Title>{t('ModalAdd.modalTitle')}</Title>
 
         <Formik
           initialValues={initialValues}
@@ -134,7 +137,9 @@ const ModalAddTransaction = ({ onClose }) => {
           {({ setFieldValue }) => (
             <StyledForm autoComplete="off">
               <Switcher>
-                <Income checked={typeTransaction === 'income'}>Income</Income>
+                <Income checked={typeTransaction === 'income'}>
+                  {t('ModalAdd.income')}
+                </Income>
 
                 <SwitchBox>
                   <label htmlFor="type">
@@ -157,14 +162,14 @@ const ModalAddTransaction = ({ onClose }) => {
                 </SwitchBox>
 
                 <Expense checked={typeTransaction === 'expense'}>
-                  Expense
+                  {t('ModalAdd.expense')}
                 </Expense>
               </Switcher>
 
               <div>
                 <label htmlFor="category" />
                 <InputCategory name="category">
-                  <option value="">Select a category</option>
+                  <option value="">{t('ModalAdd.Category')}</option>
                   {categories
                     .filter(elem => elem.type === typeTransaction)
                     .map(({ name, id }) => (
@@ -215,11 +220,11 @@ const ModalAddTransaction = ({ onClose }) => {
               </div>
 
               <PrimaryButton type="primary" htmlType="submit">
-                Add
+                {t('ModalAdd.ButtonAdd')}
               </PrimaryButton>
 
               <SecondaryButton htmlType="button" onClick={() => onClose()}>
-                Cancel
+                {t('ModalAdd.ButtonCensel')}
               </SecondaryButton>
             </StyledForm>
           )}
