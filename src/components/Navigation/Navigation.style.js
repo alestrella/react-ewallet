@@ -21,17 +21,26 @@ export const NavigLink = styled(NavLink)`
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+
   &:not(:last-child) {
     margin-right: 28px;
   }
-  :active > span{
-    color: '#5754a8';
+  &:hover,
+  &:focus {
+    font-weight: ${p => p.theme.fontWeights.bold};
+    color: ${p => p.theme.colors.black};
+    text-decoration: underline;
   }
   @media screen and (${breakpoints.tablet}) {
     &:not(:last-child) {
       margin-bottom: 12px;
     }
   }
+  &.active span {
+    color: ${p => p.theme.colors.black};
+    font-weight: ${p => p.theme.fontWeights.bold};
+  }
+  
 `;
 
 export const NavItem = styled.li`
@@ -58,9 +67,9 @@ export const NavText = styled.span`
   color: ${p => p.theme.colors.black};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
-  &:hover,
-  &:focus
-  {
+  &:hover
+   {
+    color: ${p => p.theme.colors.black};
     font-weight: ${p => p.theme.fontWeights.bold};
   }
   @media screen and (${breakpoints.tablet}) {
@@ -83,28 +92,31 @@ export const IconHome = styled(FaHome)`
   border-radius: ${p => p.theme.radii.small};
   background-color: #6e78e8;
   padding: 2px;
-  :hover,
-  :focus {
-    transition: color 250ms linear;
+  transition: color 250ms linear;
+  filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  &:hover,
+  &:focus,
+  &:active {
     background-color: ${p => p.theme.colors.secondary};
-    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
+
   @media screen and (${breakpoints.tablet}) {
-    :hover,
-    :focus {
+    &:hover,
+    &:focus,
+    &:active {
       transition: color 250ms linear;
       background-color: ${p => p.theme.colors.secondary};
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
-    }
+    }  
   }
   @media screen and (${breakpoints.laptop}) {
-    :hover,
-    :focus,
-     {
+    &:hover,
+    &:focus,
+    &:active {
       transition: color 250ms linear;
       background-color: ${p => p.theme.colors.secondary};
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
-    }
+    }    
   }
 `;
 export const IconGraph = styled(SlGraph)`
@@ -113,26 +125,25 @@ export const IconGraph = styled(SlGraph)`
   border-radius: ${p => p.theme.radii.small};
   background-color: #6e78e8;
   padding: 2px;
-  :hover,
-  :focus {
-    transition: color 250ms linear;
+  transition: color 250ms linear;
+  filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  &:hover,
+  &:focus,
+  &:active {
     background-color: ${p => p.theme.colors.secondary};
-    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
   @media screen and (${breakpoints.tablet}) {
-    :hover,
-    :focus {
-      transition: color 250ms linear;
+    &:hover,
+    &:focus,
+    &:active {
       background-color: ${p => p.theme.colors.secondary};
-      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
     }
   }
   @media screen and (${breakpoints.laptop}) {
-    :hover,
-    :focus {
-      transition: color 250ms linear;
+    &:hover,
+    &:focus,
+    &:active {
       background-color: ${p => p.theme.colors.secondary};
-      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
     }
   }
 `;
@@ -142,26 +153,25 @@ export const IconCurrency = styled(MdOutlineAttachMoney)`
   background-color: ${p => p.theme.colors.secondary};
   border-radius: ${p => p.theme.radii.small};
   background-color: #6e78e8;
-  :hover,
-  :focus {
-    transition: color 250ms linear;
+  transition: color 250ms linear;
+  filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  &:hover,
+  &:focus,
+  &:active {
     background-color: ${p => p.theme.colors.secondary};
-    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
   @media screen and (${breakpoints.tablet}) {
-    :hover,
-    :focus {
-      transition: color 250ms linear;
-      background-color: ${p => p.theme.colors.secondary};
-      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    &:hover,
+    &:focus,
+    &:active {      
+      background-color: ${p => p.theme.colors.secondary};      
     }
   }
   @media screen and (${breakpoints.laptop}) {
-    :hover,
-    :focus {
-      transition: color 250ms linear;
-      background-color: ${p => p.theme.colors.secondary};
-      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    &:hover,
+    &:focus,
+    &:active {     
+      background-color: ${p => p.theme.colors.secondary};      
     }
   }
 `;
