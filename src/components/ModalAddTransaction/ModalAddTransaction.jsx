@@ -241,7 +241,7 @@ const ModalAddTransaction = ({ onClose }) => {
                   <Field
                     name="comment"
                     value={comment}
-                    placeholder="Comment"
+                    placeholder={t('ModalAdd.placeholderComent')}
                     as={InputComment}
                   />
                   {/* <Field name="comment" as="textarea" placeholder="Comment" /> */}

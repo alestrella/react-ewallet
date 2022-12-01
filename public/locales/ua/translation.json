@@ -39,6 +39,22 @@
     "expense": "Витрати",
     "Category": "Виберіть категорію",
     "ButtonAdd": "Додати",
-    "ButtonCensel": "Відмінити"
+    "ButtonCensel": "Відмінити",
+    "placeholderComent": "Коментар"
+  },
+  "placeholder": {
+    "placeholderEmail": "Введіть пошту",
+    "placeholderPassword": "Введіть пароль",
+    "placeholderconfirmPassword": "Підтвердіть пароль",
+    "placeholderName": "Введіть ім'я",
+    "buttonReg": "Додати",
+    "buttonLogIn": "Відмінити",
+    "buttonGoogle": "Відмінити"
+  },
+  "buttonAuth": {
+    "buttonReg": "Реєстрація",
+    "buttonLogIn": "Увійти",
+    "buttonGoogle": "Увійти з допомогою Google"
   }
 }
+

@@ -41,7 +41,22 @@
     "expense": "Expense",
     "Category": "Select a category",
     "ButtonAdd": "Add",
-    "ButtonCensel": "Cancel"
+    "ButtonCensel": "Cancel",
+    "placeholderComent": "Comment"
+    
+  },
+  "placeholder": {
+    "placeholderEmail": "E-mail",
+    "placeholderPassword": "Password",
+    "placeholderconfirmPassword": "Confirm password",
+    "placeholderName": "First name"
+  },
+  "buttonAuth": {
+    "buttonReg": "register",
+    "buttonLogIn": "log in",
+    "buttonGoogle": "Sign Up with Google"
   }
-  
 }
+
+  
+  
