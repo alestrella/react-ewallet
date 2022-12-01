@@ -93,22 +93,20 @@ export const InputBox = styled.div`
 
 export const InputWrapper = styled.div`
   margin-bottom: ${p => p.theme.space[8]}px;
-  width: 100%;
+  /* width: 100%; */
 
   @media (${breakpoints.tablet}) {
     flex-direction: row;
     flex-flow: wrap;
-    width: 190px;
   }
 `;
 
-export const InputCategory = styled.div`
+export const InputCategory = styled.select`
   flex-direction: column;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  margin-bottom: ${p => p.theme.space[8]}px;
-  padding: 0 ${p => p.theme.space[4]}px;
+  padding: 0 ${p => p.theme.space[1]}px;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.l};
@@ -149,8 +147,7 @@ export const InputAmount = styled(Field)`
   }
 
   @media (${breakpoints.tablet}) {
-    /* width: auto; */
-    width: 170px;
+    width: 181px;
     margin-right: 32px;
     text-align: center;
     margin-bottom: 0;
@@ -179,7 +176,7 @@ export const InputDate = styled.div`
   position: relative;
 
   @media (${breakpoints.tablet}) {
-    width: 170px;
+    width: 181px;
   }
 `;
 
@@ -192,7 +189,7 @@ export const CalendarIcon = styled(CalendarOutlined)`
   right: ${p => p.theme.space[1]}px;
 `;
 
-export const InputComment = styled(Field)`
+export const InputComment = styled.textarea`
   padding: 0 ${p => p.theme.space[4]}px;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
