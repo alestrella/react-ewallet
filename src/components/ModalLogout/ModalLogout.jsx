@@ -9,11 +9,14 @@ import {
   PrimaryButton,
   SecondaryButton,
 } from './ModalLogout.styled';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 
 const modalRoot = document.querySelector('#modal-root');
 
 export const ModalLogout = ({ onClose }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -36,12 +39,14 @@ export const ModalLogout = ({ onClose }) => {
   return createPortal(
     <Overlay onClick={handleBackdropClick}>
       <ModalWindow>
-        <Title>Do you want to quit the app?</Title>
+        <Title>{t('LogOut.LogOutTitle')}</Title>
         <>
           <PrimaryButton onClick={() => dispatch(logOutUser())}>
-            YES
+            {t('LogOut.ButtonYES')}
           </PrimaryButton>
-          <SecondaryButton onClick={onClose}>NO</SecondaryButton>
+          <SecondaryButton onClick={onClose}>
+            {t('LogOut.ButtonNo')}
+          </SecondaryButton>
         </>
       </ModalWindow>
     </Overlay>,

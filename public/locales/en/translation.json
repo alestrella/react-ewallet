@@ -1,0 +1,47 @@
+
+
+{
+  "links": {
+    "home": "Home",
+    "statistic": "Statistics"
+  },
+  "balance": {
+    "BalanceTitle": "YOUR BALANCE"
+  },
+  "currency": {
+    "currency": "Currency",
+    "purchase": "Purchase",
+    "sale": "Sale",
+    "cash": "Cash",
+    "cashless": "Cashless"
+  },
+  "transactions": {
+    "date": "Date",
+    "type": "Type",
+    "category": "Category",
+    "comment": "Comment",
+    "sum": "Sum",
+    "balance": "Balance",
+    "actions": "Actions"
+  },
+  "diagram": {
+    "DiagramTabTitle": "Statistics",
+    "expenses": "Expenses",
+    "income": "Income"
+  },
+  "LogOut": {
+    "exit": "Exit",
+    "LogOutTitle": "Do you want to quit the app?",
+    "ButtonYES": "YES",
+    "ButtonNo": "NO"
+  },
+  "ModalAdd": {
+    "modalTitle": "Add transaction",
+    "income": "Income",
+    "expense": "Expense",
+    "Category": "Select a category",
+    "ButtonAdd": "Add",
+    "ButtonCensel": "Cancel"
+  }
+  
+}

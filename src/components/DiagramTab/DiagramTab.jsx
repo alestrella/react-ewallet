@@ -1,23 +1,21 @@
 import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { ChartDiagram } from './ChartDiagram';
-import { Filters } from './Filters';
-import { StatisticTable } from './StatisticTable';
-import {
-  DiagramTabContainer,
-  ChartDiagramContainer,
-  DiagramTabTitle,
-  DiagramTabText,
-  DiagramTabTotal,
-} from './DiagramTab.styled';
-import { theme } from '../../styleConfig/theme';
-import { findNameById, findColorById } from '../../helpers/helpers';
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { ChartDiagram } from "./ChartDiagram";
+import { Filters } from "./Filters";
+import { StatisticTable } from "./StatisticTable";
+import { DiagramTabContainer, ChartDiagramContainer, DiagramTabTitle, DiagramTabText, DiagramTabTotal } from "./DiagramTab.styled";
+import { theme } from "../../styleConfig/theme";
+import { findNameById, findColorById } from "../../helpers/helpers";
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
+
 
 export const DiagramTab = () => {
   const [totalIncoming, setTotalIncoming] = useState(0);
   const [totalExpense, setTotalExpense] = useState(0);
   const [statisticData, setStatisticData] = useState([]);
+  const { t } = useTranslation();  
 
   const categories = useSelector(state => state.categories.categories);
   const expenseCategories = categories.filter(({ type }) => type === 'expense');
@@ -76,7 +74,7 @@ export const DiagramTab = () => {
   return (
     <DiagramTabContainer>
       <ChartDiagramContainer>
-        <DiagramTabTitle>Statistics</DiagramTabTitle>
+        <DiagramTabTitle>{t('diagram.DiagramTabTitle')}</DiagramTabTitle>
         <ChartDiagram data={statisticData} total={totalExpense} />
       </ChartDiagramContainer>
       <div>
@@ -86,13 +84,13 @@ export const DiagramTab = () => {
         />
         <StatisticTable data={statisticData} />
         <DiagramTabText style={{ marginBottom: '15px' }}>
-          <span>Expenses:</span>
+          <span>{t('diagram.expenses')}:</span>
           <DiagramTabTotal accent={theme.colors.accentSecondary}>
             {totalExpense}
           </DiagramTabTotal>
         </DiagramTabText>
         <DiagramTabText>
-          <span>Income: </span>
+          <span>{t('diagram.income')}: </span>
           <DiagramTabTotal accent={theme.colors.accent}>
             {totalIncoming}
           </DiagramTabTotal>

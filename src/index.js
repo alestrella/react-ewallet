@@ -11,6 +11,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
+import '/node_modules/flag-icons/css/flag-icons.min.css';
 
 // back-end address
 axios.defaults.baseURL = 'https://ewallet-api.onrender.com/api/';

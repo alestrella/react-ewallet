@@ -10,10 +10,15 @@ import {
   IconGraph,
   IconCurrency,
 } from './Navigation.style';
+import { useTranslation } from 'react-i18next';
+import "../../utils/i18next"
+
+
 
 const Navigation = () => {
+   const { t } = useTranslation();  
   return (
-    <NavList>
+    <NavList>          
       <Media
         query="(max-width: 767px)"
         render={() => (
@@ -22,14 +27,14 @@ const Navigation = () => {
               <IconWrapper>
                 <IconHome size="38px" />
               </IconWrapper>
-              <NavText>Home</NavText>
+              <NavText>{t('links.home')}</NavText>
             </NavigLink>
 
             <NavigLink to="/statistic">
               <IconWrapper>
                 <IconGraph size="38px" />
               </IconWrapper>
-              <NavText>Statistics</NavText>
+              <NavText>{t('links.statistic')}</NavText>
             </NavigLink>
             <NavigLink to="/currency">
               <IconWrapper>
@@ -47,14 +52,14 @@ const Navigation = () => {
               <IconWrapper>
                 <IconHome size="18px" />
               </IconWrapper>
-              <NavText>Home</NavText>
+              <NavText>{t('links.home')}</NavText>
             </NavigLink>
 
             <NavigLink to="/statistic">
               <IconWrapper>
                 <IconGraph size="18px" />
               </IconWrapper>
-              <NavText>Statistics</NavText>
+              <NavText>{t('links.statistic')}</NavText>
             </NavigLink>
           </NavItem>
         )}

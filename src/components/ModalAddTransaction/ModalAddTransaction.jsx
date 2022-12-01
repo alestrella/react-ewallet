@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 import {
   Formik,
   Field,
@@ -63,6 +65,7 @@ const ModalAddTransaction = ({ onClose }) => {
   const [sum, setSum] = useState();
   const [comment, setComment] = useState();
   const [typeTransaction, setTypeTransaction] = useState('expense');
+  const { t } = useTranslation();
 
   const initialValues = {
     category: '',
@@ -144,7 +147,7 @@ const ModalAddTransaction = ({ onClose }) => {
           render={() => <CloseButton onClick={() => onClose()} />}
         />
 
-        <Title>Add transaction</Title>
+        <Title>{t('ModalAdd.Category')}</Title>
 
         <Formik
           initialValues={initialValues}
@@ -155,7 +158,9 @@ const ModalAddTransaction = ({ onClose }) => {
           {({ setFieldValue }) => (
             <StyledForm autoComplete="off">
               <Switcher>
-                <Income checked={typeTransaction === 'income'}>Income</Income>
+                <Income checked={typeTransaction === 'income'}>
+                  {t('ModalAdd.income')}
+                </Income>
 
                 <SwitchBox>
                   <label htmlFor="type">
@@ -178,7 +183,7 @@ const ModalAddTransaction = ({ onClose }) => {
                 </SwitchBox>
 
                 <Expense checked={typeTransaction === 'expense'}>
-                  Expense
+                  {t('ModalAdd.expense')}
                 </Expense>
               </Switcher>
 
@@ -187,7 +192,7 @@ const ModalAddTransaction = ({ onClose }) => {
                   <label htmlFor="category" />
                   <Field name="category" as={InputCategory}>
                     <option value="" disabled hidden>
-                      Select a category
+                      {t('ModalAdd.Category')}
                     </option>
                     {categories
                       .filter(elem => elem.type === typeTransaction)
@@ -244,11 +249,11 @@ const ModalAddTransaction = ({ onClose }) => {
               </InputBox>
 
               <PrimaryButton type="primary" htmlType="submit">
-                Add
+                {t('ModalAdd.ButtonAdd')}
               </PrimaryButton>
 
               <SecondaryButton htmlType="button" onClick={() => onClose()}>
-                Cancel
+                {t('ModalAdd.ButtonCensel')}
               </SecondaryButton>
             </StyledForm>
           )}
