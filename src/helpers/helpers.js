@@ -1,9 +1,9 @@
-export const findColorById = (id) => {
+export const findColorById = id => {
   const colors = [
     {
       id: '6378dbbf7f1022fdac49bdf3',
       name: 'Education',
-      color: '#FED057'
+      color: '#FED057',
     },
     {
       id: '6378dbbf7f1022fdac49bdf1',
@@ -13,12 +13,12 @@ export const findColorById = (id) => {
     {
       id: '6378dbbf7f1022fdac49bdf4',
       name: 'Leisure',
-      color:  '#FD9498',
+      color: '#FD9498',
     },
     {
       id: '6378dbbf7f1022fdac49bdee',
       name: 'Products',
-      color: '#C5BAFF', 
+      color: '#C5BAFF',
     },
     {
       id: '6378dbbf7f1022fdac49bdf2',
@@ -28,7 +28,7 @@ export const findColorById = (id) => {
     {
       id: '6378dbbf7f1022fdac49bdef',
       name: 'Car',
-      color: '#4A56E2', 
+      color: '#4A56E2',
     },
     {
       id: '6378dbbf7f1022fdac49bdf0',
@@ -45,7 +45,7 @@ export const findColorById = (id) => {
       name: 'Other expenses',
       color: '#00AD84',
     },
-   ]
+  ];
   const result = colors.find(item => item.id === id);
   if (result) {
     return result.color;

@@ -132,7 +132,10 @@ export const InputWrapper = styled.div`
   }
 `;
 export const ErrorText = styled.p`
+<<<<<<< HEAD
   position: absolute;
+=======
+>>>>>>> dev
   text-align: left;
   color: ${p => p.theme.colors.errorColor};
   font-size: ${p => p.theme.fontSizes.xs};
@@ -163,7 +166,11 @@ export const PrimaryButton = styled.button`
   align-items: center;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
+<<<<<<< HEAD
   font-size: ${p => p.theme.fontSizes.l};
+=======
+  font-size: ${p => p.theme.fontSizes.m};
+>>>>>>> dev
   text-transform: uppercase;
   color: ${p => p.theme.colors.primary};
   background-color: ${p => p.theme.colors.accent};
@@ -182,6 +189,7 @@ export const PrimaryButton = styled.button`
   }
 `;
 export const StyledLink = styled(Link)`
+  margin-bottom: ${p => p.theme.space[4]}px;
   transition: all 0.3s ease;
   width: 280px;
   height: 50px;
@@ -190,8 +198,32 @@ export const StyledLink = styled(Link)`
   align-items: center;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
-  font-size: ${p => p.theme.fontSizes.l};
+  font-size: ${p => p.theme.fontSizes.m};
   text-transform: uppercase;
+  color: ${p => p.theme.colors.secondary};
+  background-color: transparent;
+  border: ${p => p.theme.borders.normal} ${p => p.theme.colors.secondary};
+  border-radius: ${p => p.theme.radii.medium};
+  outline: none;
+  @media (${breakpoints.tablet}) {
+    width: 300px;
+  }
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 4px 4px 0px #00000040;
+  }
+`;
+
+export const GoogleLink = styled.a`
+  transition: all 0.3s ease;
+  width: 280px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: ${p => p.theme.fonts.primary};
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.m};
   color: ${p => p.theme.colors.secondary};
   background-color: transparent;
   border: ${p => p.theme.borders.normal} ${p => p.theme.colors.secondary};

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { BalanceBox, BalanceTitle, BalanceContent } from './Balance.style';
-import {transactionsSelectors} from '../../redux/'
+import { transactionsSelectors } from '../../redux/';
 
 const Balance = () => {
   const totalBalance = useSelector(transactionsSelectors.getBalance);

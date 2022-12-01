@@ -12,7 +12,7 @@ export const CustomTable = styled(Table)`
   .ant-table-container table > thead > tr:first-child th {
     background-color: ${p => p.theme.colors.primary};
     padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
-  } 
+  }
   .ant-table-container table > thead > tr:first-child th:first-child {
     border-radius: ${p => p.theme.radii.large} 0 0 ${p => p.theme.radii.large};
     text-align: left;
@@ -23,7 +23,7 @@ export const CustomTable = styled(Table)`
     text-align: right;
   }
   .ant-table-tbody .ant-table-cell {
-    border-bottom: ${p => p.theme.borders.normal} #DCDCDF;
+    border-bottom: ${p => p.theme.borders.normal} #dcdcdf;
   }
 `;
 

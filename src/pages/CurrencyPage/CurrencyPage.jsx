@@ -45,5 +45,3 @@ const CurrencyPage = () => {
 };
 
 export default CurrencyPage;
-
-
