@@ -31,54 +31,61 @@ const DashboardPage = () => {
 
   return (
     <DashbordBlur>
-      {location.pathname === '/dashboard' && (
-        <DashboardWrapper>
-          <Helmet>
-            <title>Dashboard</title>
-          </Helmet>
-          <DashboardLaptopWrapper>
-            <DashboardTabletWrapper>
-              <WrapperBase>
-                <Navigation />
-                <Balance />
-              </WrapperBase>
-              <Media query="(min-width: 768px)" render={() => <Currency />} />
-            </DashboardTabletWrapper>
-          </DashboardLaptopWrapper>
-          <TransactionsTable />
-          <IconButton onClick={() => setIsModalOpen(true)}>
-            <PlusOutlined style={{ fontSize: '20px' }} />
-          </IconButton>
-          {isModalOpen && (
-            <ModalAddTransaction onClose={() => setIsModalOpen(false)} />
-          )}
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
-        </DashboardWrapper>
-      )}
-      {location.pathname === '/statistic' && (
-        <DashboardWrapper>
-          <Helmet>
-            <title>Statistic</title>
-          </Helmet>
-          <DashboardLaptopWrapper>
-            <DashboardTabletWrapper>
-              <WrapperBase>
-                <Navigation />
+      <DashboardWrapper>
+        <Helmet>
+          <title>Dashboard</title>
+        </Helmet>
+        <DashboardLaptopWrapper>
+          <DashboardTabletWrapper>
+            <WrapperBase>
+              <Navigation />
+              {location.pathname === '/statistic' ? (
                 <Media query="(min-width: 768px)" render={() => <Balance />} />
-              </WrapperBase>
-              <Media query="(min-width: 768px)" render={() => <Currency />} />
-            </DashboardTabletWrapper>
-          </DashboardLaptopWrapper>
+              ) : (
+                <Balance />
+              )}
+              {/* <Balance /> */}
+            </WrapperBase>
+            <Media query="(min-width: 768px)" render={() => <Currency />} />
+          </DashboardTabletWrapper>
+        </DashboardLaptopWrapper>
+        {location.pathname === '/dashboard' && (
+          <>
+            <TransactionsTable />
+            <IconButton onClick={() => setIsModalOpen(true)}>
+              <PlusOutlined style={{ fontSize: '20px' }} />
+            </IconButton>
+            {isModalOpen && (
+              <ModalAddTransaction onClose={() => setIsModalOpen(false)} />
+            )}
+          </>
+        )}
+        {location.pathname === '/statistic' && (
           <>
             <DiagramTab />
           </>
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
-        </DashboardWrapper>
-      )}
+        )}
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </DashboardWrapper>
+      {/* <DashboardWrapper>
+        <Helmet>
+          <title>Statistic</title>
+        </Helmet>
+        <DashboardLaptopWrapper>
+          <DashboardTabletWrapper>
+            <WrapperBase>
+              <Navigation />
+              <Media query="(min-width: 768px)" render={() => <Balance />} />
+            </WrapperBase>
+            <Media query="(min-width: 768px)" render={() => <Currency />} />
+          </DashboardTabletWrapper>
+        </DashboardLaptopWrapper>
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
+      </DashboardWrapper> */}
     </DashbordBlur>
   );
 };
