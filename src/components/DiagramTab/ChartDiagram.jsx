@@ -16,7 +16,7 @@ const TemplatePie = () => {
     legend: false,
     color: theme.colors.shade,
     pieStyle: {
-      lineWidth: ''
+      lineWidth: '',
     },
     radius: 1,
     innerRadius: 0.7,
@@ -31,23 +31,21 @@ const TemplatePie = () => {
         content: '₴ 0,00',
       },
     },
-   };
-  
-  return (
-    <Pie {...config} />
-  );
+  };
+
+  return <Pie {...config} />;
 };
 
 export const ChartDiagram = ({ data, total }) => {
-    const config = {
+  const config = {
     data,
     autofit: true,
-    angleField: 'totalSum', 
+    angleField: 'totalSum',
     legend: false,
     colorField: 'name',
     color: data.map(item => item.color),
     pieStyle: {
-      lineWidth: ''
+      lineWidth: '',
     },
     radius: 1,
     innerRadius: 0.7,
@@ -73,8 +71,5 @@ export const ChartDiagram = ({ data, total }) => {
 
 ChartDiagram.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  total: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
+  total: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };

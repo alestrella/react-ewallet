@@ -16,15 +16,18 @@ import {
   StyledInput,
   StyledInputPassword,
   WarningText,
+  GoogleLink,
 } from './AuthForm.styled';
 import { FormError } from './FormError';
-import { PasswordStrengthChecker } from './PasswordstrengthChecker';
+import { PasswordStrengthChecker } from './PasswordstrengthChecker.jsx';
 import { AppLogo } from 'components/Logo/Logo';
-
+import { ReactComponent as GoogleLogo } from '../img/google.svg';
 
 export const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
   const capsLock = useKeyLock('CapsLock');
+
+  const googleAuthRedirect = 'https://ewallet-api.onrender.com/api/auth/google';
 
   const initialValues = {
     username: '',
@@ -66,7 +69,7 @@ export const AuthForm = ({ type }) => {
                   />
                 )}
               </Field>
-             {touched.email && errors.email && <FormError name="email" />}
+              {touched.email && errors.email && <FormError name="email" />}
             </InputWrapper>
             <InputWrapper>
               <Field name="password" type="password">
@@ -99,7 +102,9 @@ export const AuthForm = ({ type }) => {
                     )}
                   </Field>
                   <PasswordStrengthChecker password={values.password} />
-                  {touched.confirmPassword && errors.confirmPassword && <FormError name="confirmPassword" />}
+                  {touched.confirmPassword && errors.confirmPassword && (
+                    <FormError name="confirmPassword" />
+                  )}
                 </InputWrapper>
                 <InputWrapper>
                   <Field type="username" name="username">
@@ -113,7 +118,9 @@ export const AuthForm = ({ type }) => {
                       />
                     )}
                   </Field>
-                  {touched.username && errors.username && <FormError name="username" />}
+                  {touched.username && errors.username && (
+                    <FormError name="username" />
+                  )}
                 </InputWrapper>
               </>
             )}
@@ -123,6 +130,12 @@ export const AuthForm = ({ type }) => {
                   register
                 </PrimaryButton>
                 <StyledLink to="/login">log in</StyledLink>
+                <GoogleLink href={googleAuthRedirect} rel="noreferrer">
+                  <GoogleLogo
+                    style={{ height: '1.2em', marginRight: '10px' }}
+                  />
+                  Sign Up with Google
+                </GoogleLink>
               </>
             ) : (
               <>
@@ -130,6 +143,12 @@ export const AuthForm = ({ type }) => {
                   log in
                 </PrimaryButton>
                 <StyledLink to="/signup">register</StyledLink>
+                <GoogleLink href={googleAuthRedirect} rel="noreferrer">
+                  <GoogleLogo
+                    style={{ height: '1.2em', marginRight: '10px' }}
+                  />
+                  Log In with Google
+                </GoogleLink>
               </>
             )}
           </StyledForm>
