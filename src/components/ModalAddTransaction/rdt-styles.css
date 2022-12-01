@@ -18,28 +18,18 @@
   margin-top: 0;
 }
 .rdt input.form-control {
-  /* background-image: linear-gradient(#9c27b0, #9c27b0),
-    linear-gradient(#d2d2d2, #d2d2d2); */
-  background-size: 0 2px, 100% 1px;
+  background-size: 0 1px, 100% 1px;
   background-repeat: no-repeat;
-  background-position: center bottom, center calc(100% - 1px);
+  background-position: left bottom, center calc(100% - 1px);
   background-color: rgba(0, 0, 0, 0);
   transition: background 0s ease-out;
   float: none;
   box-shadow: none;
   border: none;
-  /* border-bottom: 1px solid #e0e0e0; */
-  /* font-weight: 400; */
-  /* width: 150px;
-  height: 36px;
-  padding: 7px 0; */
-  /* font-size: 14px;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  font-weight: 400;
-  line-height: 1.42857; */
+
   display: block;
 
-  color: #555;
+  /* color: #555; */
 
   @media screen and (min-width: 768px) {
     width: 181px;
@@ -47,8 +37,6 @@
 }
 .rdt input.form-control:focus {
   outline: none;
-  /* background-image: linear-gradient(#9c27b0, #9c27b0),
-    linear-gradient(#d2d2d2, #d2d2d2); */
   background-size: 100% 2px, 100% 1px;
   box-shadow: none;
   transition-duration: 0.3s;
@@ -75,7 +63,7 @@
   height: 0;
   vertical-align: middle;
   content: '';
-  top: -5px;
+  top: 0px;
   left: 10px;
   right: auto;
   color: #ffffff;
@@ -83,7 +71,6 @@
   border-left: 0.4em solid transparent;
 }
 .rdtPicker:after {
-  /* border-bottom: 0.4em solid #ffffff; */
   border-right: 0.4em solid transparent;
   border-left: 0.4em solid transparent;
   content: '';
@@ -96,6 +83,7 @@
 .rdtPicker {
   display: block;
   top: 40px;
+  left: -10px;
 }
 
 .rdtStatic .rdtPicker {
@@ -139,12 +127,11 @@
 .rdtDay.rdtActive:hover {
   background-color: #24cca7 !important;
   color: #fff;
-  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.2),
-    0 13px 24px -11px rgba(156, 39, 176, 0.6);
+  box-shadow: 0 5px 20px 0px rgba(36, 204, 167, 0.6),
+    0 13px 24px -11px rgba(36, 204, 167, 0.6);
 }
 
 .rdtDays tr .dow {
-  /* border-bottom: 1px solid #e3e3e3; */
   text-align: center;
   font-size: 12px;
   text-transform: uppercase;
@@ -163,7 +150,7 @@
 .rdtPicker td.rdtMinute:hover,
 .rdtPicker td.rdtSecond:hover,
 .rdtPicker .rdtTimeToggle:hover {
-  background: #eeeeee;
+  background: #d5f5f5;
   cursor: pointer;
 }
 

@@ -2,10 +2,10 @@ import React from 'react';
 import Media from 'react-media';
 import {
   NavigLink,
-	NavList,
+  NavList,
   NavItem,
-	IconHome,
-	IconWrapper,
+  IconHome,
+  IconWrapper,
   NavText,
   IconGraph,
   IconCurrency,

@@ -23,7 +23,7 @@ export const LogoText = styled.div`
   font-family: ${({ theme }) => theme.fonts.secondary};
   font-size: ${({ theme }) => theme.fontSizes.xxl};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
-  
+
   @media screen and (${breakpoints.tablet}) {
     font-size: ${({ theme }) => theme.fontSizes.xxxl};
   }

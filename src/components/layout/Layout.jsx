@@ -9,7 +9,6 @@ import { ScrollToTop } from 'react-to-top';
 export const Layout = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
-
   return (
     <Container>
       <Suspense fallback={null}>
@@ -24,7 +23,7 @@ export const Layout = () => {
         strokeWidth={3}
         strokeColor="#eead71"
         symbolSize={25}
-        symbol="&#11165;"
+        symbol="&#9650;"
       />
     </Container>
   );

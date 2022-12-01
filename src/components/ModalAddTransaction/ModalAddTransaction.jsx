@@ -106,11 +106,7 @@ const ModalAddTransaction = ({ onClose }) => {
     setTypeTransaction('expense');
   };
 
-  // console.log('typeTransaction now >>>', typeTransaction);
-
   const handleSubmit = ({ sum, category, comment, date }, { resetForm }) => {
-    // console.log('comment inside submit', comment);
-
     dispatch(
       addTransaction({
         sum,
@@ -121,13 +117,6 @@ const ModalAddTransaction = ({ onClose }) => {
       })
     );
 
-    // console.log('inside handleSubmit', {
-    //   sum,
-    //   category,
-    //   comment,
-    //   date,
-    //   type: typeTransaction,
-    // });
     onClose();
   };
 
@@ -198,22 +187,24 @@ const ModalAddTransaction = ({ onClose }) => {
                 </Expense>
               </Switcher>
 
-              <InputCategory>
-                <label htmlFor="category" />
-                <Field name="category" as="select">
-                  <option value="">{t('ModalAdd.modalTitle')}</option>
-                  {categories
-                    .filter(elem => elem.type === typeTransaction)
-                    .map(({ name, id }) => (
-                      <option value={id} key={id}>
-                        {name}
-                      </option>
-                    ))}
-                </Field>
-                <FormError name="category" />
-              </InputCategory>
-
               <InputBox>
+                <InputWrapper>
+                  <label htmlFor="category" />
+                  <Field name="category" as={InputCategory}>
+                    <option value="" disabled hidden>
+                      Select a category
+                    </option>
+                    {categories
+                      .filter(elem => elem.type === typeTransaction)
+                      .map(({ name, id }) => (
+                        <option value={id} key={id}>
+                          {name}
+                        </option>
+                      ))}
+                  </Field>
+                  <FormError name="category" />
+                </InputWrapper>
+
                 <InputWrapper>
                   <label htmlFor="sum" />
                   <InputAmount
@@ -247,10 +238,11 @@ const ModalAddTransaction = ({ onClose }) => {
 
                 <InputWrapper>
                   <label htmlFor="comment" />
-                  <InputComment
+                  <Field
                     name="comment"
                     value={comment}
                     placeholder="Comment"
+                    as={InputComment}
                   />
                   {/* <Field name="comment" as="textarea" placeholder="Comment" /> */}
                 </InputWrapper>

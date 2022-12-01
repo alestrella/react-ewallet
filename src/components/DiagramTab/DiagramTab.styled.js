@@ -6,7 +6,6 @@ export const DiagramTabContainer = styled.div`
   //background-color: #E7EAF2;
   display: flex;
   flex-direction: column;
-  //align-items: center;
   justify-content: center;
   @media screen and (${breakpoints.tablet}) {
     flex-direction: row;
@@ -39,7 +38,6 @@ export const ChartDiagramContainer = styled.div`
 
 export const StatistiscTableContainer = styled.div`
   max-width: 280px;
-
   @media screen and (${breakpoints.tablet}) {
     max-width: 336px;
   }

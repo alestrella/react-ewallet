@@ -131,6 +131,7 @@ const TransactionsTable = () => {
         {matches =>
           matches ? (
             <StyledTable
+              rowClassName="rowStyled"
               columns={columns}
               dataSource={transactions?.map(item => ({
                 ...item,

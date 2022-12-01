@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { breakpoints } from 'styleConfig/breakpoints';
 
-
 export const StyledButton = styled.button`
   margin: auto;
   border-radius: 50%;
-  background-color: #24cca7;
+  background-color: ${p => p.theme.colors.accent};
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   display: inline-flex;
@@ -30,19 +29,20 @@ export const StyledButton = styled.button`
 
   :hover,
   :focus {
-    background-color: #303f9f;
+    background-color: ${p => p.theme.colors.secondary};
+    box-shadow: 0px 6px 15px rgba(74, 86, 226, 0.5);
   }
 
   @media (${breakpoints.tablet}) {
     position: absolute;
     left: 50%;
-  transition: (-50%);
-  bottom: 2%;
+    transition: (-50%);
+    bottom: 2%;
   }
   @media (${breakpoints.laptop}) {
     position: absolute;
     left: 50%;
-  transition: (-50%);
-  bottom: 5%;
+    transition: (-50%);
+    bottom: 5%;
   }
 `;
