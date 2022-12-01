@@ -83,6 +83,7 @@ export const InputBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 280px;
 
   @media (${breakpoints.tablet}) {
     flex-direction: row;
@@ -93,7 +94,6 @@ export const InputBox = styled.div`
 
 export const InputWrapper = styled.div`
   margin-bottom: ${p => p.theme.space[8]}px;
-  /* width: 100%; */
 
   @media (${breakpoints.tablet}) {
     flex-direction: row;
@@ -102,6 +102,12 @@ export const InputWrapper = styled.div`
 `;
 
 export const InputCategory = styled.select`
+  background: transparent;
+  border: none;
+  outline: 0;
+  margin: 0;
+  width: 100%;
+
   flex-direction: column;
   transition: all 0.3s ease;
   display: flex;
@@ -111,10 +117,8 @@ export const InputCategory = styled.select`
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.l};
   color: ${p => p.theme.colors.black};
-  outline: 0;
-  border: none;
+
   border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
-  width: 280px;
   height: 32px;
 
   @media (${breakpoints.tablet}) {
@@ -135,7 +139,7 @@ export const InputAmount = styled(Field)`
   outline: 0;
   border: none;
   border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
-  width: 280px;
+  width: 100%;
   height: 32px;
 
   &::placeholder {
@@ -171,7 +175,7 @@ export const InputDate = styled.div`
   outline: 0;
   border: none;
   border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
-  width: 280px;
+  width: 100%;
   height: 32px;
   position: relative;
 
@@ -190,7 +194,7 @@ export const CalendarIcon = styled(CalendarOutlined)`
 `;
 
 export const InputComment = styled.textarea`
-  padding: 0 ${p => p.theme.space[4]}px;
+  padding: 0 ${p => p.theme.space[1]}px;
   font-family: ${p => p.theme.fonts.primary};
   font-weight: ${p => p.theme.fontWeights.normal};
   font-size: ${p => p.theme.fontSizes.l};
@@ -199,7 +203,7 @@ export const InputComment = styled.textarea`
   background-color: transparent;
   border: none;
   border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
-  width: 280px;
+  width: 100%;
   height: 84px;
   resize: none;
   &::placeholder {
