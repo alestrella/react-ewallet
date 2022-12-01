@@ -151,7 +151,7 @@ const TransactionsTable = () => {
               {transactions?.map(item => (
                 <List type={item.type} key={item.id}>
                   <ListItem>
-                    <ListText>{t('balance.BalanceTitle')}</ListText>
+                    <ListText>{t('transactions.date')}</ListText>
                     {item.date.slice(0, 10).replaceAll('-', '.')}
                   </ListItem>
                   <ListItem>

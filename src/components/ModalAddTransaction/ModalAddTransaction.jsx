@@ -158,7 +158,7 @@ const ModalAddTransaction = ({ onClose }) => {
           render={() => <CloseButton onClick={() => onClose()} />}
         />
 
-        <Title>Add transaction</Title>
+        <Title>{t('ModalAdd.Category')}</Title>
 
         <Formik
           initialValues={initialValues}
@@ -201,7 +201,7 @@ const ModalAddTransaction = ({ onClose }) => {
               <InputCategory>
                 <label htmlFor="category" />
                 <Field name="category" as="select">
-                  <option value="">Select a category</option>
+                  <option value="">{t('ModalAdd.modalTitle')}</option>
                   {categories
                     .filter(elem => elem.type === typeTransaction)
                     .map(({ name, id }) => (

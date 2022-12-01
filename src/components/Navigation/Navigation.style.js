@@ -24,6 +24,9 @@ export const NavigLink = styled(NavLink)`
   &:not(:last-child) {
     margin-right: 28px;
   }
+  :active > span{
+    color: '#5754a8';
+  }
   @media screen and (${breakpoints.tablet}) {
     &:not(:last-child) {
       margin-bottom: 12px;
@@ -35,6 +38,7 @@ export const NavItem = styled.li`
   display: flex;
   margin-left: auto;
   margin-right: auto;
+ 
   @media screen and (${breakpoints.tablet}) {
     display: block;
     margin-left: 0;
@@ -55,8 +59,8 @@ export const NavText = styled.span`
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
   &:hover,
-  &:focus,
-  &:active {
+  &:focus
+  {
     font-weight: ${p => p.theme.fontWeights.bold};
   }
   @media screen and (${breakpoints.tablet}) {
@@ -95,7 +99,8 @@ export const IconHome = styled(FaHome)`
   }
   @media screen and (${breakpoints.laptop}) {
     :hover,
-    :focus {
+    :focus,
+     {
       transition: color 250ms linear;
       background-color: ${p => p.theme.colors.secondary};
       filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
