@@ -94,29 +94,11 @@ export const InputBox = styled.div`
 
 export const InputWrapper = styled.div`
   margin-bottom: ${p => p.theme.space[8]}px;
-
-  @media (${breakpoints.tablet}) {
-    flex-direction: row;
-    flex-flow: wrap;
-  }
 `;
 
-export const InputCategory = styled.select`
-  background: transparent;
-  border: none;
-  outline: 0;
-  margin: 0;
+export const InputCategory = styled.div`
+  margin-bottom: ${p => p.theme.space[8]}px;
   width: 100%;
-
-  flex-direction: column;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  padding: 0 ${p => p.theme.space[1]}px;
-  font-family: ${p => p.theme.fonts.primary};
-  font-weight: ${p => p.theme.fontWeights.normal};
-  font-size: ${p => p.theme.fontSizes.l};
-  color: ${p => p.theme.colors.black};
 
   border-bottom: ${p => p.theme.borders.normal} ${p => p.theme.colors.border};
   height: 32px;

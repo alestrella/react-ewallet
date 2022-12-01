@@ -26,10 +26,7 @@
   float: none;
   box-shadow: none;
   border: none;
-
   display: block;
-
-  /* color: #555; */
 
   @media screen and (min-width: 768px) {
     width: 181px;
@@ -83,7 +80,7 @@
 .rdtPicker {
   display: block;
   top: 40px;
-  left: -10px;
+  left: -15px;
 }
 
 .rdtStatic .rdtPicker {
