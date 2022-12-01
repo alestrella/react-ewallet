@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { breakpoints } from '../../styleConfig/breakpoints';
 
 export const DiagramTabContainer = styled.div`
-  padding: 40px 0 0 0;
+  padding: 10px 0 60px 0;
   //background-color: #E7EAF2;
   display: flex;
   flex-direction: column;
@@ -10,8 +10,8 @@ export const DiagramTabContainer = styled.div`
   justify-content: center;
   @media screen and (${breakpoints.tablet}) {
     flex-direction: row;
-    justify-content: end;
-    padding: 20px 0 0 0;
+    justify-content: center;
+    padding: 0;
   }
   @media screen and (${breakpoints.laptop}) {
     padding: 32px 0 0 69px;

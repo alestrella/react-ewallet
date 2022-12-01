@@ -2,7 +2,7 @@ import { breakpoints } from 'styleConfig/breakpoints';
 import styled from 'styled-components';
 
 export const BalanceBox = styled.div`
-  width: 280px;
+  max-width: 450px;
   height: 80px;
   padding: 8px 32px 12px 32px;
   background-color: ${p => p.theme.colors.primary};
