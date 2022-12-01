@@ -192,7 +192,7 @@ const ModalAddTransaction = ({ onClose }) => {
                   <label htmlFor="category" />
                   <Field name="category" as={InputCategory}>
                     <option value="" disabled hidden>
-                      Select a category
+                      {t('ModalAdd.Category')}
                     </option>
                     {categories
                       .filter(elem => elem.type === typeTransaction)
