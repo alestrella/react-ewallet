@@ -2,14 +2,19 @@ import styled from 'styled-components';
 import { breakpoints } from '../../styleConfig/breakpoints';
 
 export const DiagramTabContainer = styled.div`
+  padding: 10px 0 60px 0;
   //background-color: #E7EAF2;
-   display: flex;
+  display: flex;
   flex-direction: column;
   //align-items: center;
   justify-content: center;
   @media screen and (${breakpoints.tablet}) {
     flex-direction: row;
-    justify-content: end;
+    justify-content: center;
+    padding: 0;
+  }
+  @media screen and (${breakpoints.laptop}) {
+    padding: 32px 0 0 69px;
   }
 `;
 
@@ -36,10 +41,10 @@ export const StatistiscTableContainer = styled.div`
   max-width: 280px;
 
   @media screen and (${breakpoints.tablet}) {
-     max-width: 336px;
+    max-width: 336px;
   }
   @media screen and (${breakpoints.laptop}) {
-     max-width: 336px;
+    max-width: 336px;
   }
 `;
 

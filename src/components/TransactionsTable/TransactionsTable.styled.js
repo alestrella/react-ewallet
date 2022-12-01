@@ -37,7 +37,7 @@ export const StyledTable = styled(Table)`
 `;
 
 export const List = styled.ul`
-  max-width: 280px;
+  width: 100%;
   margin-bottom: ${p => p.theme.space[1]};
   border-radius: 10px;
   border-left: 5px solid;
@@ -73,8 +73,13 @@ export const SumStyled = styled.span`
 `;
 
 export const TableWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100%;
   @media screen and (${breakpoints.tablet}) {
     padding-right: 0;
+    min-width: 0;
   }
   @media screen and (${breakpoints.laptop}) {
     padding: 46px 0 0 69px;

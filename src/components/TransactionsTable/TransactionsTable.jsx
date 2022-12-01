@@ -46,7 +46,14 @@ const TransactionsTable = () => {
       title: 'Date',
       dataIndex: 'date',
       key: 'date',
-      render: record => record.slice(0, 10).replaceAll('-', '.'),
+      // render: record => record.slice(0, 10).replaceAll('-', '.'),
+      render: record => {
+        const date = new Date(record);
+        const year = date.getFullYear().toString().padStart(4, 0);
+        const month = (date.getMonth() + 1).toString().padStart(2, 0);
+        const day = date.getDate().toString().padStart(2, 0);
+        return `${day}.${month}.${year}`;
+      },
       width: '17%',
     },
     {
