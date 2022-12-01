@@ -23,18 +23,16 @@ const Navigation = () => {
         query="(max-width: 767px)"
         render={() => (
           <NavItem>
-            <NavigLink to="/dashboard">
+            <NavigLink  to="/dashboard">
               <IconWrapper>
                 <IconHome size="38px" />
-              </IconWrapper>
-              <NavText>{t('links.home')}</NavText>
+              </IconWrapper>           
             </NavigLink>
 
             <NavigLink to="/statistic">
               <IconWrapper>
                 <IconGraph size="38px" />
-              </IconWrapper>
-              <NavText>{t('links.statistic')}</NavText>
+              </IconWrapper>              
             </NavigLink>
             <NavigLink to="/currency">
               <IconWrapper>
