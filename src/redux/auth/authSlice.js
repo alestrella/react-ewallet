@@ -21,6 +21,10 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    setGoogleAuth(state, action) {
+      state.token = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
+    },
     resetError: state => {
       state.errorMessage = null;
     },
@@ -100,4 +104,4 @@ export const authSlice = createSlice({
   },
 });
 
-export const { resetError } = authSlice.actions;
+export const { resetError, setGoogleAuth } = authSlice.actions;

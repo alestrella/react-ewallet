@@ -8,7 +8,7 @@ const Balance = () => {
   return (
     <BalanceBox>
       <BalanceTitle>YOUR BALANCE</BalanceTitle>
-      <BalanceContent>₴{totalBalance}</BalanceContent>
+      <BalanceContent>₴{totalBalance.toFixed(2)}</BalanceContent>
     </BalanceBox>
   );
 };
