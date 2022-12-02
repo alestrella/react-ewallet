@@ -198,9 +198,12 @@ const ModalAddTransaction = ({ onClose }) => {
                     components={<DownOutlined />}
                     options={categories
                       .filter(elem => elem.type === typeTransaction)
-                      .map(({ name, id }) => ({ value: id, label: [t(`categoryName.${name}`)] }))}
+                      .map(({ name, id }) => ({
+                        value: id,
+                        label: [t(`categoryName.${name}`)],
+                      }))}
                     styles={selectStyles(typeTransaction)}
-                    placeholder="Select a category"
+                    placeholder={t('ModalAdd.Category')}
                     value={category}
                     onChange={option => {
                       setFieldValue('category', option.value);

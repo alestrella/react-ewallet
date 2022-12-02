@@ -58,8 +58,10 @@
   },
   "statisticTable": {
     "titleCateg": "Категорія",
-    "titleSum": "Сума"
-  },
+    "titleSum": "Сума",
+    "FilterDescription": "Переглянути статистику за конкретний період легко. Ви можете вибрати період ваших операцій за місяць або за цілий рік!"
+      },
+      
   "categoryName": {
     "Other expenses": "Інші витрати",
     "Basic expenses": "Базові витрати",
@@ -73,4 +75,5 @@
     "Regular Income": "Регулярний дохід",
     "Irregular Income": "Нерегулярний дохід"
   }
+  
 }
