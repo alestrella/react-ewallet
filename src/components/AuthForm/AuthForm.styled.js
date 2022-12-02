@@ -132,6 +132,7 @@ export const InputWrapper = styled.div`
   }
 `;
 export const ErrorText = styled.p`
+  position: absolute;
   text-align: left;
   color: ${p => p.theme.colors.errorColor};
   font-size: ${p => p.theme.fontSizes.xs};

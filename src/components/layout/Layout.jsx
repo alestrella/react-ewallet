@@ -5,12 +5,14 @@ import { Header } from '../Header/Header';
 import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/authSelectors';
 import { ScrollToTop } from 'react-to-top';
+import { WarningDispatcher } from 'components/WarningDispatcher/WarningDispatcher';
 
 export const Layout = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   return (
     <Container>
+      <WarningDispatcher />
       <Suspense fallback={null}>
         {isLoggedIn ? <Header /> : <></>}
 

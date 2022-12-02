@@ -5,11 +5,13 @@ export const Switcher = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 40px;
+  height: 44px;
 `;
 
 export const SwitchBox = styled.div`
   position: relative;
   margin: 0px 20px 0px 20px;
+  height: 100%;
 `;
 
 export const Switch = styled(Field)`

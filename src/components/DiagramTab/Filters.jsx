@@ -1,11 +1,19 @@
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { FiltersContainer, CustomPicker } from './Filters.styled';
+import {
+  FiltersContainer,
+  CustomPicker,
+  FiltersSelect,
+  FilterDescription,
+} from './Filters.styled';
 import { TfiAngleDown } from 'react-icons/tfi';
+import { useTranslation } from 'react-i18next';
+import '../../utils/i18next';
 import { theme } from '../../styleConfig/theme';
 
 export const Filters = ({ getYearStatistic, getMonthStatistic }) => {
+  const { t } = useTranslation();
   const [month, setMonth] = useState('');
   const [year, setYear] = useState(dayjs('2022', 'YYYY'));
 
@@ -30,22 +38,27 @@ export const Filters = ({ getYearStatistic, getMonthStatistic }) => {
 
   return (
     <FiltersContainer>
-      <CustomPicker
-        suffixIcon={<TfiAngleDown size="18px" color={theme.colors.black} />}
-        picker="month"
-        format={'MMMM YYYY'}
-        value={month}
-        onChange={monthPickerHandler}
-        placeholder="Month"
-      />
-      <CustomPicker
-        suffixIcon={<TfiAngleDown size="18px" color={theme.colors.black} />}
-        picker="year"
-        format={'YYYY'}
-        value={year}
-        onChange={yearPickerHandler}
-        placeholder="Year"
-      />
+      <FilterDescription>
+        {t('statisticTable.FilterDescription')}
+      </FilterDescription>
+      <FiltersSelect>
+        <CustomPicker
+          suffixIcon={<TfiAngleDown size="18px" color={theme.colors.black} />}
+          picker="month"
+          format={'MMMM YYYY'}
+          value={month}
+          onChange={monthPickerHandler}
+          placeholder="Month"
+        />
+        <CustomPicker
+          suffixIcon={<TfiAngleDown size="18px" color={theme.colors.black} />}
+          picker="year"
+          format={'YYYY'}
+          value={year}
+          onChange={yearPickerHandler}
+          placeholder="Year"
+        />
+      </FiltersSelect>
     </FiltersContainer>
   );
 };

@@ -22,12 +22,11 @@ import {
   TableWrapper,
 } from './TransactionsTable.styled';
 
-
 const TransactionsTable = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(transactionsSelectors.getTransactions);
   const categories = useSelector(categoriesSelectors.getCategories);
-   const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const handleDelete = id => {
     dispatch(deleteTransaction(id));
@@ -43,10 +42,9 @@ const TransactionsTable = () => {
 
   const columns = [
     {
-      title: 'Date',
+      title: [t('transactions.date')],
       dataIndex: 'date',
       key: 'date',
-      // render: record => record.slice(0, 10).replaceAll('-', '.'),
       render: record => {
         const date = new Date(record);
         const year = date.getFullYear().toString().padStart(4, 0);
@@ -57,7 +55,7 @@ const TransactionsTable = () => {
       width: '17%',
     },
     {
-      title: 'Type',
+      title: [t('transactions.type')],
       dataIndex: 'type',
       key: 'type',
       render: type => (type === 'income' ? '+' : '-'),
@@ -76,40 +74,44 @@ const TransactionsTable = () => {
       onFilter: (value, item) => item.type.includes(value),
     },
     {
-      title: 'Category',
+      title: [t('transactions.category')],
       dataIndex: 'category',
       key: 'category',
       render: category => (
         <>
-          {categories.filter(elem => elem.id === category).map(el => el.name)}
+          {categories
+            .filter(elem => elem.id === category)
+            .map(({ name }) => {
+              return t(`categoryName.${name}`);
+            })}
         </>
       ),
-      width: '15%',
+      width: '14%',
     },
     {
-      title: 'Comment',
+      title: [t('transactions.comment')],
       dataIndex: 'comment',
       key: 'comment',
-      width: '15%',
+      width: '14%',
     },
     {
-      title: 'Sum',
+      title: [t('transactions.sum')],
       dataIndex: 'sum',
       key: 'sum',
       render: (sum, item) => (
         <SumStyled type={item.type}>{sum.toFixed(2)} </SumStyled>
       ),
-      width: '15%',
+      width: '17%',
     },
     {
-      title: 'Balance',
+      title: [t('transactions.balance')],
       dataIndex: 'balance',
       key: 'balance',
       render: (_, { balance }) => balance.toFixed(2),
-      width: '15%',
+      width: '17%',
     },
     {
-      title: 'Actions',
+      title: [t('transactions.actions')],
       dataIndex: 'actions',
       render: (_, record) =>
         transactions.length >= 1 ? (
@@ -124,6 +126,14 @@ const TransactionsTable = () => {
         ) : null,
     },
   ];
+
+  const getCurrentDate = item => {
+    const date = new Date(item);
+    const year = date.getFullYear().toString().padStart(4, 0);
+    const month = (date.getMonth() + 1).toString().padStart(2, 0);
+    const day = date.getDate().toString().padStart(2, 0);
+    return `${day}.${month}.${year}`;
+  };
 
   return (
     <TableWrapper>
@@ -153,7 +163,7 @@ const TransactionsTable = () => {
                 <List type={item.type} key={item.id}>
                   <ListItem>
                     <ListText>{t('transactions.date')}</ListText>
-                    {item.date.slice(0, 10).replaceAll('-', '.')}
+                    {getCurrentDate(item.date)}
                   </ListItem>
                   <ListItem>
                     <ListText>{t('transactions.type')}</ListText>
