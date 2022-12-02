@@ -75,7 +75,7 @@ const ModalAddTransaction = ({ onClose }) => {
 
   const dispatch = useDispatch();
 
-  const categories = useSelector(categoriesSelectors.getCategories);
+  const categories = useSelector(categoriesSelectors.getCategories);  
 
   useEffect(() => {
     dispatch(getCategories());
@@ -198,9 +198,12 @@ const ModalAddTransaction = ({ onClose }) => {
                     components={<DownOutlined />}
                     options={categories
                       .filter(elem => elem.type === typeTransaction)
-                      .map(({ name, id }) => ({ value: id, label: name }))}
+                      .map(({ name, id }) => ({
+                        value: id,
+                        label: [t(`categoryName.${name}`)],
+                      }))}
                     styles={selectStyles(typeTransaction)}
-                    placeholder="Select a category"
+                    placeholder={t('ModalAdd.Category')}
                     value={category}
                     onChange={option => {
                       setFieldValue('category', option.value);
@@ -246,7 +249,7 @@ const ModalAddTransaction = ({ onClose }) => {
                   <Field
                     name="comment"
                     value={comment}
-                    placeholder="Comment"
+                    placeholder={t('ModalAdd.placeholderComent')}
                     as={InputComment}
                   />
                 </InputWrapper>
