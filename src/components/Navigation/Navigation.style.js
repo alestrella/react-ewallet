@@ -31,6 +31,7 @@ export const NavigLink = styled(NavLink)`
     color: ${p => p.theme.colors.black};
     text-decoration: underline;
   }
+  
   @media screen and (${breakpoints.tablet}) {
     &:not(:last-child) {
       margin-bottom: 12px;
@@ -40,7 +41,6 @@ export const NavigLink = styled(NavLink)`
     color: ${p => p.theme.colors.black};
     font-weight: ${p => p.theme.fontWeights.bold};
   }
-  
 `;
 
 export const NavItem = styled.li`
@@ -84,6 +84,9 @@ export const IconWrapper = styled.div`
   width: 18px;
   height: 18px;
   margin-right: 23px;
+  &.active {
+    background-color: red;
+  }
 `;
 
 export const IconHome = styled(FaHome)`
