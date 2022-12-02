@@ -4,16 +4,14 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import '../../utils/i18next';
-import {
-  Formik,
-  Field,
-  // ErrorMessage
-} from 'formik';
+import { Formik, Field } from 'formik';
 import { FormError } from '../AuthForm/FormError';
 import * as yup from 'yup';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import Media from 'react-media';
+import Select from 'react-select';
+import { selectStyles } from './SelectStyles';
 import PropTypes from 'prop-types';
 import {
   Overlay,
@@ -39,7 +37,7 @@ import {
   Income,
   Expense,
 } from './TypeSwitcher.styled';
-import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
+import { PlusOutlined, MinusOutlined, DownOutlined } from '@ant-design/icons';
 
 import {
   addTransaction,
@@ -64,6 +62,7 @@ const transactionSchema = yup.object().shape({
 const ModalAddTransaction = ({ onClose }) => {
   const [sum, setSum] = useState();
   const [comment, setComment] = useState();
+  const [category, setCategory] = useState();
   const [typeTransaction, setTypeTransaction] = useState('expense');
   const { t } = useTranslation();
 
@@ -88,6 +87,10 @@ const ModalAddTransaction = ({ onClose }) => {
     switch (name) {
       case 'sum':
         setSum(value);
+        break;
+
+      case 'category':
+        setCategory(value);
         break;
 
       case 'comment':
@@ -188,22 +191,24 @@ const ModalAddTransaction = ({ onClose }) => {
               </Switcher>
 
               <InputBox>
-                <InputWrapper>
-                  <label htmlFor="category" />
-                  <Field name="category" as={InputCategory}>
-                    <option value="" disabled hidden>
-                      {t('ModalAdd.Category')}
-                    </option>
-                    {categories
+                <InputCategory>
+                  <Select
+                    name="category"
+                    key={typeTransaction}
+                    components={<DownOutlined />}
+                    options={categories
                       .filter(elem => elem.type === typeTransaction)
-                      .map(({ name, id }) => (
-                        <option value={id} key={id}>
-                          {t(`categoryName.${name}`)}
-                        </option>
-                      ))}
-                  </Field>
+                      .map(({ name, id }) => ({ value: id, label: [t(`categoryName.${name}`)] }))}
+                    styles={selectStyles(typeTransaction)}
+                    placeholder="Select a category"
+                    value={category}
+                    onChange={option => {
+                      setFieldValue('category', option.value);
+                    }}
+                    isSearchable={false}
+                  />
                   <FormError name="category" />
-                </InputWrapper>
+                </InputCategory>
 
                 <InputWrapper>
                   <label htmlFor="sum" />
@@ -231,7 +236,7 @@ const ModalAddTransaction = ({ onClose }) => {
                         />
                       )}
                     </Field>
-                    {/* <FormError name="date" /> */}
+
                     <CalendarIcon />
                   </InputDate>
                 </InputWrapper>
@@ -244,7 +249,6 @@ const ModalAddTransaction = ({ onClose }) => {
                     placeholder={t('ModalAdd.placeholderComent')}
                     as={InputComment}
                   />
-                  {/* <Field name="comment" as="textarea" placeholder="Comment" /> */}
                 </InputWrapper>
               </InputBox>
 

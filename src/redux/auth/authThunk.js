@@ -35,7 +35,7 @@ export const logInUser = createAsyncThunk(
         case 404:
           return thunkAPI.rejectWithValue('No user with this name');
         case 500:
-          return thunkAPI.rejectWithValue('Something is wrong with server');
+          return thunkAPI.rejectWithValue('Server rejected');
         default:
           return thunkAPI.rejectWithValue(
             'Uknown error code ' + err.response.status
@@ -57,7 +57,7 @@ export const logOutUser = createAsyncThunk(
         case 401:
           return thunkAPI.rejectWithValue('Unauthorized user');
         case 500:
-          return thunkAPI.rejectWithValue('Something is wrong with server');
+          return thunkAPI.rejectWithValue('Server rejected');
         default:
           return thunkAPI.rejectWithValue(
             'Uknown error code ' + err.response.status
@@ -89,7 +89,7 @@ export const registerUser = createAsyncThunk(
         case 400:
           return thunkAPI.rejectWithValue('Bad request. Try another one');
         case 500:
-          return thunkAPI.rejectWithValue('Something is wrong with server');
+          return thunkAPI.rejectWithValue('Server rejected');
         default:
           return thunkAPI.rejectWithValue(
             'Uknown error code ' + err.response.status
@@ -110,7 +110,7 @@ export const reconnectUser = createAsyncThunk(
         case 401:
           return thunkAPI.rejectWithValue('Your token has expired');
         case 500:
-          return thunkAPI.rejectWithValue('Something is wrong with server');
+          return thunkAPI.rejectWithValue('Server rejected');
         default:
           return thunkAPI.rejectWithValue(
             'Uknown error code ' + err.response.status
@@ -141,7 +141,7 @@ export const reLogInUser = createAsyncThunk(
         case 404:
           return thunkAPI.rejectWithValue('No user with this name');
         case 500:
-          return thunkAPI.rejectWithValue('Something is wrong with server');
+          return thunkAPI.rejectWithValue('Server rejected');
         default:
           return thunkAPI.rejectWithValue(
             'Uknown error code ' + err.response.status

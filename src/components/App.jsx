@@ -1,6 +1,5 @@
 import { Route, Routes, useSearchParams } from 'react-router-dom';
 import { Layout } from './layout/Layout';
-// import { TestReduxComponent } from './TestReduxComponent/TestReduxComponent';
 import { lazy, useEffect } from 'react';
 import { PrivateRoute, PublicRoute } from 'hocs';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,7 +29,6 @@ function App() {
     }
     token.set(accessToken);
     dispatch(setGoogleAuth({ accessToken, refreshToken }));
-    // authHeader.set(accessToken);
     dispatch(reconnectUser());
   }, [dispatch, searchParams]);
 
@@ -38,7 +36,6 @@ function App() {
     <LoaderSpinner />
   ) : (
     <>
-      {/* <WarningDispatcher /> */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Navigate to="/login" />} />
@@ -62,16 +59,6 @@ function App() {
               />
             }
           />
-          {/* <Route
-            path="google"
-            element={
-              <PublicRoute
-                restricted
-                redirectTo="/dashboard"
-                component={<GoogleAuthPage />}
-              />
-            }
-          /> */}
           <Route
             path="dashboard"
             element={
@@ -84,7 +71,6 @@ function App() {
               <PrivateRoute redirectTo="/login" component={<DashboardPage />} />
             }
           />
-
           <Route
             path="currency"
             element={
@@ -92,7 +78,6 @@ function App() {
             }
           />
         </Route>
-        {/* <Route path="/redux-test" element={<TestReduxComponent />}></Route> */}
       </Routes>
     </>
   );
