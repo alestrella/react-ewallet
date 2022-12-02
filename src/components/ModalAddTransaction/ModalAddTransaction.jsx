@@ -76,7 +76,7 @@ const ModalAddTransaction = ({ onClose }) => {
 
   const dispatch = useDispatch();
 
-  const categories = useSelector(categoriesSelectors.getCategories);
+  const categories = useSelector(categoriesSelectors.getCategories);  
 
   useEffect(() => {
     dispatch(getCategories());
@@ -198,7 +198,7 @@ const ModalAddTransaction = ({ onClose }) => {
                       .filter(elem => elem.type === typeTransaction)
                       .map(({ name, id }) => (
                         <option value={id} key={id}>
-                          {name}
+                          {t(`categoryName.${name}`)}
                         </option>
                       ))}
                   </Field>

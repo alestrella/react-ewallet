@@ -43,7 +43,6 @@
     "ButtonAdd": "Add",
     "ButtonCensel": "Cancel",
     "placeholderComent": "Comment"
-    
   },
   "placeholder": {
     "placeholderEmail": "E-mail",
@@ -55,6 +54,23 @@
     "buttonReg": "register",
     "buttonLogIn": "log in",
     "buttonGoogle": "Sign Up with Google"
+  },
+  "statisticTable": {
+    "titleCateg": "Category",
+    "titleSum": "Sum"
+  },
+  "categoryName": {
+    "Other expenses": "Other expenses",
+    "Basic expenses": "Basic expenses",
+    "Self care": "Self care",
+    "Car": "Car",
+    "Household products": "Household products",
+    "Products": "Products",
+    "Leisure": "Leisure",
+    "Child care": "Child care",
+    "Education": "Education",
+    "Regular Income": "Regular Income",
+    "Irregular Income": "Irregular Income"
   }
 }
 
